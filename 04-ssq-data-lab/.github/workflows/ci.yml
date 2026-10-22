@@ -1,0 +1,106 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    name: Unit tests · node --test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run unit tests
+        run: node --test tests/*.test.mjs
+
+  python-tests:
+    name: Python tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run python tests
+        run: python -m unittest discover -s tools -p "test_*.py" -v
+
+  e2e-tests:
+    name: E2E · puppeteer
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install puppeteer-core + chromium
+        run: |
+          npm install --no-save puppeteer-core@25
+          # 用 @puppeteer/browsers 装 stable chromium
+          npx --yes @puppeteer/browsers install chromium@latest --path "$HOME/.cache/puppeteer"
+          # 找到刚装的 chrome 二进制
+          CHROME_BIN=$(find "$HOME/.cache/puppeteer/chromium" -name 'chrome' -type f | head -1)
+          if [ -z "$CHROME_BIN" ]; then
+            CHROME_BIN=$(find "$HOME/.cache/puppeteer" -name 'chrome' -type f | head -1)
+          fi
+          echo "PUPPETEER_EXECUTABLE_PATH=$CHROME_BIN" >> $GITHUB_ENV
+          echo "Located chrome: $CHROME_BIN"
+          ls -lh "$CHROME_BIN"
+
+      - name: Smoke check (dual-page · 0 console errors)
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
+        run: node tools/smoke_check.mjs
+        timeout-minutes: 3
+
+      - name: SSQ tracker + conformal
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
+        run: node tools/check_tracker_conformal.mjs
+        timeout-minutes: 5
+
+      - name: DLT tracker + conformal
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
+        run: node tools/check_tracker_conformal_dlt.mjs
+        timeout-minutes: 5
+
+      - name: SSQ explainer + history
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
+        run: node tools/check_explainer_history.mjs
+        timeout-minutes: 3
+
+      - name: Drift monitor (SSQ + DLT)
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
+        run: node tools/check_drift_monitor.mjs
+        timeout-minutes: 3
+
+      - name: Rational Betting (SSQ + DLT)
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
+        run: node tools/check_rational_betting.mjs
+        timeout-minutes: 3
+
+      - name: SSQ Betting Panels (奖级 EV / 追号 / 回测)
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
+        run: node tools/check_ssq_betting_panels.mjs
+        timeout-minutes: 5
+
+      - name: 4 项功能增强（胆拖 / 体检 / 盈亏平衡 / χ²）
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
+        run: node tools/check_enhancements.mjs
+        timeout-minutes: 3

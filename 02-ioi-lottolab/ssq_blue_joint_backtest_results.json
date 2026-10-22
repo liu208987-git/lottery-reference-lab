@@ -1,0 +1,1084 @@
+{
+  "generated_at": "2026-07-14T06:19:50",
+  "data": {
+    "database": "D:\\Python\\lotto\\ssq.db",
+    "draws": 3476,
+    "issue_from": "2003001",
+    "issue_to": "2026079",
+    "evaluation_from_index": 500,
+    "training_records": 1933,
+    "holdout_records": 1043,
+    "training_issue_to": "2019074",
+    "holdout_issue_from": "2019075",
+    "no_future_data": true
+  },
+  "uniform_baseline": {
+    "log_loss": 2.772588722239781,
+    "brier_score": 0.9375,
+    "top1_rate": 0.0625,
+    "top5_rate": 0.3125
+  },
+  "blue04": {
+    "all_history": {
+      "draws": 3476,
+      "count": 213,
+      "rate": 0.06127733026467204,
+      "theoretical_rate": 0.0625,
+      "expected_count": 217.25,
+      "exact_two_sided_p": 0.8062248548656507,
+      "all_number_counts": {
+        "01": 237,
+        "02": 207,
+        "03": 214,
+        "04": 213,
+        "05": 213,
+        "06": 218,
+        "07": 218,
+        "08": 203,
+        "09": 213,
+        "10": 204,
+        "11": 222,
+        "12": 223,
+        "13": 204,
+        "14": 216,
+        "15": 235,
+        "16": 236
+      },
+      "uniform_chi_square": 8.464902186421174,
+      "uniform_degrees_of_freedom": 15,
+      "uniform_chi_square_p": 0.9037959538451253
+    },
+    "recent_windows": {
+      "15": {
+        "count": 4,
+        "rate": 0.26666666666666666,
+        "prespecified_upper_tail_p": 0.011925059834709071
+      },
+      "30": {
+        "count": 4,
+        "rate": 0.13333333333333333,
+        "prespecified_upper_tail_p": 0.11479346032971119
+      },
+      "50": {
+        "count": 6,
+        "rate": 0.12,
+        "prespecified_upper_tail_p": 0.09037395018907426
+      },
+      "100": {
+        "count": 10,
+        "rate": 0.1,
+        "prespecified_upper_tail_p": 0.09530986761354655
+      },
+      "200": {
+        "count": 13,
+        "rate": 0.065,
+        "prespecified_upper_tail_p": 0.48284256113930085
+      }
+    },
+    "recent15_sequence": [
+      {
+        "issue": "2026065",
+        "blue": 2
+      },
+      {
+        "issue": "2026066",
+        "blue": 16
+      },
+      {
+        "issue": "2026067",
+        "blue": 13
+      },
+      {
+        "issue": "2026068",
+        "blue": 4
+      },
+      {
+        "issue": "2026069",
+        "blue": 8
+      },
+      {
+        "issue": "2026070",
+        "blue": 8
+      },
+      {
+        "issue": "2026071",
+        "blue": 5
+      },
+      {
+        "issue": "2026072",
+        "blue": 1
+      },
+      {
+        "issue": "2026073",
+        "blue": 8
+      },
+      {
+        "issue": "2026074",
+        "blue": 4
+      },
+      {
+        "issue": "2026075",
+        "blue": 1
+      },
+      {
+        "issue": "2026076",
+        "blue": 7
+      },
+      {
+        "issue": "2026077",
+        "blue": 4
+      },
+      {
+        "issue": "2026078",
+        "blue": 6
+      },
+      {
+        "issue": "2026079",
+        "blue": 4
+      }
+    ],
+    "posthoc_probability_any_one_of_16_occurs_at_least_4_in_15": 0.18476746843815084,
+    "transition": {
+      "next_04_after_04_count": 12,
+      "previous_04_count": 212,
+      "next_04_after_04_rate": 0.05660377358490566,
+      "next_04_after_other_count": 201,
+      "previous_other_count": 3263,
+      "next_04_after_other_rate": 0.06159975482684646,
+      "same_blue_consecutive_count": 241,
+      "same_blue_consecutive_rate": 0.06935251798561151,
+      "same_blue_consecutive_exact_p": 0.09942991554664028
+    }
+  },
+  "models": {
+    "blue_frequency": {
+      "selected_window": "expanding",
+      "selection_metric": "minimum training log_loss",
+      "training_candidates": [
+        {
+          "window": "100",
+          "records": 1933,
+          "log_loss": 2.83455350841902,
+          "brier_score": 0.9446640826793912,
+          "top1_hits": 134,
+          "top1_rate": 0.0693222969477496,
+          "top5_hits": 622,
+          "top5_rate": 0.32177961717537507
+        },
+        {
+          "window": "200",
+          "records": 1933,
+          "log_loss": 2.8076028757568086,
+          "brier_score": 0.9416573171051905,
+          "top1_hits": 112,
+          "top1_rate": 0.05794102431453699,
+          "top5_hits": 624,
+          "top5_rate": 0.32281427832384896
+        },
+        {
+          "window": "500",
+          "records": 1933,
+          "log_loss": 2.790785722101914,
+          "brier_score": 0.93973734942396,
+          "top1_hits": 119,
+          "top1_rate": 0.061562338334195554,
+          "top5_hits": 582,
+          "top5_rate": 0.30108639420589756
+        },
+        {
+          "window": "expanding",
+          "records": 1933,
+          "log_loss": 2.7805737111719755,
+          "brier_score": 0.9384774082129886,
+          "top1_hits": 120,
+          "top1_rate": 0.062079668908432487,
+          "top5_hits": 580,
+          "top5_rate": 0.3000517330574237
+        }
+      ],
+      "training_selected": {
+        "window": "expanding",
+        "records": 1933,
+        "log_loss": 2.7805737111719755,
+        "brier_score": 0.9384774082129886,
+        "top1_hits": 120,
+        "top1_rate": 0.062079668908432487,
+        "top5_hits": 580,
+        "top5_rate": 0.3000517330574237
+      },
+      "holdout": {
+        "records": 1043,
+        "log_loss": 2.776570558244022,
+        "brier_score": 0.9379870593478187,
+        "top1_hits": 63,
+        "top1_rate": 0.06040268456375839,
+        "top5_hits": 325,
+        "top5_rate": 0.311601150527325,
+        "top1_nominal_binomial_p": 0.6282349293574376,
+        "top5_nominal_binomial_p": 0.5366038487553104
+      },
+      "holdout_blocks": [
+        {
+          "issue_from": "2019075",
+          "issue_to": "2020131",
+          "records": 208,
+          "log_loss": 2.781490165147243,
+          "brier_score": 0.9385806810525611,
+          "top1_hits": 14,
+          "top1_rate": 0.0673076923076923,
+          "top5_hits": 58,
+          "top5_rate": 0.27884615384615385
+        },
+        {
+          "issue_from": "2020132",
+          "issue_to": "2022056",
+          "records": 209,
+          "log_loss": 2.7754962115463044,
+          "brier_score": 0.9378612412187584,
+          "top1_hits": 10,
+          "top1_rate": 0.04784688995215311,
+          "top5_hits": 68,
+          "top5_rate": 0.3253588516746411
+        },
+        {
+          "issue_from": "2022057",
+          "issue_to": "2023114",
+          "records": 208,
+          "log_loss": 2.7736279506459507,
+          "brier_score": 0.9376315590803792,
+          "top1_hits": 16,
+          "top1_rate": 0.07692307692307693,
+          "top5_hits": 67,
+          "top5_rate": 0.32211538461538464
+        },
+        {
+          "issue_from": "2023115",
+          "issue_to": "2025021",
+          "records": 209,
+          "log_loss": 2.7765197304728857,
+          "brier_score": 0.9379905840753833,
+          "top1_hits": 10,
+          "top1_rate": 0.04784688995215311,
+          "top5_hits": 62,
+          "top5_rate": 0.2966507177033493
+        },
+        {
+          "issue_from": "2025022",
+          "issue_to": "2026079",
+          "records": 209,
+          "log_loss": 2.7757281927345354,
+          "brier_score": 0.9378723706490338,
+          "top1_hits": 13,
+          "top1_rate": 0.06220095693779904,
+          "top5_hits": 70,
+          "top5_rate": 0.3349282296650718
+        }
+      ],
+      "current": {
+        "trained_through": "2026079",
+        "top5": [
+          1,
+          16,
+          15,
+          12,
+          11
+        ],
+        "blue04_rank": 11,
+        "blue04_probability": 0.06128293241695303,
+        "all_probabilities": {
+          "01": 0.06815578465063,
+          "02": 0.05956471935853379,
+          "03": 0.06156930126002291,
+          "04": 0.06128293241695303,
+          "05": 0.06128293241695303,
+          "06": 0.0627147766323024,
+          "07": 0.0627147766323024,
+          "08": 0.058419243986254296,
+          "09": 0.06128293241695303,
+          "10": 0.05870561282932417,
+          "11": 0.0638602520045819,
+          "12": 0.06414662084765177,
+          "13": 0.05870561282932417,
+          "14": 0.06214203894616266,
+          "15": 0.06758304696449026,
+          "16": 0.06786941580756013
+        }
+      }
+    },
+    "joint_raw_frequency": {
+      "selected_window": "expanding",
+      "selection_metric": "minimum training log_loss",
+      "training_candidates": [
+        {
+          "window": "100",
+          "records": 1933,
+          "log_loss": 2.788683880547899,
+          "brier_score": 0.939567135093529,
+          "top1_hits": 114,
+          "top1_rate": 0.058975685463010866,
+          "top5_hits": 586,
+          "top5_rate": 0.30315571650284534
+        },
+        {
+          "window": "200",
+          "records": 1933,
+          "log_loss": 2.783111031436866,
+          "brier_score": 0.938790890260966,
+          "top1_hits": 114,
+          "top1_rate": 0.058975685463010866,
+          "top5_hits": 598,
+          "top5_rate": 0.3093636833936886
+        },
+        {
+          "window": "500",
+          "records": 1933,
+          "log_loss": 2.778600999171488,
+          "brier_score": 0.9382496394069276,
+          "top1_hits": 105,
+          "top1_rate": 0.05431971029487843,
+          "top5_hits": 575,
+          "top5_rate": 0.297465080186239
+        },
+        {
+          "window": "expanding",
+          "records": 1933,
+          "log_loss": 2.7756020058470376,
+          "brier_score": 0.9378743647662149,
+          "top1_hits": 104,
+          "top1_rate": 0.05380237972064149,
+          "top5_hits": 587,
+          "top5_rate": 0.30367304707708226
+        }
+      ],
+      "training_selected": {
+        "window": "expanding",
+        "records": 1933,
+        "log_loss": 2.7756020058470376,
+        "brier_score": 0.9378743647662149,
+        "top1_hits": 104,
+        "top1_rate": 0.05380237972064149,
+        "top5_hits": 587,
+        "top5_rate": 0.30367304707708226
+      },
+      "holdout": {
+        "records": 1043,
+        "log_loss": 2.7732381064599174,
+        "brier_score": 0.9375775018958734,
+        "top1_hits": 79,
+        "top1_rate": 0.07574304889741132,
+        "top5_hits": 325,
+        "top5_rate": 0.311601150527325,
+        "top1_nominal_binomial_p": 0.04735638886151492,
+        "top5_nominal_binomial_p": 0.5366038487553104
+      },
+      "holdout_blocks": [
+        {
+          "issue_from": "2019075",
+          "issue_to": "2020131",
+          "records": 208,
+          "log_loss": 2.7728168276155722,
+          "brier_score": 0.9375273412344889,
+          "top1_hits": 13,
+          "top1_rate": 0.0625,
+          "top5_hits": 69,
+          "top5_rate": 0.3317307692307692
+        },
+        {
+          "issue_from": "2020132",
+          "issue_to": "2022056",
+          "records": 209,
+          "log_loss": 2.7700810520548838,
+          "brier_score": 0.9371724818785491,
+          "top1_hits": 23,
+          "top1_rate": 0.11004784688995216,
+          "top5_hits": 75,
+          "top5_rate": 0.3588516746411483
+        },
+        {
+          "issue_from": "2022057",
+          "issue_to": "2023114",
+          "records": 208,
+          "log_loss": 2.7713181319958387,
+          "brier_score": 0.937336249107688,
+          "top1_hits": 14,
+          "top1_rate": 0.0673076923076923,
+          "top5_hits": 70,
+          "top5_rate": 0.33653846153846156
+        },
+        {
+          "issue_from": "2023115",
+          "issue_to": "2025021",
+          "records": 209,
+          "log_loss": 2.778469645631538,
+          "brier_score": 0.9382370249432358,
+          "top1_hits": 10,
+          "top1_rate": 0.04784688995215311,
+          "top5_hits": 48,
+          "top5_rate": 0.22966507177033493
+        },
+        {
+          "issue_from": "2025022",
+          "issue_to": "2026079",
+          "records": 209,
+          "log_loss": 2.7734936728327946,
+          "brier_score": 0.937613017992683,
+          "top1_hits": 19,
+          "top1_rate": 0.09090909090909091,
+          "top5_hits": 63,
+          "top5_rate": 0.3014354066985646
+        }
+      ],
+      "current": {
+        "trained_through": "2026079",
+        "top5": [
+          1,
+          14,
+          6,
+          7,
+          2
+        ],
+        "blue04_rank": 15,
+        "blue04_probability": 0.06062595753994309,
+        "all_probabilities": {
+          "01": 0.06653534690304225,
+          "02": 0.06303348653972422,
+          "03": 0.0623768877216021,
+          "04": 0.06062595753994309,
+          "05": 0.06077186838841468,
+          "06": 0.06412781790326111,
+          "07": 0.06354417450937477,
+          "08": 0.06223097687313052,
+          "09": 0.06274166484278106,
+          "10": 0.06186619975195156,
+          "11": 0.06048004669147151,
+          "12": 0.0615014226307726,
+          "13": 0.06106369008535785,
+          "14": 0.06558692638797695,
+          "15": 0.061647333479244185,
+          "16": 0.06186619975195156
+        }
+      }
+    },
+    "joint_opportunity_normalized": {
+      "selected_window": "expanding",
+      "selection_metric": "minimum training log_loss",
+      "training_candidates": [
+        {
+          "window": "100",
+          "records": 1933,
+          "log_loss": 2.787543419887289,
+          "brier_score": 0.939427791123262,
+          "top1_hits": 116,
+          "top1_rate": 0.06001034661148474,
+          "top5_hits": 587,
+          "top5_rate": 0.30367304707708226
+        },
+        {
+          "window": "200",
+          "records": 1933,
+          "log_loss": 2.782817292428999,
+          "brier_score": 0.9387536954643562,
+          "top1_hits": 121,
+          "top1_rate": 0.06259699948266943,
+          "top5_hits": 609,
+          "top5_rate": 0.3150543197102949
+        },
+        {
+          "window": "500",
+          "records": 1933,
+          "log_loss": 2.778516705394908,
+          "brier_score": 0.9382393528834673,
+          "top1_hits": 105,
+          "top1_rate": 0.05431971029487843,
+          "top5_hits": 578,
+          "top5_rate": 0.2990170719089498
+        },
+        {
+          "window": "expanding",
+          "records": 1933,
+          "log_loss": 2.7755734725780457,
+          "brier_score": 0.9378706770842979,
+          "top1_hits": 107,
+          "top1_rate": 0.0553543714433523,
+          "top5_hits": 584,
+          "top5_rate": 0.30212105535437145
+        }
+      ],
+      "training_selected": {
+        "window": "expanding",
+        "records": 1933,
+        "log_loss": 2.7755734725780457,
+        "brier_score": 0.9378706770842979,
+        "top1_hits": 107,
+        "top1_rate": 0.0553543714433523,
+        "top5_hits": 584,
+        "top5_rate": 0.30212105535437145
+      },
+      "holdout": {
+        "records": 1043,
+        "log_loss": 2.7732240652386486,
+        "brier_score": 0.9375757470248257,
+        "top1_hits": 82,
+        "top1_rate": 0.07861936720997123,
+        "top5_hits": 326,
+        "top5_rate": 0.31255992329817833,
+        "top1_nominal_binomial_p": 0.021132177911739183,
+        "top5_nominal_binomial_p": 0.509992364321469
+      },
+      "holdout_blocks": [
+        {
+          "issue_from": "2019075",
+          "issue_to": "2020131",
+          "records": 208,
+          "log_loss": 2.772768920273191,
+          "brier_score": 0.9375214364721826,
+          "top1_hits": 13,
+          "top1_rate": 0.0625,
+          "top5_hits": 69,
+          "top5_rate": 0.3317307692307692
+        },
+        {
+          "issue_from": "2020132",
+          "issue_to": "2022056",
+          "records": 209,
+          "log_loss": 2.7700585887809837,
+          "brier_score": 0.9371696449078494,
+          "top1_hits": 23,
+          "top1_rate": 0.11004784688995216,
+          "top5_hits": 75,
+          "top5_rate": 0.3588516746411483
+        },
+        {
+          "issue_from": "2022057",
+          "issue_to": "2023114",
+          "records": 208,
+          "log_loss": 2.7713109797655187,
+          "brier_score": 0.9373353145205576,
+          "top1_hits": 16,
+          "top1_rate": 0.07692307692307693,
+          "top5_hits": 70,
+          "top5_rate": 0.33653846153846156
+        },
+        {
+          "issue_from": "2023115",
+          "issue_to": "2025021",
+          "records": 209,
+          "log_loss": 2.778482083143265,
+          "brier_score": 0.938238512118057,
+          "top1_hits": 11,
+          "top1_rate": 0.05263157894736842,
+          "top5_hits": 48,
+          "top5_rate": 0.22966507177033493
+        },
+        {
+          "issue_from": "2025022",
+          "issue_to": "2026079",
+          "records": 209,
+          "log_loss": 2.773488422984157,
+          "brier_score": 0.937612416851623,
+          "top1_hits": 19,
+          "top1_rate": 0.09090909090909091,
+          "top5_hits": 64,
+          "top5_rate": 0.3062200956937799
+        }
+      ],
+      "current": {
+        "trained_through": "2026079",
+        "top5": [
+          1,
+          14,
+          6,
+          7,
+          2
+        ],
+        "blue04_rank": 15,
+        "blue04_probability": 0.060624222499214314,
+        "all_probabilities": {
+          "01": 0.06652091273484008,
+          "02": 0.0630536273032245,
+          "03": 0.06238186690429319,
+          "04": 0.060624222499214314,
+          "05": 0.06077083573350226,
+          "06": 0.06413436809024255,
+          "07": 0.06354791515309074,
+          "08": 0.06225411214014681,
+          "09": 0.06275011439638957,
+          "10": 0.06188586464805042,
+          "11": 0.06046217960753781,
+          "12": 0.061486757841176944,
+          "13": 0.061079491859466706,
+          "14": 0.06560392924587505,
+          "15": 0.06161279819894683,
+          "16": 0.061831003644002236
+        }
+      }
+    },
+    "joint_transition": {
+      "selected_window": "expanding",
+      "selection_metric": "minimum training log_loss",
+      "training_candidates": [
+        {
+          "window": "100",
+          "records": 1933,
+          "log_loss": 2.8063036858492945,
+          "brier_score": 0.941725127198908,
+          "top1_hits": 138,
+          "top1_rate": 0.07139161924469736,
+          "top5_hits": 618,
+          "top5_rate": 0.31971029487842734
+        },
+        {
+          "window": "200",
+          "records": 1933,
+          "log_loss": 2.8031789822106083,
+          "brier_score": 0.9413045242258617,
+          "top1_hits": 142,
+          "top1_rate": 0.0734609415416451,
+          "top5_hits": 597,
+          "top5_rate": 0.3088463528194516
+        },
+        {
+          "window": "500",
+          "records": 1933,
+          "log_loss": 2.7958976882695477,
+          "brier_score": 0.9404040369984639,
+          "top1_hits": 96,
+          "top1_rate": 0.04966373512674599,
+          "top5_hits": 595,
+          "top5_rate": 0.30781169167097777
+        },
+        {
+          "window": "expanding",
+          "records": 1933,
+          "log_loss": 2.7822683247248903,
+          "brier_score": 0.9386713415744179,
+          "top1_hits": 131,
+          "top1_rate": 0.0677703052250388,
+          "top5_hits": 608,
+          "top5_rate": 0.31453698913605793
+        }
+      ],
+      "training_selected": {
+        "window": "expanding",
+        "records": 1933,
+        "log_loss": 2.7822683247248903,
+        "brier_score": 0.9386713415744179,
+        "top1_hits": 131,
+        "top1_rate": 0.0677703052250388,
+        "top5_hits": 608,
+        "top5_rate": 0.31453698913605793
+      },
+      "holdout": {
+        "records": 1043,
+        "log_loss": 2.7764244709269144,
+        "brier_score": 0.9379757815274858,
+        "top1_hits": 66,
+        "top1_rate": 0.06327900287631831,
+        "top5_hits": 309,
+        "top5_rate": 0.2962607861936721,
+        "top1_nominal_binomial_p": 0.4766282766791439,
+        "top5_nominal_binomial_p": 0.8782840850114013
+      },
+      "holdout_blocks": [
+        {
+          "issue_from": "2019075",
+          "issue_to": "2020131",
+          "records": 208,
+          "log_loss": 2.780972199533863,
+          "brier_score": 0.9385488483710466,
+          "top1_hits": 11,
+          "top1_rate": 0.052884615384615384,
+          "top5_hits": 52,
+          "top5_rate": 0.25
+        },
+        {
+          "issue_from": "2020132",
+          "issue_to": "2022056",
+          "records": 209,
+          "log_loss": 2.7660857455137964,
+          "brier_score": 0.9366920659123166,
+          "top1_hits": 16,
+          "top1_rate": 0.07655502392344497,
+          "top5_hits": 74,
+          "top5_rate": 0.35406698564593303
+        },
+        {
+          "issue_from": "2022057",
+          "issue_to": "2023114",
+          "records": 208,
+          "log_loss": 2.7705865100233424,
+          "brier_score": 0.9372657068767575,
+          "top1_hits": 14,
+          "top1_rate": 0.0673076923076923,
+          "top5_hits": 64,
+          "top5_rate": 0.3076923076923077
+        },
+        {
+          "issue_from": "2023115",
+          "issue_to": "2025021",
+          "records": 209,
+          "log_loss": 2.7801736661142655,
+          "brier_score": 0.9384485302446635,
+          "top1_hits": 14,
+          "top1_rate": 0.06698564593301436,
+          "top5_hits": 57,
+          "top5_rate": 0.2727272727272727
+        },
+        {
+          "issue_from": "2025022",
+          "issue_to": "2026079",
+          "records": 209,
+          "log_loss": 2.7842980600890237,
+          "brier_score": 0.9389231006928926,
+          "top1_hits": 11,
+          "top1_rate": 0.05263157894736842,
+          "top5_hits": 62,
+          "top5_rate": 0.2966507177033493
+        }
+      ],
+      "current": {
+        "trained_through": "2026079",
+        "top5": [
+          15,
+          11,
+          16,
+          1,
+          12
+        ],
+        "blue04_rank": 9,
+        "blue04_probability": 0.06267519708441097,
+        "all_probabilities": {
+          "01": 0.06419850795064418,
+          "02": 0.05647593341861383,
+          "03": 0.061435311060687385,
+          "04": 0.06267519708441097,
+          "05": 0.0549953006699465,
+          "06": 0.0630296347624793,
+          "07": 0.06376038291853633,
+          "08": 0.06094314663749566,
+          "09": 0.06360135158243706,
+          "10": 0.05891659635479423,
+          "11": 0.06764369581704419,
+          "12": 0.06381329051683182,
+          "13": 0.056200927347554955,
+          "14": 0.061047345982669844,
+          "15": 0.07423357334836658,
+          "16": 0.06702980454748717
+        }
+      }
+    },
+    "joint_transition_ensemble": {
+      "selected_window": "expanding",
+      "selection_metric": "minimum training log_loss",
+      "training_candidates": [
+        {
+          "window": "100",
+          "records": 1933,
+          "log_loss": 2.78655510221062,
+          "brier_score": 0.9392869002044619,
+          "top1_hits": 123,
+          "top1_rate": 0.0636316606311433,
+          "top5_hits": 587,
+          "top5_rate": 0.30367304707708226
+        },
+        {
+          "window": "200",
+          "records": 1933,
+          "log_loss": 2.7831136311364397,
+          "brier_score": 0.9388165510306213,
+          "top1_hits": 127,
+          "top1_rate": 0.06570098292809105,
+          "top5_hits": 597,
+          "top5_rate": 0.3088463528194516
+        },
+        {
+          "window": "500",
+          "records": 1933,
+          "log_loss": 2.78031784304647,
+          "brier_score": 0.9384694426199203,
+          "top1_hits": 106,
+          "top1_rate": 0.05483704086911537,
+          "top5_hits": 577,
+          "top5_rate": 0.2984997413347129
+        },
+        {
+          "window": "expanding",
+          "records": 1933,
+          "log_loss": 2.7760409917063265,
+          "brier_score": 0.9379294264906715,
+          "top1_hits": 109,
+          "top1_rate": 0.05638903259182618,
+          "top5_hits": 595,
+          "top5_rate": 0.30781169167097777
+        }
+      ],
+      "training_selected": {
+        "window": "expanding",
+        "records": 1933,
+        "log_loss": 2.7760409917063265,
+        "brier_score": 0.9379294264906715,
+        "top1_hits": 109,
+        "top1_rate": 0.05638903259182618,
+        "top5_hits": 595,
+        "top5_rate": 0.30781169167097777
+      },
+      "holdout": {
+        "records": 1043,
+        "log_loss": 2.7735681255275684,
+        "brier_score": 0.937618449282236,
+        "top1_hits": 75,
+        "top1_rate": 0.07190795781399809,
+        "top5_hits": 316,
+        "top5_rate": 0.3029721955896453,
+        "top1_nominal_binomial_p": 0.11811576675274785,
+        "top5_nominal_binomial_p": 0.7564985299857195
+      },
+      "holdout_blocks": [
+        {
+          "issue_from": "2019075",
+          "issue_to": "2020131",
+          "records": 208,
+          "log_loss": 2.77429818282264,
+          "brier_score": 0.9377128099800871,
+          "top1_hits": 9,
+          "top1_rate": 0.04326923076923077,
+          "top5_hits": 67,
+          "top5_rate": 0.32211538461538464
+        },
+        {
+          "issue_from": "2020132",
+          "issue_to": "2022056",
+          "records": 209,
+          "log_loss": 2.768636619122767,
+          "brier_score": 0.9369929862533684,
+          "top1_hits": 22,
+          "top1_rate": 0.10526315789473684,
+          "top5_hits": 76,
+          "top5_rate": 0.36363636363636365
+        },
+        {
+          "issue_from": "2022057",
+          "issue_to": "2023114",
+          "records": 208,
+          "log_loss": 2.7707463221179087,
+          "brier_score": 0.9372628418264479,
+          "top1_hits": 19,
+          "top1_rate": 0.09134615384615384,
+          "top5_hits": 64,
+          "top5_rate": 0.3076923076923077
+        },
+        {
+          "issue_from": "2023115",
+          "issue_to": "2025021",
+          "records": 209,
+          "log_loss": 2.7784286628749557,
+          "brier_score": 0.9382371072687349,
+          "top1_hits": 9,
+          "top1_rate": 0.0430622009569378,
+          "top5_hits": 50,
+          "top5_rate": 0.23923444976076555
+        },
+        {
+          "issue_from": "2025022",
+          "issue_to": "2026079",
+          "records": 209,
+          "log_loss": 2.775720832344953,
+          "brier_score": 0.937885251098058,
+          "top1_hits": 16,
+          "top1_rate": 0.07655502392344497,
+          "top5_hits": 59,
+          "top5_rate": 0.2822966507177033
+        }
+      ],
+      "current": {
+        "trained_through": "2026079",
+        "top5": [
+          1,
+          15,
+          14,
+          6,
+          7
+        ],
+        "blue04_rank": 14,
+        "blue04_probability": 0.06113696614551348,
+        "all_probabilities": {
+          "01": 0.06594031153879111,
+          "02": 0.06140920383207184,
+          "03": 0.06214522794339174,
+          "04": 0.06113696614551348,
+          "05": 0.059326951967613326,
+          "06": 0.06385818475830174,
+          "07": 0.06360103209445214,
+          "08": 0.061926370764484026,
+          "09": 0.06296292369290145,
+          "10": 0.061143547574736376,
+          "11": 0.062257558659914405,
+          "12": 0.062068391010090665,
+          "13": 0.059859850731488765,
+          "14": 0.06446478343007375,
+          "15": 0.06476799198630176,
+          "16": 0.06313070386987346
+        }
+      }
+    },
+    "joint_overdue_ensemble": {
+      "selected_window": "expanding",
+      "selection_metric": "minimum training log_loss",
+      "training_candidates": [
+        {
+          "window": "100",
+          "records": 1933,
+          "log_loss": 2.784677011238031,
+          "brier_score": 0.9390457698002871,
+          "top1_hits": 126,
+          "top1_rate": 0.06518365235385411,
+          "top5_hits": 578,
+          "top5_rate": 0.2990170719089498
+        },
+        {
+          "window": "200",
+          "records": 1933,
+          "log_loss": 2.7819082776560236,
+          "brier_score": 0.9386435696942277,
+          "top1_hits": 123,
+          "top1_rate": 0.0636316606311433,
+          "top5_hits": 596,
+          "top5_rate": 0.3083290222452147
+        },
+        {
+          "window": "500",
+          "records": 1933,
+          "log_loss": 2.7790671027311364,
+          "brier_score": 0.938302890764903,
+          "top1_hits": 124,
+          "top1_rate": 0.06414899120538024,
+          "top5_hits": 591,
+          "top5_rate": 0.30574236937403
+        },
+        {
+          "window": "expanding",
+          "records": 1933,
+          "log_loss": 2.776652797826256,
+          "brier_score": 0.9380143243558703,
+          "top1_hits": 134,
+          "top1_rate": 0.0693222969477496,
+          "top5_hits": 596,
+          "top5_rate": 0.3083290222452147
+        }
+      ],
+      "training_selected": {
+        "window": "expanding",
+        "records": 1933,
+        "log_loss": 2.776652797826256,
+        "brier_score": 0.9380143243558703,
+        "top1_hits": 134,
+        "top1_rate": 0.0693222969477496,
+        "top5_hits": 596,
+        "top5_rate": 0.3083290222452147
+      },
+      "holdout": {
+        "records": 1043,
+        "log_loss": 2.7741442733588393,
+        "brier_score": 0.937700864131074,
+        "top1_hits": 71,
+        "top1_rate": 0.06807286673058485,
+        "top5_hits": 332,
+        "top5_rate": 0.31831255992329816,
+        "top1_nominal_binomial_p": 0.24520986426439753,
+        "top5_nominal_binomial_p": 0.35376957162656053
+      },
+      "holdout_blocks": [
+        {
+          "issue_from": "2019075",
+          "issue_to": "2020131",
+          "records": 208,
+          "log_loss": 2.771773599533011,
+          "brier_score": 0.9373724899136603,
+          "top1_hits": 19,
+          "top1_rate": 0.09134615384615384,
+          "top5_hits": 67,
+          "top5_rate": 0.32211538461538464
+        },
+        {
+          "issue_from": "2020132",
+          "issue_to": "2022056",
+          "records": 209,
+          "log_loss": 2.7728995667685106,
+          "brier_score": 0.9375687033829568,
+          "top1_hits": 16,
+          "top1_rate": 0.07655502392344497,
+          "top5_hits": 67,
+          "top5_rate": 0.32057416267942584
+        },
+        {
+          "issue_from": "2022057",
+          "issue_to": "2023114",
+          "records": 208,
+          "log_loss": 2.7738270770757296,
+          "brier_score": 0.9376414725766572,
+          "top1_hits": 13,
+          "top1_rate": 0.0625,
+          "top5_hits": 67,
+          "top5_rate": 0.32211538461538464
+        },
+        {
+          "issue_from": "2023115",
+          "issue_to": "2025021",
+          "records": 209,
+          "log_loss": 2.783417401140648,
+          "brier_score": 0.9389062084416196,
+          "top1_hits": 8,
+          "top1_rate": 0.03827751196172249,
+          "top5_hits": 53,
+          "top5_rate": 0.2535885167464115
+        },
+        {
+          "issue_from": "2025022",
+          "issue_to": "2026079",
+          "records": 209,
+          "log_loss": 2.768790861653762,
+          "brier_score": 0.9370135910018534,
+          "top1_hits": 15,
+          "top1_rate": 0.07177033492822966,
+          "top5_hits": 78,
+          "top5_rate": 0.37320574162679426
+        }
+      ],
+      "current": {
+        "trained_through": "2026079",
+        "top5": [
+          15,
+          9,
+          10,
+          2,
+          13
+        ],
+        "blue04_rank": 15,
+        "blue04_probability": 0.05709344581891314,
+        "all_probabilities": {
+          "01": 0.06240046703097633,
+          "02": 0.06560902406657294,
+          "03": 0.062472794137914504,
+          "04": 0.05709344581891314,
+          "05": 0.05975704329939254,
+          "06": 0.061518399635648674,
+          "07": 0.06099059199221205,
+          "08": 0.06362363763499289,
+          "09": 0.06660168523523163,
+          "10": 0.06582386046172639,
+          "11": 0.05694760721640428,
+          "12": 0.06293301876592002,
+          "13": 0.06509812495200105,
+          "14": 0.06284100467571793,
+          "15": 0.06684392344234329,
+          "16": 0.05944537163403239
+        }
+      }
+    }
+  },
+  "decision": {
+    "joint_models_beat_uniform_log_loss": false,
+    "production_blue_algorithm_changed": false,
+    "reason": "所有红蓝合并候选在独立留出段的对数损失均未优于16选1均匀基线；局部Top5提升跨时间块不稳定，不足以替换生产算法。"
+  }
+}

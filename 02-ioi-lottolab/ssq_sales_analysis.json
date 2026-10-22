@@ -1,0 +1,174 @@
+{
+  "source": {
+    "history_page": "https://www.zhcw.com/kjxx/ssq/",
+    "api": "https://jc.zhcw.com/port/client_json.php",
+    "local_number_database": "D:\\Python\\lotto\\ssq.db",
+    "matched_draws": 3476,
+    "number_mismatches": 0
+  },
+  "assumptions": {
+    "basic_bet_price": 2,
+    "jackpot_combination_space": 17721088,
+    "sales_divided_by_two_is_equivalent_basic_bets_not_distinct_people": true,
+    "independent_ticket_probability_is_a_reference_model_not_an_observed_unique_coverage": true
+  },
+  "summary": {
+    "first_issue": "2003001",
+    "last_issue": "2026079",
+    "periods": 3476,
+    "total_sales": 1003096249222,
+    "mean_sales": 288577747.1869965,
+    "median_sales": 335408774.0,
+    "minimum_sales": 7398870,
+    "maximum_sales": 531219172,
+    "mean_equivalent_basic_bets": 144288873.59349826,
+    "median_equivalent_basic_bets": 167704387.0,
+    "actual_jackpot_tickets": 27793,
+    "expected_jackpot_tickets": 28302.332487203945,
+    "actual_to_expected_jackpot_ratio": 0.9820038688530628,
+    "actual_zero_jackpot_periods": 325,
+    "actual_nonzero_jackpot_periods": 3151,
+    "actual_nonzero_jackpot_rate": 0.9065017261219793,
+    "mean_independent_model_probability_any_jackpot": 0.9756664476843462,
+    "expected_zero_periods_independent_model": 84.58342784921258,
+    "jackpot_count_mean": 7.995684695051784,
+    "jackpot_count_variance": 102.59060278205575,
+    "sales_jackpot_count_correlation": 0.3400682958208679,
+    "maximum_jackpot_issue": {
+      "issue": "2019052",
+      "sale_money": 342251970,
+      "equivalent_basic_bets": 171125985.0,
+      "jackpot_tickets": 153,
+      "expected_jackpot_tickets": 9.656629717091862,
+      "independent_ticket_probability_any_jackpot": 0.9999360001609565
+    }
+  },
+  "eras": [
+    {
+      "from": 2003,
+      "to": 2009,
+      "periods": 979,
+      "mean_sale_money": 122529934.41879469,
+      "observed_nonzero_jackpot_periods": 677,
+      "observed_nonzero_rate": 0.6915219611848825,
+      "actual_jackpot_tickets": 2996,
+      "expected_jackpot_tickets": 3384.577905036079,
+      "expected_zero_periods_independent_model": 84.25088527848946
+    },
+    {
+      "from": 2010,
+      "to": 2015,
+      "periods": 920,
+      "mean_sale_money": 332128735.07608694,
+      "observed_nonzero_jackpot_periods": 908,
+      "observed_nonzero_rate": 0.9869565217391304,
+      "actual_jackpot_tickets": 8834,
+      "expected_jackpot_tickets": 8621.322693900058,
+      "expected_zero_periods_independent_model": 0.21840667725284668
+    },
+    {
+      "from": 2016,
+      "to": 2020,
+      "periods": 745,
+      "mean_sale_money": 347886862.4724832,
+      "observed_nonzero_jackpot_periods": 739,
+      "observed_nonzero_rate": 0.9919463087248322,
+      "actual_jackpot_tickets": 7391,
+      "expected_jackpot_tickets": 7312.635447157646,
+      "expected_zero_periods_independent_model": 0.08954616666360804
+    },
+    {
+      "from": 2021,
+      "to": 2026,
+      "periods": 832,
+      "mean_sale_money": 382698671.4110577,
+      "observed_nonzero_jackpot_periods": 827,
+      "observed_nonzero_rate": 0.9939903846153846,
+      "actual_jackpot_tickets": 8572,
+      "expected_jackpot_tickets": 8983.796441110162,
+      "expected_zero_periods_independent_model": 0.024589726806661383
+    }
+  ],
+  "latest_10": [
+    {
+      "issue": "2026070",
+      "sale_money": 398555946,
+      "equivalent_basic_bets": 199277973.0,
+      "jackpot_tickets": 11,
+      "expected_jackpot_tickets": 11.2452448179254,
+      "independent_ticket_probability_any_jackpot": 0.9999869307071316
+    },
+    {
+      "issue": "2026071",
+      "sale_money": 373089958,
+      "equivalent_basic_bets": 186544979.0,
+      "jackpot_tickets": 8,
+      "expected_jackpot_tickets": 10.526722682038484,
+      "independent_ticket_probability_any_jackpot": 0.999973189661477
+    },
+    {
+      "issue": "2026072",
+      "sale_money": 377591844,
+      "equivalent_basic_bets": 188795922.0,
+      "jackpot_tickets": 4,
+      "expected_jackpot_tickets": 10.653743269036303,
+      "independent_ticket_probability_any_jackpot": 0.9999763877182847
+    },
+    {
+      "issue": "2026073",
+      "sale_money": 398594042,
+      "equivalent_basic_bets": 199297021.0,
+      "jackpot_tickets": 10,
+      "expected_jackpot_tickets": 11.246319695494995,
+      "independent_ticket_probability_any_jackpot": 0.9999869447474746
+    },
+    {
+      "issue": "2026074",
+      "sale_money": 370952514,
+      "equivalent_basic_bets": 185476257.0,
+      "jackpot_tickets": 4,
+      "expected_jackpot_tickets": 10.466414759635526,
+      "independent_ticket_probability_any_jackpot": 0.999971523035337
+    },
+    {
+      "issue": "2026075",
+      "sale_money": 370657052,
+      "equivalent_basic_bets": 185328526.0,
+      "jackpot_tickets": 5,
+      "expected_jackpot_tickets": 10.458078307607298,
+      "independent_ticket_probability_any_jackpot": 0.9999712846462012
+    },
+    {
+      "issue": "2026076",
+      "sale_money": 382507054,
+      "equivalent_basic_bets": 191253527.0,
+      "jackpot_tickets": 6,
+      "expected_jackpot_tickets": 10.792425781080711,
+      "independent_ticket_probability_any_jackpot": 0.9999794454059157
+    },
+    {
+      "issue": "2026077",
+      "sale_money": 353662546,
+      "equivalent_basic_bets": 176831273.0,
+      "jackpot_tickets": 6,
+      "expected_jackpot_tickets": 9.97857879832209,
+      "independent_ticket_probability_any_jackpot": 0.9999536170711836
+    },
+    {
+      "issue": "2026078",
+      "sale_money": 355852948,
+      "equivalent_basic_bets": 177926474.0,
+      "jackpot_tickets": 15,
+      "expected_jackpot_tickets": 10.040380929207055,
+      "independent_ticket_probability_any_jackpot": 0.9999563968521794
+    },
+    {
+      "issue": "2026079",
+      "sale_money": 373452200,
+      "equivalent_basic_bets": 186726100.0,
+      "jackpot_tickets": 1,
+      "expected_jackpot_tickets": 10.536943329890354,
+      "independent_ticket_probability_any_jackpot": 0.999973462284946
+    }
+  ]
+}

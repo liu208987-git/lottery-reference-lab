@@ -1,0 +1,3139 @@
+{
+  "generated_at": "2026-07-14T06:31:43",
+  "algorithm": "ssq-v9",
+  "method": {
+    "walk_forward": true,
+    "no_future_data": true,
+    "start_index": 300,
+    "periods": 3176,
+    "issue_from": "2005090",
+    "issue_to": "2026079",
+    "ticket_count": 5,
+    "seed_replicates": 32,
+    "production_seed_comparison": true,
+    "common_seed_robustness_comparison": true
+  },
+  "filter_priority": [
+    "historical_full_ticket",
+    "previous_blue",
+    "four_or_more_consecutive_reds",
+    "all_odd_or_all_even",
+    "all_six_in_one_zone",
+    "outer_one_percent_sum_tail",
+    "small_span_one_percent_tail"
+  ],
+  "filter_config": {
+    "max_consecutive_run": 3,
+    "min_odd_count": 1,
+    "max_odd_count": 5,
+    "max_single_zone_count": 5,
+    "min_red_sum": 53,
+    "max_red_sum": 151,
+    "min_red_span": 12,
+    "avoid_previous_blue": true,
+    "avoid_historical_full_ticket": true,
+    "max_portfolio_attempts": 10000
+  },
+  "structural_statistics": {
+    "exact_red_combination_space": 1107568,
+    "exact_red_excluded": 56067,
+    "exact_red_excluded_rate": 0.050621722548863816,
+    "exact_reason_counts": {
+      "four_or_more_consecutive_reds": 11368,
+      "all_six_in_one_zone": 1386,
+      "outer_one_percent_sum_tail": 19786,
+      "small_span_one_percent_tail": 10626,
+      "all_odd_or_all_even": 20384
+    },
+    "historical_draws": 3476,
+    "historical_red_excluded": 185,
+    "historical_red_excluded_rate": 0.05322209436133487,
+    "historical_reason_counts": {
+      "four_or_more_consecutive_reds": 37,
+      "all_six_in_one_zone": 5,
+      "outer_one_percent_sum_tail": 60,
+      "small_span_one_percent_tail": 27,
+      "all_odd_or_all_even": 79
+    },
+    "full_combination_space": 17721088,
+    "historical_full_duplicates": 0,
+    "next_draw_matches_any_historical_full_ticket_probability": 0.00019615048466550136,
+    "blue_repeat_count": 241,
+    "blue_repeat_rate": 0.06935251798561151,
+    "blue_repeat_theoretical_rate": 0.0625,
+    "v9_expected_blue_coverage_using_historical_repeat_rate": 0.3102158273381295,
+    "v8_theoretical_blue_coverage": 0.3125
+  },
+  "production_seed_results": {
+    "v8": {
+      "periods": 3176,
+      "blue_covered": 0.3170654911838791,
+      "red_ge4": 0.02204030226700252,
+      "red_ge3": 0.2739294710327456,
+      "full_red": 0.0,
+      "any_prize": 0.3318639798488665,
+      "blue_sixth_prize": 0.2978589420654912,
+      "max_red": 2.258501259445844,
+      "union_red": 5.453715365239295,
+      "winning_tickets": 0.33690176322418136,
+      "fixed_return": 2.4779596977329974,
+      "counts": {
+        "blue_covered": 1007,
+        "red_ge4": 70,
+        "red_ge3": 870,
+        "full_red": 0,
+        "any_prize": 1054,
+        "blue_sixth_prize": 946
+      },
+      "prize_counts": {
+        "六等奖": 946,
+        "五等奖": 114,
+        "四等奖": 10
+      },
+      "ticket_cost": 31760,
+      "fixed_prize_return": 7870,
+      "fixed_prize_roi": 0.24779596977329973,
+      "fixed_prize_net": -23890,
+      "variable_prize_events": 0
+    },
+    "v9": {
+      "periods": 3176,
+      "blue_covered": 0.31045340050377834,
+      "red_ge4": 0.030226700251889168,
+      "red_ge3": 0.285264483627204,
+      "full_red": 0.0,
+      "any_prize": 0.33091939546599497,
+      "blue_sixth_prize": 0.29282115869017633,
+      "max_red": 2.2739294710327456,
+      "union_red": 5.473551637279597,
+      "winning_tickets": 0.33879093198992444,
+      "fixed_return": 2.5220403022670026,
+      "counts": {
+        "blue_covered": 986,
+        "red_ge4": 96,
+        "red_ge3": 906,
+        "full_red": 0,
+        "any_prize": 1051,
+        "blue_sixth_prize": 930
+      },
+      "prize_counts": {
+        "六等奖": 930,
+        "五等奖": 136,
+        "四等奖": 10
+      },
+      "ticket_cost": 31760,
+      "fixed_prize_return": 8010,
+      "fixed_prize_roi": 0.25220403022670024,
+      "fixed_prize_net": -23750,
+      "variable_prize_events": 0
+    },
+    "difference_v9_minus_v8": {
+      "blue_covered": -0.006612090680100768,
+      "red_ge4": 0.00818639798488665,
+      "red_ge3": 0.011335012594458405,
+      "full_red": 0.0,
+      "any_prize": -0.0009445843828715383,
+      "blue_sixth_prize": -0.005037783375314853,
+      "max_red": 0.015428211586901774,
+      "union_red": 0.019836272040302028,
+      "winning_tickets": 0.0018891687657430767,
+      "fixed_return": 0.0440806045340052
+    },
+    "paired_tests": {
+      "blue_covered": {
+        "difference_v9_minus_v8": -0.006612090680100755,
+        "ci95": [
+          -0.028652392947103273,
+          0.017947103274559194
+        ],
+        "two_sided_p": 0.6177940686437854,
+        "bootstrap_samples": 3000,
+        "block_length": 20,
+        "mcnemar": {
+          "v9_only": 669,
+          "v8_only": 690,
+          "discordant": 1359,
+          "two_sided_p": 0.5874726421214618
+        }
+      },
+      "red_ge4": {
+        "difference_v9_minus_v8": 0.00818639798488665,
+        "ci95": [
+          0.0006297229219143577,
+          0.015428211586901764
+        ],
+        "two_sided_p": 0.04198600466511163,
+        "bootstrap_samples": 3000,
+        "block_length": 20,
+        "mcnemar": {
+          "v9_only": 93,
+          "v8_only": 67,
+          "discordant": 160,
+          "two_sided_p": 0.047766996028276436
+        }
+      },
+      "red_ge3": {
+        "difference_v9_minus_v8": 0.011335012594458438,
+        "ci95": [
+          -0.010390428211586901,
+          0.03400503778337532
+        ],
+        "two_sided_p": 0.33788737087637455,
+        "bootstrap_samples": 3000,
+        "block_length": 20,
+        "mcnemar": {
+          "v9_only": 643,
+          "v8_only": 607,
+          "discordant": 1250,
+          "two_sided_p": 0.3221994851654634
+        }
+      },
+      "full_red": {
+        "difference_v9_minus_v8": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "two_sided_p": 1.0,
+        "bootstrap_samples": 3000,
+        "block_length": 20,
+        "mcnemar": {
+          "v9_only": 0,
+          "v8_only": 0,
+          "discordant": 0,
+          "two_sided_p": 1.0
+        }
+      },
+      "any_prize": {
+        "difference_v9_minus_v8": -0.0009445843828715365,
+        "ci95": [
+          -0.025503778337531487,
+          0.02455919395465995
+        ],
+        "two_sided_p": 0.9550149950016661,
+        "bootstrap_samples": 3000,
+        "block_length": 20,
+        "mcnemar": {
+          "v9_only": 700,
+          "v8_only": 703,
+          "discordant": 1403,
+          "two_sided_p": 0.9574196554214351
+        }
+      },
+      "blue_sixth_prize": {
+        "difference_v9_minus_v8": -0.005037783375314861,
+        "ci95": [
+          -0.028022670025188916,
+          0.017632241813602016
+        ],
+        "two_sided_p": 0.6611129623458847,
+        "bootstrap_samples": 3000,
+        "block_length": 20,
+        "mcnemar": {
+          "v9_only": 646,
+          "v8_only": 662,
+          "discordant": 1308,
+          "two_sided_p": 0.678340271243211
+        }
+      },
+      "max_red": {
+        "difference_v9_minus_v8": 0.015428211586901764,
+        "ci95": [
+          -0.013853904282115869,
+          0.045025188916876575
+        ],
+        "two_sided_p": 0.3065644785071643,
+        "bootstrap_samples": 3000,
+        "block_length": 20
+      },
+      "union_red": {
+        "difference_v9_minus_v8": 0.019836272040302267,
+        "ci95": [
+          -0.009130982367758186,
+          0.0491183879093199
+        ],
+        "two_sided_p": 0.1752749083638787,
+        "bootstrap_samples": 3000,
+        "block_length": 20
+      },
+      "winning_tickets": {
+        "difference_v9_minus_v8": 0.001889168765743073,
+        "ci95": [
+          -0.02424433249370277,
+          0.02644836272040302
+        ],
+        "two_sided_p": 0.903032322559147,
+        "bootstrap_samples": 3000,
+        "block_length": 20
+      },
+      "fixed_return": {
+        "difference_v9_minus_v8": 0.04408060453400504,
+        "ci95": [
+          -0.521095717884131,
+          0.5604534005037783
+        ],
+        "two_sided_p": 0.9256914361879374,
+        "bootstrap_samples": 3000,
+        "block_length": 20
+      }
+    },
+    "time_blocks": [
+      {
+        "issue_from": "2005090",
+        "issue_to": "2008026",
+        "periods": 397,
+        "v8": {
+          "blue_covered": 0.2695214105793451,
+          "red_ge4": 0.022670025188916875,
+          "red_ge3": 0.3224181360201511,
+          "full_red": 0.0,
+          "any_prize": 0.29219143576826195,
+          "blue_sixth_prize": 0.25440806045340053
+        },
+        "v9": {
+          "blue_covered": 0.3123425692695214,
+          "red_ge4": 0.020151133501259445,
+          "red_ge3": 0.25440806045340053,
+          "full_red": 0.0,
+          "any_prize": 0.327455919395466,
+          "blue_sixth_prize": 0.30730478589420657
+        }
+      },
+      {
+        "issue_from": "2008027",
+        "issue_to": "2010115",
+        "periods": 397,
+        "v8": {
+          "blue_covered": 0.34005037783375314,
+          "red_ge4": 0.022670025188916875,
+          "red_ge3": 0.2695214105793451,
+          "full_red": 0.0,
+          "any_prize": 0.35516372795969775,
+          "blue_sixth_prize": 0.3198992443324937
+        },
+        "v9": {
+          "blue_covered": 0.24433249370277077,
+          "red_ge4": 0.030226700251889168,
+          "red_ge3": 0.28967254408060455,
+          "full_red": 0.0,
+          "any_prize": 0.2619647355163728,
+          "blue_sixth_prize": 0.23173803526448364
+        }
+      },
+      {
+        "issue_from": "2010116",
+        "issue_to": "2013052",
+        "periods": 397,
+        "v8": {
+          "blue_covered": 0.3148614609571788,
+          "red_ge4": 0.0327455919395466,
+          "red_ge3": 0.28211586901763225,
+          "full_red": 0.0,
+          "any_prize": 0.32997481108312343,
+          "blue_sixth_prize": 0.29219143576826195
+        },
+        "v9": {
+          "blue_covered": 0.28967254408060455,
+          "red_ge4": 0.04030226700251889,
+          "red_ge3": 0.2871536523929471,
+          "full_red": 0.0,
+          "any_prize": 0.31738035264483627,
+          "blue_sixth_prize": 0.27455919395465994
+        }
+      },
+      {
+        "issue_from": "2013053",
+        "issue_to": "2015143",
+        "periods": 397,
+        "v8": {
+          "blue_covered": 0.29219143576826195,
+          "red_ge4": 0.022670025188916875,
+          "red_ge3": 0.24433249370277077,
+          "full_red": 0.0,
+          "any_prize": 0.3047858942065491,
+          "blue_sixth_prize": 0.2770780856423174
+        },
+        "v9": {
+          "blue_covered": 0.3602015113350126,
+          "red_ge4": 0.030226700251889168,
+          "red_ge3": 0.2770780856423174,
+          "full_red": 0.0,
+          "any_prize": 0.3853904282115869,
+          "blue_sixth_prize": 0.34005037783375314
+        }
+      },
+      {
+        "issue_from": "2015144",
+        "issue_to": "2018079",
+        "periods": 397,
+        "v8": {
+          "blue_covered": 0.33753148614609574,
+          "red_ge4": 0.015113350125944584,
+          "red_ge3": 0.25440806045340053,
+          "full_red": 0.0,
+          "any_prize": 0.3501259445843829,
+          "blue_sixth_prize": 0.30730478589420657
+        },
+        "v9": {
+          "blue_covered": 0.3425692695214106,
+          "red_ge4": 0.0327455919395466,
+          "red_ge3": 0.28463476070528965,
+          "full_red": 0.0,
+          "any_prize": 0.36272040302267,
+          "blue_sixth_prize": 0.3198992443324937
+        }
+      },
+      {
+        "issue_from": "2018080",
+        "issue_to": "2021038",
+        "periods": 397,
+        "v8": {
+          "blue_covered": 0.327455919395466,
+          "red_ge4": 0.022670025188916875,
+          "red_ge3": 0.24433249370277077,
+          "full_red": 0.0,
+          "any_prize": 0.3425692695214106,
+          "blue_sixth_prize": 0.3148614609571788
+        },
+        "v9": {
+          "blue_covered": 0.3123425692695214,
+          "red_ge4": 0.022670025188916875,
+          "red_ge3": 0.27455919395465994,
+          "full_red": 0.0,
+          "any_prize": 0.3249370277078086,
+          "blue_sixth_prize": 0.28463476070528965
+        }
+      },
+      {
+        "issue_from": "2021039",
+        "issue_to": "2023135",
+        "periods": 397,
+        "v8": {
+          "blue_covered": 0.3224181360201511,
+          "red_ge4": 0.027707808564231738,
+          "red_ge3": 0.28463476070528965,
+          "full_red": 0.0,
+          "any_prize": 0.34005037783375314,
+          "blue_sixth_prize": 0.30730478589420657
+        },
+        "v9": {
+          "blue_covered": 0.345088161209068,
+          "red_ge4": 0.04030226700251889,
+          "red_ge3": 0.34760705289672544,
+          "full_red": 0.0,
+          "any_prize": 0.3702770780856423,
+          "blue_sixth_prize": 0.31738035264483627
+        }
+      },
+      {
+        "issue_from": "2023136",
+        "issue_to": "2026079",
+        "periods": 397,
+        "v8": {
+          "blue_covered": 0.33249370277078083,
+          "red_ge4": 0.010075566750629723,
+          "red_ge3": 0.28967254408060455,
+          "full_red": 0.0,
+          "any_prize": 0.34005037783375314,
+          "blue_sixth_prize": 0.30982367758186397
+        },
+        "v9": {
+          "blue_covered": 0.2770780856423174,
+          "red_ge4": 0.02518891687657431,
+          "red_ge3": 0.26700251889168763,
+          "full_red": 0.0,
+          "any_prize": 0.2972292191435768,
+          "blue_sixth_prize": 0.26700251889168763
+        }
+      }
+    ],
+    "v9_generation": {
+      "attempts": 4041,
+      "rejected_portfolios": 865,
+      "rejected_red_tickets": 987,
+      "rejected_historical_tickets": 0
+    }
+  },
+  "seed_robustness": {
+    "blue_covered": {
+      "min": -0.022040302267002543,
+      "p10": -0.016687657430730474,
+      "median": -0.005352644836272069,
+      "p90": 0.0031486146095718315,
+      "max": 0.01290931989924432,
+      "mean": -0.005283768891687659
+    },
+    "red_ge4": {
+      "min": -0.005982367758186398,
+      "p10": -0.0018891687657430732,
+      "median": -0.00047229219143576744,
+      "p90": 0.0015743073047858915,
+      "max": 0.004093198992443325,
+      "mean": -0.00024598551637279576
+    },
+    "red_ge3": {
+      "min": -0.0110201511335013,
+      "p10": -0.008186397984886629,
+      "median": 0.0017317380352644962,
+      "p90": 0.006612090680100768,
+      "max": 0.011964735516372837,
+      "mean": 0.0005116498740554178
+    },
+    "full_red": {
+      "min": -0.00031486146095717883,
+      "p10": 0.0,
+      "median": 0.0,
+      "p90": 0.0,
+      "max": 0.0,
+      "mean": -9.839420654911839e-06
+    },
+    "any_prize": {
+      "min": -0.020780856423173788,
+      "p10": -0.014798488664987397,
+      "median": -0.004408060453400503,
+      "p90": 0.0022040302267002376,
+      "max": 0.012279596977329943,
+      "mean": -0.005234571788413104
+    },
+    "blue_sixth_prize": {
+      "min": -0.022355163727959704,
+      "p10": -0.01826196473551639,
+      "median": -0.003620906801007573,
+      "p90": 0.002833753148614615,
+      "max": 0.01731738035264485,
+      "mean": -0.005067301637279599
+    },
+    "max_red": {
+      "min": -0.013539042821158365,
+      "p10": -0.0103904282115872,
+      "median": -0.0012594458438286438,
+      "p90": 0.005352644836271736,
+      "max": 0.016057934508816096,
+      "mean": -0.0005706863979849652
+    },
+    "union_red": {
+      "min": -0.01700251889168758,
+      "p10": -0.008816120906801395,
+      "median": -0.000629722921914766,
+      "p90": 0.008501259445844234,
+      "max": 0.016372795969773257,
+      "mean": 0.00012791246851370786
+    },
+    "winning_tickets": {
+      "min": -0.01889168765743071,
+      "p10": -0.016057934508816152,
+      "median": -0.004093198992443314,
+      "p90": 0.002833753148614615,
+      "max": 0.01259445843828716,
+      "mean": -0.005529754408060453
+    },
+    "fixed_return": {
+      "min": -1.067380352644836,
+      "p10": -0.9619017632241817,
+      "median": -0.11177581863979869,
+      "p90": 0.16530226700251882,
+      "max": 1.029596977329975,
+      "mean": -0.17696198047858944
+    }
+  },
+  "seed_replicate_results": [
+    {
+      "replicate": 0,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.31580604534005036,
+        "red_ge4": 0.023299748110831235,
+        "red_ge3": 0.28337531486146095,
+        "full_red": 0.0,
+        "any_prize": 0.3302896725440806,
+        "blue_sixth_prize": 0.30163727959697734,
+        "max_red": 2.263539042821159,
+        "union_red": 5.464105793450882,
+        "winning_tickets": 0.33816120906801006,
+        "fixed_return": 3.113979848866499,
+        "counts": {
+          "blue_covered": 1003,
+          "red_ge4": 74,
+          "red_ge3": 900,
+          "full_red": 0,
+          "any_prize": 1049,
+          "blue_sixth_prize": 958
+        },
+        "prize_counts": {
+          "六等奖": 958,
+          "五等奖": 110,
+          "四等奖": 5,
+          "三等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 9890,
+        "fixed_prize_roi": 0.3113979848866499,
+        "fixed_prize_net": -21870,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.2991183879093199,
+        "red_ge4": 0.023614609571788413,
+        "red_ge3": 0.2729848866498741,
+        "full_red": 0.0,
+        "any_prize": 0.31769521410579343,
+        "blue_sixth_prize": 0.28494962216624686,
+        "max_red": 2.2531486146095716,
+        "union_red": 5.455919395465995,
+        "winning_tickets": 0.32210327455919396,
+        "fixed_return": 2.095403022670025,
+        "counts": {
+          "blue_covered": 950,
+          "red_ge4": 75,
+          "red_ge3": 867,
+          "full_red": 0,
+          "any_prize": 1009,
+          "blue_sixth_prize": 905
+        },
+        "prize_counts": {
+          "六等奖": 905,
+          "五等奖": 113,
+          "四等奖": 5
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6655,
+        "fixed_prize_roi": 0.20954030226700252,
+        "fixed_prize_net": -25105,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.016687657430730474,
+        "red_ge4": 0.0003148614609571783,
+        "red_ge3": -0.010390428211586866,
+        "full_red": 0.0,
+        "any_prize": -0.01259445843828716,
+        "blue_sixth_prize": -0.016687657430730474,
+        "max_red": -0.0103904282115872,
+        "union_red": -0.008186397984887073,
+        "winning_tickets": -0.016057934508816096,
+        "fixed_return": -1.0185768261964738
+      }
+    },
+    {
+      "replicate": 1,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3154911838790932,
+        "red_ge4": 0.02424433249370277,
+        "red_ge3": 0.2818010075566751,
+        "full_red": 0.0,
+        "any_prize": 0.33154911838790935,
+        "blue_sixth_prize": 0.2931360201511335,
+        "max_red": 2.269521410579345,
+        "union_red": 5.461586901763225,
+        "winning_tickets": 0.3378463476070529,
+        "fixed_return": 3.51227959697733,
+        "counts": {
+          "blue_covered": 1002,
+          "red_ge4": 77,
+          "red_ge3": 895,
+          "full_red": 0,
+          "any_prize": 1053,
+          "blue_sixth_prize": 931
+        },
+        "prize_counts": {
+          "六等奖": 931,
+          "五等奖": 130,
+          "四等奖": 11,
+          "三等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 11155,
+        "fixed_prize_roi": 0.351227959697733,
+        "fixed_prize_net": -20605,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3258816120906801,
+        "red_ge4": 0.02392947103274559,
+        "red_ge3": 0.2707808564231738,
+        "full_red": 0.0,
+        "any_prize": 0.3438287153652393,
+        "blue_sixth_prize": 0.3066750629722922,
+        "max_red": 2.2559823677581865,
+        "union_red": 5.457808564231738,
+        "winning_tickets": 0.348551637279597,
+        "fixed_return": 2.5503778337531484,
+        "counts": {
+          "blue_covered": 1035,
+          "red_ge4": 76,
+          "red_ge3": 860,
+          "full_red": 0,
+          "any_prize": 1092,
+          "blue_sixth_prize": 974
+        },
+        "prize_counts": {
+          "六等奖": 974,
+          "五等奖": 123,
+          "四等奖": 10
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 8100,
+        "fixed_prize_roi": 0.25503778337531485,
+        "fixed_prize_net": -23660,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": 0.010390428211586922,
+        "red_ge4": -0.0003148614609571783,
+        "red_ge3": -0.0110201511335013,
+        "full_red": 0.0,
+        "any_prize": 0.012279596977329943,
+        "blue_sixth_prize": 0.013539042821158698,
+        "max_red": -0.013539042821158365,
+        "union_red": -0.0037783375314868195,
+        "winning_tickets": 0.010705289672544083,
+        "fixed_return": -0.9619017632241817
+      }
+    },
+    {
+      "replicate": 2,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.31517632241813603,
+        "red_ge4": 0.028652392947103273,
+        "red_ge3": 0.29093198992443325,
+        "full_red": 0.0,
+        "any_prize": 0.33753148614609574,
+        "blue_sixth_prize": 0.2943954659949622,
+        "max_red": 2.2852644836272042,
+        "union_red": 5.485831234256927,
+        "winning_tickets": 0.3422544080604534,
+        "fixed_return": 2.429156171284635,
+        "counts": {
+          "blue_covered": 1001,
+          "red_ge4": 91,
+          "red_ge3": 924,
+          "full_red": 0,
+          "any_prize": 1072,
+          "blue_sixth_prize": 935
+        },
+        "prize_counts": {
+          "六等奖": 935,
+          "五等奖": 144,
+          "四等奖": 8
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7715,
+        "fixed_prize_roi": 0.24291561712846346,
+        "fixed_prize_net": -24045,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3047858942065491,
+        "red_ge4": 0.02707808564231738,
+        "red_ge3": 0.29156171284634763,
+        "full_red": 0.0,
+        "any_prize": 0.3249370277078086,
+        "blue_sixth_prize": 0.28620906801007556,
+        "max_red": 2.283375314861461,
+        "union_red": 5.478274559193955,
+        "winning_tickets": 0.3302896725440806,
+        "fixed_return": 2.290617128463476,
+        "counts": {
+          "blue_covered": 968,
+          "red_ge4": 86,
+          "red_ge3": 926,
+          "full_red": 0,
+          "any_prize": 1032,
+          "blue_sixth_prize": 909
+        },
+        "prize_counts": {
+          "六等奖": 909,
+          "五等奖": 133,
+          "四等奖": 7
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7275,
+        "fixed_prize_roi": 0.2290617128463476,
+        "fixed_prize_net": -24485,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.010390428211586922,
+        "red_ge4": -0.0015743073047858915,
+        "red_ge3": 0.0006297229219143774,
+        "full_red": 0.0,
+        "any_prize": -0.01259445843828716,
+        "blue_sixth_prize": -0.008186397984886629,
+        "max_red": -0.0018891687657434098,
+        "union_red": -0.007556675062971863,
+        "winning_tickets": -0.011964735516372782,
+        "fixed_return": -0.1385390428211588
+      }
+    },
+    {
+      "replicate": 3,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3025818639798489,
+        "red_ge4": 0.019836272040302267,
+        "red_ge3": 0.28683879093198994,
+        "full_red": 0.0,
+        "any_prize": 0.31643576826196473,
+        "blue_sixth_prize": 0.28463476070528965,
+        "max_red": 2.2673173803526447,
+        "union_red": 5.455919395465995,
+        "winning_tickets": 0.32084382871536526,
+        "fixed_return": 3.0258186397984885,
+        "counts": {
+          "blue_covered": 961,
+          "red_ge4": 63,
+          "red_ge3": 911,
+          "full_red": 0,
+          "any_prize": 1005,
+          "blue_sixth_prize": 904
+        },
+        "prize_counts": {
+          "六等奖": 904,
+          "五等奖": 109,
+          "四等奖": 5,
+          "三等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 9610,
+        "fixed_prize_roi": 0.3025818639798489,
+        "fixed_prize_net": -22150,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3047858942065491,
+        "red_ge4": 0.01857682619647355,
+        "red_ge3": 0.2877833753148615,
+        "full_red": 0.0,
+        "any_prize": 0.3170654911838791,
+        "blue_sixth_prize": 0.28746851385390426,
+        "max_red": 2.266057934508816,
+        "union_red": 5.461272040302267,
+        "winning_tickets": 0.3217884130982368,
+        "fixed_return": 2.1394836272040303,
+        "counts": {
+          "blue_covered": 968,
+          "red_ge4": 59,
+          "red_ge3": 914,
+          "full_red": 0,
+          "any_prize": 1007,
+          "blue_sixth_prize": 913
+        },
+        "prize_counts": {
+          "六等奖": 913,
+          "五等奖": 103,
+          "四等奖": 6
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6795,
+        "fixed_prize_roi": 0.21394836272040302,
+        "fixed_prize_net": -24965,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": 0.0022040302267002376,
+        "red_ge4": -0.0012594458438287166,
+        "red_ge3": 0.0009445843828715383,
+        "full_red": 0.0,
+        "any_prize": 0.0006297229219143774,
+        "blue_sixth_prize": 0.002833753148614615,
+        "max_red": -0.0012594458438286438,
+        "union_red": 0.005352644836272624,
+        "winning_tickets": 0.0009445843828715383,
+        "fixed_return": -0.8863350125944582
+      }
+    },
+    {
+      "replicate": 4,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3110831234256927,
+        "red_ge4": 0.02487405541561713,
+        "red_ge3": 0.2943954659949622,
+        "full_red": 0.0,
+        "any_prize": 0.327455919395466,
+        "blue_sixth_prize": 0.29345088161209065,
+        "max_red": 2.27676322418136,
+        "union_red": 5.470088161209068,
+        "winning_tickets": 0.33406801007556675,
+        "fixed_return": 2.292191435768262,
+        "counts": {
+          "blue_covered": 988,
+          "red_ge4": 79,
+          "red_ge3": 935,
+          "full_red": 0,
+          "any_prize": 1040,
+          "blue_sixth_prize": 932
+        },
+        "prize_counts": {
+          "六等奖": 932,
+          "五等奖": 122,
+          "四等奖": 7
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7280,
+        "fixed_prize_roi": 0.22921914357682618,
+        "fixed_prize_net": -24480,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3035264483627204,
+        "red_ge4": 0.023614609571788413,
+        "red_ge3": 0.28967254408060455,
+        "full_red": 0.0,
+        "any_prize": 0.3202141057934509,
+        "blue_sixth_prize": 0.2858942065491184,
+        "max_red": 2.2692065491183877,
+        "union_red": 5.466624685138539,
+        "winning_tickets": 0.32462216624685136,
+        "fixed_return": 2.4149874055415617,
+        "counts": {
+          "blue_covered": 964,
+          "red_ge4": 75,
+          "red_ge3": 920,
+          "full_red": 0,
+          "any_prize": 1017,
+          "blue_sixth_prize": 908
+        },
+        "prize_counts": {
+          "五等奖": 113,
+          "六等奖": 908,
+          "四等奖": 10
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7670,
+        "fixed_prize_roi": 0.24149874055415618,
+        "fixed_prize_net": -24090,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.007556675062972307,
+        "red_ge4": -0.0012594458438287166,
+        "red_ge3": -0.004722921914357636,
+        "full_red": 0.0,
+        "any_prize": -0.00724181360201509,
+        "blue_sixth_prize": -0.007556675062972251,
+        "max_red": -0.007556675062972307,
+        "union_red": -0.0034634760705287704,
+        "winning_tickets": -0.009445843828715383,
+        "fixed_return": 0.12279596977329987
+      }
+    },
+    {
+      "replicate": 5,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3139168765743073,
+        "red_ge4": 0.022984886649874057,
+        "red_ge3": 0.29156171284634763,
+        "full_red": 0.0,
+        "any_prize": 0.3306045340050378,
+        "blue_sixth_prize": 0.29376574307304787,
+        "max_red": 2.271095717884131,
+        "union_red": 5.444584382871536,
+        "winning_tickets": 0.3359571788413098,
+        "fixed_return": 2.070214105793451,
+        "counts": {
+          "blue_covered": 997,
+          "red_ge4": 73,
+          "red_ge3": 926,
+          "full_red": 0,
+          "any_prize": 1050,
+          "blue_sixth_prize": 933
+        },
+        "prize_counts": {
+          "六等奖": 933,
+          "五等奖": 131,
+          "四等奖": 3
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6575,
+        "fixed_prize_roi": 0.2070214105793451,
+        "fixed_prize_net": -25185,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.30982367758186397,
+        "red_ge4": 0.02455919395465995,
+        "red_ge3": 0.29156171284634763,
+        "full_red": 0.0,
+        "any_prize": 0.32682619647355166,
+        "blue_sixth_prize": 0.29219143576826195,
+        "max_red": 2.2755037783375314,
+        "union_red": 5.443639798488665,
+        "winning_tickets": 0.3331234256926952,
+        "fixed_return": 2.1693954659949624,
+        "counts": {
+          "blue_covered": 984,
+          "red_ge4": 78,
+          "red_ge3": 926,
+          "full_red": 0,
+          "any_prize": 1038,
+          "blue_sixth_prize": 928
+        },
+        "prize_counts": {
+          "六等奖": 928,
+          "五等奖": 125,
+          "四等奖": 5
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6890,
+        "fixed_prize_roi": 0.2169395465994962,
+        "fixed_prize_net": -24870,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.004093198992443314,
+        "red_ge4": 0.0015743073047858915,
+        "red_ge3": 0.0,
+        "full_red": 0.0,
+        "any_prize": -0.0037783375314861534,
+        "blue_sixth_prize": -0.0015743073047859157,
+        "max_red": 0.004408060453400253,
+        "union_red": -0.0009445843828714828,
+        "winning_tickets": -0.002833753148614615,
+        "fixed_return": 0.09918136020151147
+      }
+    },
+    {
+      "replicate": 6,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3082493702770781,
+        "red_ge4": 0.025503778337531487,
+        "red_ge3": 0.27896725440806047,
+        "full_red": 0.0,
+        "any_prize": 0.3261964735516373,
+        "blue_sixth_prize": 0.29502518891687657,
+        "max_red": 2.2647984886649875,
+        "union_red": 5.44080604534005,
+        "winning_tickets": 0.33217884130982367,
+        "fixed_return": 3.0872166246851385,
+        "counts": {
+          "blue_covered": 979,
+          "red_ge4": 81,
+          "red_ge3": 886,
+          "full_red": 0,
+          "any_prize": 1036,
+          "blue_sixth_prize": 937
+        },
+        "prize_counts": {
+          "六等奖": 937,
+          "五等奖": 112,
+          "四等奖": 5,
+          "三等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 9805,
+        "fixed_prize_roi": 0.30872166246851385,
+        "fixed_prize_net": -21955,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.29250629722921917,
+        "red_ge4": 0.02487405541561713,
+        "red_ge3": 0.28211586901763225,
+        "full_red": 0.0,
+        "any_prize": 0.31171284634760704,
+        "blue_sixth_prize": 0.2767632241813602,
+        "max_red": 2.2654282115869018,
+        "union_red": 5.449307304785894,
+        "winning_tickets": 0.31643576826196473,
+        "fixed_return": 2.0198362720403025,
+        "counts": {
+          "blue_covered": 929,
+          "red_ge4": 79,
+          "red_ge3": 896,
+          "full_red": 0,
+          "any_prize": 990,
+          "blue_sixth_prize": 879
+        },
+        "prize_counts": {
+          "六等奖": 879,
+          "五等奖": 122,
+          "四等奖": 4
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6415,
+        "fixed_prize_roi": 0.20198362720403024,
+        "fixed_prize_net": -25345,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.015743073047858935,
+        "red_ge4": -0.0006297229219143566,
+        "red_ge3": 0.003148614609571776,
+        "full_red": 0.0,
+        "any_prize": -0.014483627204030236,
+        "blue_sixth_prize": -0.01826196473551639,
+        "max_red": 0.0006297229219143219,
+        "union_red": 0.008501259445844234,
+        "winning_tickets": -0.015743073047858935,
+        "fixed_return": -1.067380352644836
+      }
+    },
+    {
+      "replicate": 7,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.31580604534005036,
+        "red_ge4": 0.025503778337531487,
+        "red_ge3": 0.27141057934508817,
+        "full_red": 0.0,
+        "any_prize": 0.3318639798488665,
+        "blue_sixth_prize": 0.30037783375314864,
+        "max_red": 2.255037783375315,
+        "union_red": 5.454659949622166,
+        "winning_tickets": 0.34005037783375314,
+        "fixed_return": 2.197732997481108,
+        "counts": {
+          "blue_covered": 1003,
+          "red_ge4": 81,
+          "red_ge3": 862,
+          "full_red": 0,
+          "any_prize": 1054,
+          "blue_sixth_prize": 954
+        },
+        "prize_counts": {
+          "六等奖": 954,
+          "五等奖": 121,
+          "四等奖": 5
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6980,
+        "fixed_prize_roi": 0.21977329974811083,
+        "fixed_prize_net": -24780,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3189546599496222,
+        "red_ge4": 0.02392947103274559,
+        "red_ge3": 0.27581863979848864,
+        "full_red": 0.0,
+        "any_prize": 0.33532745591939545,
+        "blue_sixth_prize": 0.3000629722921914,
+        "max_red": 2.259130982367758,
+        "union_red": 5.458123425692695,
+        "winning_tickets": 0.3413098236775819,
+        "fixed_return": 2.2119017632241813,
+        "counts": {
+          "blue_covered": 1013,
+          "red_ge4": 76,
+          "red_ge3": 876,
+          "full_red": 0,
+          "any_prize": 1065,
+          "blue_sixth_prize": 953
+        },
+        "prize_counts": {
+          "六等奖": 953,
+          "五等奖": 126,
+          "四等奖": 5
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7025,
+        "fixed_prize_roi": 0.22119017632241814,
+        "fixed_prize_net": -24735,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": 0.0031486146095718315,
+        "red_ge4": -0.001574307304785895,
+        "red_ge3": 0.004408060453400475,
+        "full_red": 0.0,
+        "any_prize": 0.003463476070528937,
+        "blue_sixth_prize": -0.00031486146095721645,
+        "max_red": 0.004093198992443092,
+        "union_red": 0.0034634760705287704,
+        "winning_tickets": 0.0012594458438287548,
+        "fixed_return": 0.01416876574307313
+      }
+    },
+    {
+      "replicate": 8,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3079345088161209,
+        "red_ge4": 0.0267632241813602,
+        "red_ge3": 0.2865239294710327,
+        "full_red": 0.0,
+        "any_prize": 0.32871536523929473,
+        "blue_sixth_prize": 0.288727959697733,
+        "max_red": 2.2736146095717884,
+        "union_red": 5.43639798488665,
+        "winning_tickets": 0.3337531486146096,
+        "fixed_return": 2.1331863979848866,
+        "counts": {
+          "blue_covered": 978,
+          "red_ge4": 85,
+          "red_ge3": 910,
+          "full_red": 0,
+          "any_prize": 1044,
+          "blue_sixth_prize": 917
+        },
+        "prize_counts": {
+          "六等奖": 917,
+          "五等奖": 139,
+          "四等奖": 4
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6775,
+        "fixed_prize_roi": 0.21331863979848867,
+        "fixed_prize_net": -24985,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3107682619647355,
+        "red_ge4": 0.027707808564231738,
+        "red_ge3": 0.29250629722921917,
+        "full_red": 0.0,
+        "any_prize": 0.32934508816120905,
+        "blue_sixth_prize": 0.29376574307304787,
+        "max_red": 2.283375314861461,
+        "union_red": 5.444899244332493,
+        "winning_tickets": 0.3365869017632242,
+        "fixed_return": 2.3756297229219143,
+        "counts": {
+          "blue_covered": 987,
+          "red_ge4": 88,
+          "red_ge3": 929,
+          "full_red": 0,
+          "any_prize": 1046,
+          "blue_sixth_prize": 933
+        },
+        "prize_counts": {
+          "六等奖": 933,
+          "五等奖": 128,
+          "四等奖": 8
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7545,
+        "fixed_prize_roi": 0.23756297229219145,
+        "fixed_prize_net": -24215,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": 0.002833753148614615,
+        "red_ge4": 0.0009445843828715383,
+        "red_ge3": 0.0059823677581864465,
+        "full_red": 0.0,
+        "any_prize": 0.0006297229219143219,
+        "blue_sixth_prize": 0.005037783375314853,
+        "max_red": 0.009760705289672433,
+        "union_red": 0.008501259445843345,
+        "winning_tickets": 0.002833753148614615,
+        "fixed_return": 0.2424433249370277
+      }
+    },
+    {
+      "replicate": 9,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.32336272040302266,
+        "red_ge4": 0.020465994962216624,
+        "red_ge3": 0.28085642317380355,
+        "full_red": 0.0,
+        "any_prize": 0.3394206549118388,
+        "blue_sixth_prize": 0.3107682619647355,
+        "max_red": 2.267947103274559,
+        "union_red": 5.445843828715366,
+        "winning_tickets": 0.34351385390428213,
+        "fixed_return": 2.0607682619647356,
+        "counts": {
+          "blue_covered": 1027,
+          "red_ge4": 65,
+          "red_ge3": 892,
+          "full_red": 0,
+          "any_prize": 1078,
+          "blue_sixth_prize": 987
+        },
+        "prize_counts": {
+          "六等奖": 987,
+          "五等奖": 101,
+          "四等奖": 3
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6545,
+        "fixed_prize_roi": 0.20607682619647355,
+        "fixed_prize_net": -25215,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.30415617128463474,
+        "red_ge4": 0.023614609571788413,
+        "red_ge3": 0.2843198992443325,
+        "full_red": 0.0,
+        "any_prize": 0.3224181360201511,
+        "blue_sixth_prize": 0.288727959697733,
+        "max_red": 2.2714105793450883,
+        "union_red": 5.459382871536524,
+        "winning_tickets": 0.327455919395466,
+        "fixed_return": 1.9505667506297228,
+        "counts": {
+          "blue_covered": 966,
+          "red_ge4": 75,
+          "red_ge3": 903,
+          "full_red": 0,
+          "any_prize": 1024,
+          "blue_sixth_prize": 917
+        },
+        "prize_counts": {
+          "六等奖": 917,
+          "五等奖": 121,
+          "四等奖": 2
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6195,
+        "fixed_prize_roi": 0.19505667506297228,
+        "fixed_prize_net": -25565,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.019206549118387928,
+        "red_ge4": 0.00314861460957179,
+        "red_ge3": 0.003463476070528937,
+        "full_red": 0.0,
+        "any_prize": -0.01700251889168769,
+        "blue_sixth_prize": -0.022040302267002487,
+        "max_red": 0.0034634760705292145,
+        "union_red": 0.01353904282115792,
+        "winning_tickets": -0.016057934508816152,
+        "fixed_return": -0.11020151133501277
+      }
+    },
+    {
+      "replicate": 10,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.30100755667506296,
+        "red_ge4": 0.029282115869017633,
+        "red_ge3": 0.29565491183879095,
+        "full_red": 0.0,
+        "any_prize": 0.3230478589420655,
+        "blue_sixth_prize": 0.279911838790932,
+        "max_red": 2.2843198992443323,
+        "union_red": 5.463790931989925,
+        "winning_tickets": 0.32934508816120905,
+        "fixed_return": 2.3126574307304786,
+        "counts": {
+          "blue_covered": 956,
+          "red_ge4": 93,
+          "red_ge3": 939,
+          "full_red": 0,
+          "any_prize": 1026,
+          "blue_sixth_prize": 889
+        },
+        "prize_counts": {
+          "六等奖": 889,
+          "五等奖": 150,
+          "四等奖": 7
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7345,
+        "fixed_prize_roi": 0.23126574307304787,
+        "fixed_prize_net": -24415,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3019521410579345,
+        "red_ge4": 0.027707808564231738,
+        "red_ge3": 0.28935768261964734,
+        "full_red": 0.0,
+        "any_prize": 0.3217884130982368,
+        "blue_sixth_prize": 0.28022670025188917,
+        "max_red": 2.2761335012594457,
+        "union_red": 5.466939546599496,
+        "winning_tickets": 0.3284005037783375,
+        "fixed_return": 2.3016372795969775,
+        "counts": {
+          "blue_covered": 959,
+          "red_ge4": 88,
+          "red_ge3": 919,
+          "full_red": 0,
+          "any_prize": 1022,
+          "blue_sixth_prize": 890
+        },
+        "prize_counts": {
+          "六等奖": 890,
+          "五等奖": 146,
+          "四等奖": 7
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7310,
+        "fixed_prize_roi": 0.23016372795969772,
+        "fixed_prize_net": -24450,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": 0.0009445843828715383,
+        "red_ge4": -0.001574307304785895,
+        "red_ge3": -0.0062972292191436074,
+        "full_red": 0.0,
+        "any_prize": -0.0012594458438286993,
+        "blue_sixth_prize": 0.00031486146095716094,
+        "max_red": -0.008186397984886629,
+        "union_red": 0.0031486146095716094,
+        "winning_tickets": -0.0009445843828715383,
+        "fixed_return": -0.011020151133501077
+      }
+    },
+    {
+      "replicate": 11,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.30919395465994964,
+        "red_ge4": 0.02487405541561713,
+        "red_ge3": 0.28148614609571787,
+        "full_red": 0.0,
+        "any_prize": 0.3261964735516373,
+        "blue_sixth_prize": 0.29156171284634763,
+        "max_red": 2.266057934508816,
+        "union_red": 5.45088161209068,
+        "winning_tickets": 0.33280856423173805,
+        "fixed_return": 2.28904282115869,
+        "counts": {
+          "blue_covered": 982,
+          "red_ge4": 79,
+          "red_ge3": 894,
+          "full_red": 0,
+          "any_prize": 1036,
+          "blue_sixth_prize": 926
+        },
+        "prize_counts": {
+          "六等奖": 926,
+          "五等奖": 124,
+          "四等奖": 7
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7270,
+        "fixed_prize_roi": 0.22890428211586902,
+        "fixed_prize_net": -24490,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.30415617128463474,
+        "red_ge4": 0.025818639798488665,
+        "red_ge3": 0.28746851385390426,
+        "full_red": 0.0,
+        "any_prize": 0.3230478589420655,
+        "blue_sixth_prize": 0.2827455919395466,
+        "max_red": 2.270465994962217,
+        "union_red": 5.433879093198993,
+        "winning_tickets": 0.3290302267002519,
+        "fixed_return": 2.1756926952141056,
+        "counts": {
+          "blue_covered": 966,
+          "red_ge4": 82,
+          "red_ge3": 913,
+          "full_red": 0,
+          "any_prize": 1026,
+          "blue_sixth_prize": 898
+        },
+        "prize_counts": {
+          "五等奖": 142,
+          "六等奖": 898,
+          "四等奖": 5
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6910,
+        "fixed_prize_roi": 0.2175692695214106,
+        "fixed_prize_net": -24850,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.005037783375314908,
+        "red_ge4": 0.0009445843828715349,
+        "red_ge3": 0.005982367758186391,
+        "full_red": 0.0,
+        "any_prize": -0.003148614609571776,
+        "blue_sixth_prize": -0.008816120906801006,
+        "max_red": 0.004408060453400697,
+        "union_red": -0.01700251889168758,
+        "winning_tickets": -0.0037783375314861534,
+        "fixed_return": -0.1133501259445846
+      }
+    },
+    {
+      "replicate": 12,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.31202770780856426,
+        "red_ge4": 0.023299748110831235,
+        "red_ge3": 0.2843198992443325,
+        "full_red": 0.0,
+        "any_prize": 0.3277707808564232,
+        "blue_sixth_prize": 0.29282115869017633,
+        "max_red": 2.267947103274559,
+        "union_red": 5.472921914357682,
+        "winning_tickets": 0.33406801007556675,
+        "fixed_return": 2.115869017632242,
+        "counts": {
+          "blue_covered": 991,
+          "red_ge4": 74,
+          "red_ge3": 903,
+          "full_red": 0,
+          "any_prize": 1041,
+          "blue_sixth_prize": 930
+        },
+        "prize_counts": {
+          "五等奖": 127,
+          "六等奖": 930,
+          "四等奖": 4
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6720,
+        "fixed_prize_roi": 0.21158690176322417,
+        "fixed_prize_net": -25040,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3060453400503778,
+        "red_ge4": 0.021095717884130984,
+        "red_ge3": 0.27613350125944586,
+        "full_red": 0.0,
+        "any_prize": 0.3217884130982368,
+        "blue_sixth_prize": 0.29156171284634763,
+        "max_red": 2.2544080604534007,
+        "union_red": 5.460642317380352,
+        "winning_tickets": 0.3261964735516373,
+        "fixed_return": 1.9836272040302267,
+        "counts": {
+          "blue_covered": 972,
+          "red_ge4": 67,
+          "red_ge3": 877,
+          "full_red": 0,
+          "any_prize": 1022,
+          "blue_sixth_prize": 926
+        },
+        "prize_counts": {
+          "六等奖": 926,
+          "五等奖": 107,
+          "四等奖": 3
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6300,
+        "fixed_prize_roi": 0.19836272040302266,
+        "fixed_prize_net": -25460,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.0059823677581864465,
+        "red_ge4": -0.0022040302267002515,
+        "red_ge3": -0.008186397984886629,
+        "full_red": 0.0,
+        "any_prize": -0.005982367758186391,
+        "blue_sixth_prize": -0.0012594458438286993,
+        "max_red": -0.013539042821158365,
+        "union_red": -0.012279596977330165,
+        "winning_tickets": -0.007871536523929468,
+        "fixed_return": -0.13224181360201515
+      }
+    },
+    {
+      "replicate": 13,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3217884130982368,
+        "red_ge4": 0.027707808564231738,
+        "red_ge3": 0.2965994962216625,
+        "full_red": 0.0,
+        "any_prize": 0.339735516372796,
+        "blue_sixth_prize": 0.29974811083123426,
+        "max_red": 2.2912468513853903,
+        "union_red": 5.440176322418136,
+        "winning_tickets": 0.3472921914357683,
+        "fixed_return": 4.275818639798489,
+        "counts": {
+          "blue_covered": 1022,
+          "red_ge4": 88,
+          "red_ge3": 942,
+          "full_red": 0,
+          "any_prize": 1079,
+          "blue_sixth_prize": 952
+        },
+        "prize_counts": {
+          "六等奖": 952,
+          "五等奖": 142,
+          "四等奖": 7,
+          "三等奖": 2
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 13580,
+        "fixed_prize_roi": 0.4275818639798489,
+        "fixed_prize_net": -18180,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.31171284634760704,
+        "red_ge4": 0.02392947103274559,
+        "red_ge3": 0.29534005037783373,
+        "full_red": 0.0,
+        "any_prize": 0.33091939546599497,
+        "blue_sixth_prize": 0.29376574307304787,
+        "max_red": 2.2811712846347607,
+        "union_red": 5.443639798488665,
+        "winning_tickets": 0.33343828715365237,
+        "fixed_return": 3.2855793450881614,
+        "counts": {
+          "blue_covered": 990,
+          "red_ge4": 76,
+          "red_ge3": 938,
+          "full_red": 0,
+          "any_prize": 1051,
+          "blue_sixth_prize": 933
+        },
+        "prize_counts": {
+          "六等奖": 933,
+          "五等奖": 117,
+          "四等奖": 8,
+          "三等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 10435,
+        "fixed_prize_roi": 0.3285579345088161,
+        "fixed_prize_net": -21325,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.01007556675062976,
+        "red_ge4": -0.0037783375314861464,
+        "red_ge3": -0.0012594458438287548,
+        "full_red": 0.0,
+        "any_prize": -0.008816120906801006,
+        "blue_sixth_prize": -0.005982367758186391,
+        "max_red": -0.010075566750629594,
+        "union_red": 0.0034634760705287704,
+        "winning_tickets": -0.013853904282115914,
+        "fixed_return": -0.9902392947103276
+      }
+    },
+    {
+      "replicate": 14,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.31297229219143574,
+        "red_ge4": 0.022670025188916875,
+        "red_ge3": 0.27865239294710326,
+        "full_red": 0.0,
+        "any_prize": 0.32808564231738035,
+        "blue_sixth_prize": 0.2912468513853904,
+        "max_red": 2.263539042821159,
+        "union_red": 5.4653652392947105,
+        "winning_tickets": 0.33343828715365237,
+        "fixed_return": 2.4165617128463475,
+        "counts": {
+          "blue_covered": 994,
+          "red_ge4": 72,
+          "red_ge3": 885,
+          "full_red": 0,
+          "any_prize": 1042,
+          "blue_sixth_prize": 925
+        },
+        "prize_counts": {
+          "六等奖": 925,
+          "五等奖": 125,
+          "四等奖": 9
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7675,
+        "fixed_prize_roi": 0.24165617128463476,
+        "fixed_prize_net": -24085,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3079345088161209,
+        "red_ge4": 0.025503778337531487,
+        "red_ge3": 0.2906171284634761,
+        "full_red": 0.0,
+        "any_prize": 0.32399244332493704,
+        "blue_sixth_prize": 0.2890428211586902,
+        "max_red": 2.279596977329975,
+        "union_red": 5.456549118387909,
+        "winning_tickets": 0.33091939546599497,
+        "fixed_return": 2.5818639798488663,
+        "counts": {
+          "blue_covered": 978,
+          "red_ge4": 81,
+          "red_ge3": 923,
+          "full_red": 0,
+          "any_prize": 1029,
+          "blue_sixth_prize": 918
+        },
+        "prize_counts": {
+          "六等奖": 918,
+          "五等奖": 121,
+          "四等奖": 12
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 8200,
+        "fixed_prize_roi": 0.25818639798488663,
+        "fixed_prize_net": -23560,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.005037783375314853,
+        "red_ge4": 0.0028337531486146116,
+        "red_ge3": 0.011964735516372837,
+        "full_red": 0.0,
+        "any_prize": -0.004093198992443314,
+        "blue_sixth_prize": -0.0022040302267002376,
+        "max_red": 0.016057934508816096,
+        "union_red": -0.008816120906801395,
+        "winning_tickets": -0.0025188916876573986,
+        "fixed_return": 0.16530226700251882
+      }
+    },
+    {
+      "replicate": 15,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3183249370277078,
+        "red_ge4": 0.014168765743073047,
+        "red_ge3": 0.2783375314861461,
+        "full_red": 0.0,
+        "any_prize": 0.3271410579345088,
+        "blue_sixth_prize": 0.2991183879093199,
+        "max_red": 2.255037783375315,
+        "union_red": 5.436712846347607,
+        "winning_tickets": 0.33123425692695213,
+        "fixed_return": 2.0560453400503778,
+        "counts": {
+          "blue_covered": 1011,
+          "red_ge4": 45,
+          "red_ge3": 884,
+          "full_red": 0,
+          "any_prize": 1039,
+          "blue_sixth_prize": 950
+        },
+        "prize_counts": {
+          "六等奖": 950,
+          "五等奖": 98,
+          "四等奖": 4
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6530,
+        "fixed_prize_roi": 0.20560453400503778,
+        "fixed_prize_net": -25230,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.29628463476070527,
+        "red_ge4": 0.018261964735516372,
+        "red_ge3": 0.2830604534005038,
+        "full_red": 0.0,
+        "any_prize": 0.30636020151133503,
+        "blue_sixth_prize": 0.2767632241813602,
+        "max_red": 2.259130982367758,
+        "union_red": 5.440491183879093,
+        "winning_tickets": 0.3126574307304786,
+        "fixed_return": 2.161523929471033,
+        "counts": {
+          "blue_covered": 941,
+          "red_ge4": 58,
+          "red_ge3": 899,
+          "full_red": 0,
+          "any_prize": 973,
+          "blue_sixth_prize": 879
+        },
+        "prize_counts": {
+          "六等奖": 879,
+          "五等奖": 107,
+          "四等奖": 7
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6865,
+        "fixed_prize_roi": 0.21615239294710328,
+        "fixed_prize_net": -24895,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.022040302267002543,
+        "red_ge4": 0.004093198992443325,
+        "red_ge3": 0.004722921914357692,
+        "full_red": 0.0,
+        "any_prize": -0.020780856423173788,
+        "blue_sixth_prize": -0.022355163727959704,
+        "max_red": 0.004093198992443092,
+        "union_red": 0.0037783375314859313,
+        "winning_tickets": -0.01857682619647355,
+        "fixed_return": 0.10547858942065513
+      }
+    },
+    {
+      "replicate": 16,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3249370277078086,
+        "red_ge4": 0.030541561712846346,
+        "red_ge3": 0.28620906801007556,
+        "full_red": 0.0,
+        "any_prize": 0.3482367758186398,
+        "blue_sixth_prize": 0.30730478589420657,
+        "max_red": 2.277078085642317,
+        "union_red": 5.438287153652393,
+        "winning_tickets": 0.353904282115869,
+        "fixed_return": 3.302896725440806,
+        "counts": {
+          "blue_covered": 1032,
+          "red_ge4": 97,
+          "red_ge3": 909,
+          "full_red": 0,
+          "any_prize": 1106,
+          "blue_sixth_prize": 976
+        },
+        "prize_counts": {
+          "六等奖": 976,
+          "五等奖": 141,
+          "四等奖": 6,
+          "三等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 10490,
+        "fixed_prize_roi": 0.3302896725440806,
+        "fixed_prize_net": -21270,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.31171284634760704,
+        "red_ge4": 0.029282115869017633,
+        "red_ge3": 0.2931360201511335,
+        "full_red": 0.0,
+        "any_prize": 0.3337531486146096,
+        "blue_sixth_prize": 0.29376574307304787,
+        "max_red": 2.282115869017632,
+        "union_red": 5.441120906801007,
+        "winning_tickets": 0.3391057934508816,
+        "fixed_return": 2.4008186397984885,
+        "counts": {
+          "blue_covered": 990,
+          "red_ge4": 93,
+          "red_ge3": 931,
+          "full_red": 0,
+          "any_prize": 1060,
+          "blue_sixth_prize": 933
+        },
+        "prize_counts": {
+          "六等奖": 933,
+          "四等奖": 8,
+          "五等奖": 136
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7625,
+        "fixed_prize_roi": 0.24008186397984888,
+        "fixed_prize_net": -24135,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.013224181360201537,
+        "red_ge4": -0.0012594458438287132,
+        "red_ge3": 0.006926952141057929,
+        "full_red": 0.0,
+        "any_prize": -0.014483627204030236,
+        "blue_sixth_prize": -0.013539042821158698,
+        "max_red": 0.005037783375315019,
+        "union_red": 0.0028337531486144485,
+        "winning_tickets": -0.014798488664987397,
+        "fixed_return": -0.9020780856423176
+      }
+    },
+    {
+      "replicate": 17,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3243073047858942,
+        "red_ge4": 0.027707808564231738,
+        "red_ge3": 0.27802267002518893,
+        "full_red": 0.0,
+        "any_prize": 0.34351385390428213,
+        "blue_sixth_prize": 0.30761964735516373,
+        "max_red": 2.263539042821159,
+        "union_red": 5.430100755667507,
+        "winning_tickets": 0.3507556675062972,
+        "fixed_return": 2.3284005037783375,
+        "counts": {
+          "blue_covered": 1030,
+          "red_ge4": 88,
+          "red_ge3": 883,
+          "full_red": 0,
+          "any_prize": 1091,
+          "blue_sixth_prize": 977
+        },
+        "prize_counts": {
+          "六等奖": 977,
+          "四等奖": 6,
+          "五等奖": 131
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7395,
+        "fixed_prize_roi": 0.23284005037783376,
+        "fixed_prize_net": -24365,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.30761964735516373,
+        "red_ge4": 0.028337531486146095,
+        "red_ge3": 0.2818010075566751,
+        "full_red": 0.0,
+        "any_prize": 0.32871536523929473,
+        "blue_sixth_prize": 0.288727959697733,
+        "max_red": 2.2688916876574305,
+        "union_red": 5.428211586901763,
+        "winning_tickets": 0.3343828715365239,
+        "fixed_return": 2.378778337531486,
+        "counts": {
+          "blue_covered": 977,
+          "red_ge4": 90,
+          "red_ge3": 895,
+          "full_red": 0,
+          "any_prize": 1044,
+          "blue_sixth_prize": 917
+        },
+        "prize_counts": {
+          "六等奖": 917,
+          "五等奖": 137,
+          "四等奖": 8
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7555,
+        "fixed_prize_roi": 0.2378778337531486,
+        "fixed_prize_net": -24205,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.016687657430730474,
+        "red_ge4": 0.0006297229219143566,
+        "red_ge3": 0.0037783375314861534,
+        "full_red": 0.0,
+        "any_prize": -0.014798488664987397,
+        "blue_sixth_prize": -0.01889168765743071,
+        "max_red": 0.005352644836271736,
+        "union_red": -0.0018891687657438538,
+        "winning_tickets": -0.016372795969773313,
+        "fixed_return": 0.050377833753148415
+      }
+    },
+    {
+      "replicate": 18,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3066750629722922,
+        "red_ge4": 0.02392947103274559,
+        "red_ge3": 0.2912468513853904,
+        "full_red": 0.0,
+        "any_prize": 0.3224181360201511,
+        "blue_sixth_prize": 0.2843198992443325,
+        "max_red": 2.2758186397984885,
+        "union_red": 5.446788413098237,
+        "winning_tickets": 0.3284005037783375,
+        "fixed_return": 3.222607052896725,
+        "counts": {
+          "blue_covered": 974,
+          "red_ge4": 76,
+          "red_ge3": 925,
+          "full_red": 0,
+          "any_prize": 1024,
+          "blue_sixth_prize": 903
+        },
+        "prize_counts": {
+          "六等奖": 903,
+          "五等奖": 132,
+          "四等奖": 7,
+          "三等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 10235,
+        "fixed_prize_roi": 0.32226070528967254,
+        "fixed_prize_net": -21525,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3195843828715365,
+        "red_ge4": 0.02487405541561713,
+        "red_ge3": 0.28935768261964734,
+        "full_red": 0.0,
+        "any_prize": 0.3331234256926952,
+        "blue_sixth_prize": 0.30163727959697734,
+        "max_red": 2.2685768261964734,
+        "union_red": 5.438916876574307,
+        "winning_tickets": 0.3409949622166247,
+        "fixed_return": 3.5012594458438286,
+        "counts": {
+          "blue_covered": 1015,
+          "red_ge4": 79,
+          "red_ge3": 919,
+          "full_red": 0,
+          "any_prize": 1058,
+          "blue_sixth_prize": 958
+        },
+        "prize_counts": {
+          "六等奖": 958,
+          "五等奖": 113,
+          "四等奖": 11,
+          "三等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 11120,
+        "fixed_prize_roi": 0.3501259445843829,
+        "fixed_prize_net": -20640,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": 0.01290931989924432,
+        "red_ge4": 0.0009445843828715383,
+        "red_ge3": -0.0018891687657430767,
+        "full_red": 0.0,
+        "any_prize": 0.010705289672544083,
+        "blue_sixth_prize": 0.01731738035264485,
+        "max_red": -0.007241813602015146,
+        "union_red": -0.007871536523929912,
+        "winning_tickets": 0.01259445843828716,
+        "fixed_return": 0.2786523929471034
+      }
+    },
+    {
+      "replicate": 19,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.31454659949622166,
+        "red_ge4": 0.022355163727959697,
+        "red_ge3": 0.2959697732997481,
+        "full_red": 0.0,
+        "any_prize": 0.32871536523929473,
+        "blue_sixth_prize": 0.2959697732997481,
+        "max_red": 2.2808564231738035,
+        "union_red": 5.452141057934509,
+        "winning_tickets": 0.3350125944584383,
+        "fixed_return": 2.3488664987405543,
+        "counts": {
+          "blue_covered": 999,
+          "red_ge4": 71,
+          "red_ge3": 940,
+          "full_red": 0,
+          "any_prize": 1044,
+          "blue_sixth_prize": 940
+        },
+        "prize_counts": {
+          "六等奖": 940,
+          "五等奖": 116,
+          "四等奖": 8
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7460,
+        "fixed_prize_roi": 0.23488664987405541,
+        "fixed_prize_net": -24300,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.2994332493702771,
+        "red_ge4": 0.022670025188916875,
+        "red_ge3": 0.28494962216624686,
+        "full_red": 0.0,
+        "any_prize": 0.3161209068010076,
+        "blue_sixth_prize": 0.285264483627204,
+        "max_red": 2.2692065491183877,
+        "union_red": 5.44867758186398,
+        "winning_tickets": 0.3211586901763224,
+        "fixed_return": 2.02455919395466,
+        "counts": {
+          "blue_covered": 951,
+          "red_ge4": 72,
+          "red_ge3": 905,
+          "full_red": 0,
+          "any_prize": 1004,
+          "blue_sixth_prize": 906
+        },
+        "prize_counts": {
+          "六等奖": 906,
+          "五等奖": 110,
+          "四等奖": 4
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6430,
+        "fixed_prize_roi": 0.202455919395466,
+        "fixed_prize_net": -25330,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.015113350125944558,
+        "red_ge4": 0.0003148614609571783,
+        "red_ge3": -0.011020151133501244,
+        "full_red": 0.0,
+        "any_prize": -0.01259445843828716,
+        "blue_sixth_prize": -0.010705289672544083,
+        "max_red": -0.011649874055415843,
+        "union_red": -0.0034634760705287704,
+        "winning_tickets": -0.013853904282115859,
+        "fixed_return": -0.3243073047858944
+      }
+    },
+    {
+      "replicate": 20,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3170654911838791,
+        "red_ge4": 0.026133501259445843,
+        "red_ge3": 0.28620906801007556,
+        "full_red": 0.0,
+        "any_prize": 0.3350125944584383,
+        "blue_sixth_prize": 0.29628463476070527,
+        "max_red": 2.272984886649874,
+        "union_red": 5.447103274559194,
+        "winning_tickets": 0.34036523929471035,
+        "fixed_return": 2.6401133501259446,
+        "counts": {
+          "blue_covered": 1007,
+          "red_ge4": 83,
+          "red_ge3": 909,
+          "full_red": 0,
+          "any_prize": 1064,
+          "blue_sixth_prize": 941
+        },
+        "prize_counts": {
+          "六等奖": 941,
+          "五等奖": 128,
+          "四等奖": 12
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 8385,
+        "fixed_prize_roi": 0.26401133501259444,
+        "fixed_prize_net": -23375,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.31769521410579343,
+        "red_ge4": 0.025503778337531487,
+        "red_ge3": 0.28463476070528965,
+        "full_red": 0.0,
+        "any_prize": 0.33532745591939545,
+        "blue_sixth_prize": 0.29817380352644834,
+        "max_red": 2.267632241813602,
+        "union_red": 5.436712846347607,
+        "winning_tickets": 0.3409949622166247,
+        "fixed_return": 2.397670025188917,
+        "counts": {
+          "blue_covered": 1009,
+          "red_ge4": 81,
+          "red_ge3": 904,
+          "full_red": 0,
+          "any_prize": 1065,
+          "blue_sixth_prize": 947
+        },
+        "prize_counts": {
+          "六等奖": 947,
+          "五等奖": 128,
+          "四等奖": 8
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7615,
+        "fixed_prize_roi": 0.2397670025188917,
+        "fixed_prize_net": -24145,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": 0.0006297229219143219,
+        "red_ge4": -0.0006297229219143566,
+        "red_ge3": -0.0015743073047859157,
+        "full_red": 0.0,
+        "any_prize": 0.00031486146095716094,
+        "blue_sixth_prize": 0.0018891687657430767,
+        "max_red": -0.00535264483627218,
+        "union_red": -0.0103904282115872,
+        "winning_tickets": 0.0006297229219143219,
+        "fixed_return": -0.2424433249370277
+      }
+    },
+    {
+      "replicate": 21,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3148614609571788,
+        "red_ge4": 0.022355163727959697,
+        "red_ge3": 0.285264483627204,
+        "full_red": 0.00031486146095717883,
+        "any_prize": 0.32934508816120905,
+        "blue_sixth_prize": 0.2959697732997481,
+        "max_red": 2.271095717884131,
+        "union_red": 5.476070528967254,
+        "winning_tickets": 0.33406801007556675,
+        "fixed_return": 2.455919395465995,
+        "counts": {
+          "blue_covered": 1000,
+          "red_ge4": 71,
+          "red_ge3": 906,
+          "full_red": 1,
+          "any_prize": 1046,
+          "blue_sixth_prize": 940
+        },
+        "prize_counts": {
+          "六等奖": 940,
+          "四等奖": 10,
+          "五等奖": 110,
+          "二等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7800,
+        "fixed_prize_roi": 0.2455919395465995,
+        "fixed_prize_net": -23960,
+        "variable_prize_events": 1
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.30856423173803527,
+        "red_ge4": 0.022984886649874057,
+        "red_ge3": 0.2918765743073048,
+        "full_red": 0.0,
+        "any_prize": 0.3236775818639798,
+        "blue_sixth_prize": 0.29376574307304787,
+        "max_red": 2.2783375314861463,
+        "union_red": 5.472921914357682,
+        "winning_tickets": 0.3302896725440806,
+        "fixed_return": 2.1331863979848866,
+        "counts": {
+          "blue_covered": 980,
+          "red_ge4": 73,
+          "red_ge3": 927,
+          "full_red": 0,
+          "any_prize": 1028,
+          "blue_sixth_prize": 933
+        },
+        "prize_counts": {
+          "六等奖": 933,
+          "五等奖": 111,
+          "四等奖": 5
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6775,
+        "fixed_prize_roi": 0.21331863979848867,
+        "fixed_prize_net": -24985,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.006297229219143552,
+        "red_ge4": 0.00062972292191436,
+        "red_ge3": 0.006612090680100768,
+        "full_red": -0.00031486146095717883,
+        "any_prize": -0.00566750629722923,
+        "blue_sixth_prize": -0.0022040302267002376,
+        "max_red": 0.007241813602015146,
+        "union_red": -0.0031486146095716094,
+        "winning_tickets": -0.0037783375314861534,
+        "fixed_return": -0.3227329974811082
+      }
+    },
+    {
+      "replicate": 22,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3095088161209068,
+        "red_ge4": 0.02518891687657431,
+        "red_ge3": 0.28054156171284633,
+        "full_red": 0.0,
+        "any_prize": 0.3271410579345088,
+        "blue_sixth_prize": 0.2947103274559194,
+        "max_red": 2.264168765743073,
+        "union_red": 5.432304785894207,
+        "winning_tickets": 0.3337531486146096,
+        "fixed_return": 2.2827455919395465,
+        "counts": {
+          "blue_covered": 983,
+          "red_ge4": 80,
+          "red_ge3": 891,
+          "full_red": 0,
+          "any_prize": 1039,
+          "blue_sixth_prize": 936
+        },
+        "prize_counts": {
+          "六等奖": 936,
+          "五等奖": 117,
+          "四等奖": 7
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7250,
+        "fixed_prize_roi": 0.22827455919395467,
+        "fixed_prize_net": -24510,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.31297229219143574,
+        "red_ge4": 0.02424433249370277,
+        "red_ge3": 0.28746851385390426,
+        "full_red": 0.0,
+        "any_prize": 0.32871536523929473,
+        "blue_sixth_prize": 0.29219143576826195,
+        "max_red": 2.269521410579345,
+        "union_red": 5.430730478589421,
+        "winning_tickets": 0.3359571788413098,
+        "fixed_return": 2.3772040302267,
+        "counts": {
+          "blue_covered": 994,
+          "red_ge4": 77,
+          "red_ge3": 913,
+          "full_red": 0,
+          "any_prize": 1044,
+          "blue_sixth_prize": 928
+        },
+        "prize_counts": {
+          "六等奖": 928,
+          "五等奖": 131,
+          "四等奖": 8
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7550,
+        "fixed_prize_roi": 0.23772040302267003,
+        "fixed_prize_net": -24210,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": 0.003463476070528937,
+        "red_ge4": -0.0009445843828715383,
+        "red_ge3": 0.006926952141057929,
+        "full_red": 0.0,
+        "any_prize": 0.0015743073047859157,
+        "blue_sixth_prize": -0.002518891687657454,
+        "max_red": 0.005352644836271736,
+        "union_red": -0.0015743073047858047,
+        "winning_tickets": 0.0022040302267002376,
+        "fixed_return": 0.09445843828715361
+      }
+    },
+    {
+      "replicate": 23,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3154911838790932,
+        "red_ge4": 0.02959697732997481,
+        "red_ge3": 0.288727959697733,
+        "full_red": 0.0,
+        "any_prize": 0.33564231738035266,
+        "blue_sixth_prize": 0.3006926952141058,
+        "max_red": 2.279596977329975,
+        "union_red": 5.449307304785894,
+        "winning_tickets": 0.34288413098236775,
+        "fixed_return": 2.6432619647355162,
+        "counts": {
+          "blue_covered": 1002,
+          "red_ge4": 94,
+          "red_ge3": 917,
+          "full_red": 0,
+          "any_prize": 1066,
+          "blue_sixth_prize": 955
+        },
+        "prize_counts": {
+          "六等奖": 955,
+          "五等奖": 122,
+          "四等奖": 12
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 8395,
+        "fixed_prize_roi": 0.26432619647355166,
+        "fixed_prize_net": -23365,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3019521410579345,
+        "red_ge4": 0.023614609571788413,
+        "red_ge3": 0.29250629722921917,
+        "full_red": 0.0,
+        "any_prize": 0.3183249370277078,
+        "blue_sixth_prize": 0.28463476070528965,
+        "max_red": 2.27455919395466,
+        "union_red": 5.458123425692695,
+        "winning_tickets": 0.32399244332493704,
+        "fixed_return": 2.2355163727959697,
+        "counts": {
+          "blue_covered": 959,
+          "red_ge4": 75,
+          "red_ge3": 929,
+          "full_red": 0,
+          "any_prize": 1011,
+          "blue_sixth_prize": 904
+        },
+        "prize_counts": {
+          "六等奖": 904,
+          "五等奖": 118,
+          "四等奖": 7
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7100,
+        "fixed_prize_roi": 0.22355163727959698,
+        "fixed_prize_net": -24660,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.013539042821158698,
+        "red_ge4": -0.005982367758186398,
+        "red_ge3": 0.0037783375314861534,
+        "full_red": 0.0,
+        "any_prize": -0.01731738035264485,
+        "blue_sixth_prize": -0.016057934508816152,
+        "max_red": -0.005037783375315019,
+        "union_red": 0.008816120906800506,
+        "winning_tickets": -0.01889168765743071,
+        "fixed_return": -0.4077455919395465
+      }
+    },
+    {
+      "replicate": 24,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3148614609571788,
+        "red_ge4": 0.020151133501259445,
+        "red_ge3": 0.2877833753148615,
+        "full_red": 0.0,
+        "any_prize": 0.32965994962216627,
+        "blue_sixth_prize": 0.2978589420654912,
+        "max_red": 2.270465994962217,
+        "union_red": 5.454974811083123,
+        "winning_tickets": 0.33406801007556675,
+        "fixed_return": 2.2103274559193955,
+        "counts": {
+          "blue_covered": 1000,
+          "red_ge4": 64,
+          "red_ge3": 914,
+          "full_red": 0,
+          "any_prize": 1047,
+          "blue_sixth_prize": 946
+        },
+        "prize_counts": {
+          "六等奖": 946,
+          "五等奖": 109,
+          "四等奖": 6
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7020,
+        "fixed_prize_roi": 0.22103274559193956,
+        "fixed_prize_net": -24740,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3198992443324937,
+        "red_ge4": 0.019836272040302267,
+        "red_ge3": 0.285264483627204,
+        "full_red": 0.0,
+        "any_prize": 0.33249370277078083,
+        "blue_sixth_prize": 0.29974811083123426,
+        "max_red": 2.2692065491183877,
+        "union_red": 5.456549118387909,
+        "winning_tickets": 0.3378463476070529,
+        "fixed_return": 3.2399244332493704,
+        "counts": {
+          "blue_covered": 1016,
+          "red_ge4": 63,
+          "red_ge3": 906,
+          "full_red": 0,
+          "any_prize": 1056,
+          "blue_sixth_prize": 952
+        },
+        "prize_counts": {
+          "六等奖": 952,
+          "五等奖": 113,
+          "四等奖": 7,
+          "三等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 10290,
+        "fixed_prize_roi": 0.32399244332493704,
+        "fixed_prize_net": -21470,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": 0.005037783375314908,
+        "red_ge4": -0.0003148614609571783,
+        "red_ge3": -0.002518891687657454,
+        "full_red": 0.0,
+        "any_prize": 0.0028337531486145595,
+        "blue_sixth_prize": 0.0018891687657430767,
+        "max_red": -0.0012594458438290879,
+        "union_red": 0.0015743073047858047,
+        "winning_tickets": 0.0037783375314861534,
+        "fixed_return": 1.029596977329975
+      }
+    },
+    {
+      "replicate": 25,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3161209068010076,
+        "red_ge4": 0.0267632241813602,
+        "red_ge3": 0.28746851385390426,
+        "full_red": 0.0,
+        "any_prize": 0.3346977329974811,
+        "blue_sixth_prize": 0.2994332493702771,
+        "max_red": 2.2701511335012596,
+        "union_red": 5.449622166246852,
+        "winning_tickets": 0.34162468513853905,
+        "fixed_return": 2.158375314861461,
+        "counts": {
+          "blue_covered": 1004,
+          "red_ge4": 85,
+          "red_ge3": 913,
+          "full_red": 0,
+          "any_prize": 1063,
+          "blue_sixth_prize": 951
+        },
+        "prize_counts": {
+          "六等奖": 951,
+          "五等奖": 130,
+          "四等奖": 4
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6855,
+        "fixed_prize_roi": 0.2158375314861461,
+        "fixed_prize_net": -24905,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3148614609571788,
+        "red_ge4": 0.025818639798488665,
+        "red_ge3": 0.2824307304785894,
+        "full_red": 0.0,
+        "any_prize": 0.33343828715365237,
+        "blue_sixth_prize": 0.2947103274559194,
+        "max_red": 2.2663727959697733,
+        "union_red": 5.465994962216625,
+        "winning_tickets": 0.33879093198992444,
+        "fixed_return": 2.3331234256926954,
+        "counts": {
+          "blue_covered": 1000,
+          "red_ge4": 82,
+          "red_ge3": 897,
+          "full_red": 0,
+          "any_prize": 1059,
+          "blue_sixth_prize": 936
+        },
+        "prize_counts": {
+          "六等奖": 936,
+          "五等奖": 133,
+          "四等奖": 7
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7410,
+        "fixed_prize_roi": 0.23331234256926953,
+        "fixed_prize_net": -24350,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.0012594458438287548,
+        "red_ge4": -0.0009445843828715349,
+        "red_ge3": -0.005037783375314853,
+        "full_red": 0.0,
+        "any_prize": -0.0012594458438287548,
+        "blue_sixth_prize": -0.004722921914357692,
+        "max_red": -0.0037783375314863754,
+        "union_red": 0.016372795969773257,
+        "winning_tickets": -0.002833753148614615,
+        "fixed_return": 0.17474811083123454
+      }
+    },
+    {
+      "replicate": 26,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.30573047858942065,
+        "red_ge4": 0.02518891687657431,
+        "red_ge3": 0.2836901763224181,
+        "full_red": 0.0,
+        "any_prize": 0.3230478589420655,
+        "blue_sixth_prize": 0.2906171284634761,
+        "max_red": 2.2698362720403025,
+        "union_red": 5.46095717884131,
+        "winning_tickets": 0.32965994962216627,
+        "fixed_return": 2.142632241813602,
+        "counts": {
+          "blue_covered": 971,
+          "red_ge4": 80,
+          "red_ge3": 901,
+          "full_red": 0,
+          "any_prize": 1026,
+          "blue_sixth_prize": 923
+        },
+        "prize_counts": {
+          "六等奖": 923,
+          "五等奖": 119,
+          "四等奖": 5
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6805,
+        "fixed_prize_roi": 0.2142632241813602,
+        "fixed_prize_net": -24955,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.2988035264483627,
+        "red_ge4": 0.02424433249370277,
+        "red_ge3": 0.28620906801007556,
+        "full_red": 0.0,
+        "any_prize": 0.3154911838790932,
+        "blue_sixth_prize": 0.28054156171284633,
+        "max_red": 2.267947103274559,
+        "union_red": 5.455919395465995,
+        "winning_tickets": 0.32084382871536526,
+        "fixed_return": 2.2843198992443323,
+        "counts": {
+          "blue_covered": 949,
+          "red_ge4": 77,
+          "red_ge3": 909,
+          "full_red": 0,
+          "any_prize": 1002,
+          "blue_sixth_prize": 891
+        },
+        "prize_counts": {
+          "六等奖": 891,
+          "五等奖": 120,
+          "四等奖": 8
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7255,
+        "fixed_prize_roi": 0.22843198992443325,
+        "fixed_prize_net": -24505,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.006926952141057929,
+        "red_ge4": -0.0009445843828715383,
+        "red_ge3": 0.002518891687657454,
+        "full_red": 0.0,
+        "any_prize": -0.007556675062972307,
+        "blue_sixth_prize": -0.01007556675062976,
+        "max_red": -0.0018891687657434098,
+        "union_red": -0.005037783375315463,
+        "winning_tickets": -0.008816120906801006,
+        "fixed_return": 0.14168765743073042
+      }
+    },
+    {
+      "replicate": 27,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3013224181360202,
+        "red_ge4": 0.02487405541561713,
+        "red_ge3": 0.28054156171284633,
+        "full_red": 0.0,
+        "any_prize": 0.31801007556675065,
+        "blue_sixth_prize": 0.28494962216624686,
+        "max_red": 2.2698362720403025,
+        "union_red": 5.457808564231738,
+        "winning_tickets": 0.3249370277078086,
+        "fixed_return": 2.1237405541561714,
+        "counts": {
+          "blue_covered": 957,
+          "red_ge4": 79,
+          "red_ge3": 891,
+          "full_red": 0,
+          "any_prize": 1010,
+          "blue_sixth_prize": 905
+        },
+        "prize_counts": {
+          "六等奖": 905,
+          "五等奖": 122,
+          "四等奖": 5
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6745,
+        "fixed_prize_roi": 0.21237405541561713,
+        "fixed_prize_net": -25015,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.29565491183879095,
+        "red_ge4": 0.02518891687657431,
+        "red_ge3": 0.28809823677581864,
+        "full_red": 0.0,
+        "any_prize": 0.3126574307304786,
+        "blue_sixth_prize": 0.2777078085642317,
+        "max_red": 2.2808564231738035,
+        "union_red": 5.460642317380352,
+        "winning_tickets": 0.3195843828715365,
+        "fixed_return": 2.1662468513853903,
+        "counts": {
+          "blue_covered": 939,
+          "red_ge4": 80,
+          "red_ge3": 915,
+          "full_red": 0,
+          "any_prize": 993,
+          "blue_sixth_prize": 882
+        },
+        "prize_counts": {
+          "六等奖": 882,
+          "五等奖": 127,
+          "四等奖": 6
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6880,
+        "fixed_prize_roi": 0.21662468513853905,
+        "fixed_prize_net": -24880,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.00566750629722923,
+        "red_ge4": 0.0003148614609571783,
+        "red_ge3": 0.007556675062972307,
+        "full_red": 0.0,
+        "any_prize": -0.005352644836272069,
+        "blue_sixth_prize": -0.007241813602015146,
+        "max_red": 0.011020151133501077,
+        "union_red": 0.0028337531486144485,
+        "winning_tickets": -0.005352644836272069,
+        "fixed_return": 0.04250629722921895
+      }
+    },
+    {
+      "replicate": 28,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3167506297229219,
+        "red_ge4": 0.026133501259445843,
+        "red_ge3": 0.2767632241813602,
+        "full_red": 0.0,
+        "any_prize": 0.3337531486146096,
+        "blue_sixth_prize": 0.2972292191435768,
+        "max_red": 2.2632241813602016,
+        "union_red": 5.458753148614609,
+        "winning_tickets": 0.339735516372796,
+        "fixed_return": 2.6290931989924435,
+        "counts": {
+          "blue_covered": 1006,
+          "red_ge4": 83,
+          "red_ge3": 879,
+          "full_red": 0,
+          "any_prize": 1060,
+          "blue_sixth_prize": 944
+        },
+        "prize_counts": {
+          "六等奖": 944,
+          "四等奖": 12,
+          "五等奖": 123
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 8350,
+        "fixed_prize_roi": 0.2629093198992443,
+        "fixed_prize_net": -23410,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.31045340050377834,
+        "red_ge4": 0.025503778337531487,
+        "red_ge3": 0.28085642317380355,
+        "full_red": 0.0,
+        "any_prize": 0.3290302267002519,
+        "blue_sixth_prize": 0.29502518891687657,
+        "max_red": 2.2682619647355162,
+        "union_red": 5.461586901763225,
+        "winning_tickets": 0.3346977329974811,
+        "fixed_return": 2.170969773299748,
+        "counts": {
+          "blue_covered": 986,
+          "red_ge4": 81,
+          "red_ge3": 892,
+          "full_red": 0,
+          "any_prize": 1045,
+          "blue_sixth_prize": 937
+        },
+        "prize_counts": {
+          "六等奖": 937,
+          "五等奖": 121,
+          "四等奖": 5
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6895,
+        "fixed_prize_roi": 0.21709697732997482,
+        "fixed_prize_net": -24865,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.006297229219143552,
+        "red_ge4": -0.0006297229219143566,
+        "red_ge3": 0.00409319899244337,
+        "full_red": 0.0,
+        "any_prize": -0.004722921914357692,
+        "blue_sixth_prize": -0.0022040302267002376,
+        "max_red": 0.005037783375314575,
+        "union_red": 0.0028337531486153367,
+        "winning_tickets": -0.005037783375314853,
+        "fixed_return": -0.4581234256926954
+      }
+    },
+    {
+      "replicate": 29,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3139168765743073,
+        "red_ge4": 0.028022670025188916,
+        "red_ge3": 0.27613350125944586,
+        "full_red": 0.0,
+        "any_prize": 0.33249370277078083,
+        "blue_sixth_prize": 0.2978589420654912,
+        "max_red": 2.2663727959697733,
+        "union_red": 5.459382871536524,
+        "winning_tickets": 0.34005037783375314,
+        "fixed_return": 3.4508816120906802,
+        "counts": {
+          "blue_covered": 997,
+          "red_ge4": 89,
+          "red_ge3": 877,
+          "full_red": 0,
+          "any_prize": 1056,
+          "blue_sixth_prize": 946
+        },
+        "prize_counts": {
+          "六等奖": 946,
+          "五等奖": 123,
+          "四等奖": 10,
+          "三等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 10960,
+        "fixed_prize_roi": 0.345088161209068,
+        "fixed_prize_net": -20800,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3110831234256927,
+        "red_ge4": 0.026133501259445843,
+        "red_ge3": 0.28148614609571787,
+        "full_red": 0.0,
+        "any_prize": 0.3290302267002519,
+        "blue_sixth_prize": 0.29156171284634763,
+        "max_red": 2.2682619647355162,
+        "union_red": 5.4751259445843825,
+        "winning_tickets": 0.33564231738035266,
+        "fixed_return": 3.318639798488665,
+        "counts": {
+          "blue_covered": 988,
+          "red_ge4": 83,
+          "red_ge3": 894,
+          "full_red": 0,
+          "any_prize": 1045,
+          "blue_sixth_prize": 926
+        },
+        "prize_counts": {
+          "五等奖": 131,
+          "六等奖": 926,
+          "四等奖": 8,
+          "三等奖": 1
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 10540,
+        "fixed_prize_roi": 0.3318639798488665,
+        "fixed_prize_net": -21220,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.0028337531486145595,
+        "red_ge4": -0.0018891687657430732,
+        "red_ge3": 0.005352644836272014,
+        "full_red": 0.0,
+        "any_prize": -0.003463476070528937,
+        "blue_sixth_prize": -0.006297229219143552,
+        "max_red": 0.0018891687657429657,
+        "union_red": 0.015743073047858935,
+        "winning_tickets": -0.004408060453400475,
+        "fixed_return": -0.13224181360201515
+      }
+    },
+    {
+      "replicate": 30,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.3107682619647355,
+        "red_ge4": 0.022670025188916875,
+        "red_ge3": 0.29408060453400503,
+        "full_red": 0.0,
+        "any_prize": 0.3258816120906801,
+        "blue_sixth_prize": 0.2918765743073048,
+        "max_red": 2.2685768261964734,
+        "union_red": 5.4732367758186395,
+        "winning_tickets": 0.3318639798488665,
+        "fixed_return": 2.278022670025189,
+        "counts": {
+          "blue_covered": 987,
+          "red_ge4": 72,
+          "red_ge3": 934,
+          "full_red": 0,
+          "any_prize": 1035,
+          "blue_sixth_prize": 927
+        },
+        "prize_counts": {
+          "六等奖": 927,
+          "四等奖": 7,
+          "五等奖": 120
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7235,
+        "fixed_prize_roi": 0.2278022670025189,
+        "fixed_prize_net": -24525,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.3123425692695214,
+        "red_ge4": 0.026133501259445843,
+        "red_ge3": 0.28809823677581864,
+        "full_red": 0.0,
+        "any_prize": 0.32808564231738035,
+        "blue_sixth_prize": 0.29628463476070527,
+        "max_red": 2.2673173803526447,
+        "union_red": 5.472607052896725,
+        "winning_tickets": 0.3365869017632242,
+        "fixed_return": 2.422858942065491,
+        "counts": {
+          "blue_covered": 992,
+          "red_ge4": 83,
+          "red_ge3": 915,
+          "full_red": 0,
+          "any_prize": 1042,
+          "blue_sixth_prize": 941
+        },
+        "prize_counts": {
+          "六等奖": 941,
+          "五等奖": 119,
+          "四等奖": 9
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7695,
+        "fixed_prize_roi": 0.2422858942065491,
+        "fixed_prize_net": -24065,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": 0.0015743073047859157,
+        "red_ge4": 0.003463476070528968,
+        "red_ge3": -0.005982367758186391,
+        "full_red": 0.0,
+        "any_prize": 0.0022040302267002376,
+        "blue_sixth_prize": 0.004408060453400475,
+        "max_red": -0.0012594458438286438,
+        "union_red": -0.0006297229219143219,
+        "winning_tickets": 0.004722921914357692,
+        "fixed_return": 0.14483627204030203
+      }
+    },
+    {
+      "replicate": 31,
+      "v8": {
+        "periods": 3176,
+        "blue_covered": 0.30698992443324935,
+        "red_ge4": 0.025818639798488665,
+        "red_ge3": 0.297544080604534,
+        "full_red": 0.0,
+        "any_prize": 0.3261964735516373,
+        "blue_sixth_prize": 0.2877833753148615,
+        "max_red": 2.281486146095718,
+        "union_red": 5.46095717884131,
+        "winning_tickets": 0.3318639798488665,
+        "fixed_return": 2.2984886649874054,
+        "counts": {
+          "blue_covered": 975,
+          "red_ge4": 82,
+          "red_ge3": 945,
+          "full_red": 0,
+          "any_prize": 1036,
+          "blue_sixth_prize": 914
+        },
+        "prize_counts": {
+          "六等奖": 914,
+          "五等奖": 133,
+          "四等奖": 7
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 7300,
+        "fixed_prize_roi": 0.22984886649874056,
+        "fixed_prize_net": -24460,
+        "variable_prize_events": 0
+      },
+      "v9": {
+        "periods": 3176,
+        "blue_covered": 0.30447103274559195,
+        "red_ge4": 0.025503778337531487,
+        "red_ge3": 0.29502518891687657,
+        "full_red": 0.0,
+        "any_prize": 0.3230478589420655,
+        "blue_sixth_prize": 0.28809823677581864,
+        "max_red": 2.2792821158690177,
+        "union_red": 5.460327455919395,
+        "winning_tickets": 0.3290302267002519,
+        "fixed_return": 2.1489294710327456,
+        "counts": {
+          "blue_covered": 967,
+          "red_ge4": 81,
+          "red_ge3": 937,
+          "full_red": 0,
+          "any_prize": 1026,
+          "blue_sixth_prize": 915
+        },
+        "prize_counts": {
+          "六等奖": 915,
+          "五等奖": 125,
+          "四等奖": 5
+        },
+        "ticket_cost": 31760,
+        "fixed_prize_return": 6825,
+        "fixed_prize_roi": 0.21489294710327456,
+        "fixed_prize_net": -24935,
+        "variable_prize_events": 0
+      },
+      "difference": {
+        "blue_covered": -0.0025188916876573986,
+        "red_ge4": -0.0003148614609571783,
+        "red_ge3": -0.002518891687657454,
+        "full_red": 0.0,
+        "any_prize": -0.003148614609571776,
+        "blue_sixth_prize": 0.00031486146095716094,
+        "max_red": -0.0022040302267001266,
+        "union_red": -0.0006297229219152101,
+        "winning_tickets": -0.002833753148614615,
+        "fixed_return": -0.14955919395465989
+      }
+    }
+  ],
+  "fair_draw_exact": {
+    "single_ticket_jackpot_probability": 5.642994380480476e-08,
+    "five_distinct_ticket_jackpot_probability": 2.821497190240238e-07,
+    "five_distinct_ticket_jackpot_odds_one_in": 3544217.6,
+    "v8_and_v9_equal_under_fair_draw": true,
+    "reason": "任一固定合法票组均为5张不同彩票；两者都保持红球零重叠和5个不同蓝球，公平独立开奖下可通过号码标签置换互相映射，因此精确理论命中指标相同。"
+  },
+  "current_v9_candidate": {
+    "target_issue": "2026080",
+    "tickets": [
+      [
+        [
+          2,
+          7,
+          9,
+          12,
+          17,
+          18
+        ],
+        [
+          15
+        ]
+      ],
+      [
+        [
+          10,
+          11,
+          15,
+          19,
+          29,
+          30
+        ],
+        [
+          3
+        ]
+      ],
+      [
+        [
+          6,
+          21,
+          23,
+          26,
+          27,
+          28
+        ],
+        [
+          6
+        ]
+      ],
+      [
+        [
+          5,
+          16,
+          24,
+          25,
+          31,
+          32
+        ],
+        [
+          1
+        ]
+      ],
+      [
+        [
+          3,
+          4,
+          13,
+          14,
+          20,
+          33
+        ],
+        [
+          8
+        ]
+      ]
+    ],
+    "metadata": {
+      "strategy": "low_probability_filter_v9",
+      "filter_priority": [
+        "historical_full_ticket",
+        "previous_blue",
+        "four_or_more_consecutive_reds",
+        "all_odd_or_all_even",
+        "all_six_in_one_zone",
+        "outer_one_percent_sum_tail",
+        "small_span_one_percent_tail"
+      ],
+      "filter_config": {
+        "max_consecutive_run": 3,
+        "min_odd_count": 1,
+        "max_odd_count": 5,
+        "max_single_zone_count": 5,
+        "min_red_sum": 53,
+        "max_red_sum": 151,
+        "min_red_span": 12,
+        "avoid_previous_blue": true,
+        "avoid_historical_full_ticket": true,
+        "max_portfolio_attempts": 10000
+      },
+      "previous_blue_excluded": 4,
+      "attempts": 1,
+      "rejected_portfolios": 0,
+      "rejected_red_tickets": 0,
+      "rejected_historical_tickets": 0,
+      "red_coverage": 30,
+      "blue_coverage": 5,
+      "max_red_overlap": 0,
+      "max_blue_overlap": 0
+    }
+  },
+  "decision": {
+    "stable_improvement_metrics": {
+      "any_prize": false,
+      "blue_covered": false,
+      "red_ge3": false,
+      "fixed_return": false
+    },
+    "promote_v9_to_production": false,
+    "production_algorithm_after_test": "ssq-v8",
+    "reason": "v9没有在独立走期和多种子稳健性上证明稳定提升；过滤事件本身不改变固定五注的理论赔率，因此继续保留v8为生产算法，v9作为实验候选。"
+  }
+}

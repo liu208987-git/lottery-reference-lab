@@ -1,0 +1,433 @@
+{
+  "model": "dlt-pdf-exogenous-gated-v1",
+  "trained_through": "2026077",
+  "sample_size": 2895,
+  "next_issue": "2026078",
+  "red": {
+    "selected_model": "uniform",
+    "best_validation_candidate": "governance",
+    "gate_passed": false,
+    "reason": "外生/历史候选未在独立留出集稳定优于均匀基线，已回退均匀概率",
+    "uniform_brier": 0.12244897959183673,
+    "split": {
+      "train": 1509,
+      "validation": 549,
+      "test": 687,
+      "test_from": "2021143",
+      "test_to": "2026077"
+    },
+    "rows": [
+      {
+        "model": "pdf_external",
+        "label": "PDF全部外生因素",
+        "ridge": 1.0,
+        "shrink": 0.25,
+        "validation_brier": 0.12245853675396395,
+        "test_brier": 0.12244915231151073,
+        "relative_improvement": -1.4105440041405213e-06,
+        "stable_blocks": 2,
+        "top_hits": 0.6899563318777293,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      },
+      {
+        "model": "governance",
+        "label": "公证/规则制度分段",
+        "ridge": 0.01,
+        "shrink": 0.25,
+        "validation_brier": 0.12244400680404438,
+        "test_brier": 0.12244939092381155,
+        "relative_improvement": -3.3592111276823233e-06,
+        "stable_blocks": 2,
+        "top_hits": 0.6943231441048034,
+        "test_periods": 687,
+        "corrected_p": 1.0,
+        "gate_passed": false
+      },
+      {
+        "model": "hybrid",
+        "label": "历史+PDF外生因素",
+        "ridge": 1.0,
+        "shrink": 0.25,
+        "validation_brier": 0.12245776115448019,
+        "test_brier": 0.12245071707436805,
+        "relative_improvement": -1.4189440672424304e-05,
+        "stable_blocks": 2,
+        "top_hits": 0.7234352256186317,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      },
+      {
+        "model": "history",
+        "label": "历史量价式信号",
+        "ridge": 1.0,
+        "shrink": 0.25,
+        "validation_brier": 0.12245330952150302,
+        "test_brier": 0.12245648124017282,
+        "relative_improvement": -6.12634614112852e-05,
+        "stable_blocks": 0,
+        "top_hits": 0.6754002911208151,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      },
+      {
+        "model": "calendar",
+        "label": "开奖序列/年内周期",
+        "ridge": 1.0,
+        "shrink": 0.25,
+        "validation_brier": 0.12246393010903132,
+        "test_brier": 0.12246825052151988,
+        "relative_improvement": -0.00015737925907897716,
+        "stable_blocks": 0,
+        "top_hits": 0.6491994177583698,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      },
+      {
+        "model": "maintenance_proxy",
+        "label": "清洗与换球代理周期",
+        "ridge": 1.0,
+        "shrink": 0.25,
+        "validation_brier": 0.12246566246275407,
+        "test_brier": 0.1224684769553115,
+        "relative_improvement": -0.00015922846837730867,
+        "stable_blocks": 1,
+        "top_hits": 0.6491994177583698,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      },
+      {
+        "model": "loading",
+        "label": "固定装球结构",
+        "ridge": 1.0,
+        "shrink": 0.25,
+        "validation_brier": 0.12246169050291898,
+        "test_brier": 0.12246909971129008,
+        "relative_improvement": -0.00016431430886897812,
+        "stable_blocks": 0,
+        "top_hits": 0.6491994177583698,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      }
+    ],
+    "next_probabilities": {
+      "1": 0.14285714285714285,
+      "2": 0.14285714285714285,
+      "3": 0.14285714285714285,
+      "4": 0.14285714285714285,
+      "5": 0.14285714285714285,
+      "6": 0.14285714285714285,
+      "7": 0.14285714285714285,
+      "8": 0.14285714285714285,
+      "9": 0.14285714285714285,
+      "10": 0.14285714285714285,
+      "11": 0.14285714285714285,
+      "12": 0.14285714285714285,
+      "13": 0.14285714285714285,
+      "14": 0.14285714285714285,
+      "15": 0.14285714285714285,
+      "16": 0.14285714285714285,
+      "17": 0.14285714285714285,
+      "18": 0.14285714285714285,
+      "19": 0.14285714285714285,
+      "20": 0.14285714285714285,
+      "21": 0.14285714285714285,
+      "22": 0.14285714285714285,
+      "23": 0.14285714285714285,
+      "24": 0.14285714285714285,
+      "25": 0.14285714285714285,
+      "26": 0.14285714285714285,
+      "27": 0.14285714285714285,
+      "28": 0.14285714285714285,
+      "29": 0.14285714285714285,
+      "30": 0.14285714285714285,
+      "31": 0.14285714285714285,
+      "32": 0.14285714285714285,
+      "33": 0.14285714285714285,
+      "34": 0.14285714285714285,
+      "35": 0.14285714285714285
+    }
+  },
+  "blue": {
+    "selected_model": "uniform",
+    "best_validation_candidate": "history",
+    "gate_passed": false,
+    "reason": "外生/历史候选未在独立留出集稳定优于均匀基线，已回退均匀概率",
+    "uniform_brier": 0.1388888888888889,
+    "split": {
+      "train": 1509,
+      "validation": 549,
+      "test": 687,
+      "test_from": "2021143",
+      "test_to": "2026077"
+    },
+    "rows": [
+      {
+        "model": "calendar",
+        "label": "开奖序列/年内周期",
+        "ridge": 0.0001,
+        "shrink": 0.25,
+        "validation_brier": 0.1388945730025128,
+        "test_brier": 0.13887934313812986,
+        "relative_improvement": 6.87294054650012e-05,
+        "stable_blocks": 2,
+        "top_hits": 0.33770014556040756,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      },
+      {
+        "model": "pdf_external",
+        "label": "PDF全部外生因素",
+        "ridge": 0.0001,
+        "shrink": 0.25,
+        "validation_brier": 0.13887906585519227,
+        "test_brier": 0.13887954653157833,
+        "relative_improvement": 6.72649726361071e-05,
+        "stable_blocks": 4,
+        "top_hits": 0.32751091703056767,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      },
+      {
+        "model": "governance",
+        "label": "公证/规则制度分段",
+        "ridge": 0.0001,
+        "shrink": 0.25,
+        "validation_brier": 0.13887518447176148,
+        "test_brier": 0.13889209138206815,
+        "relative_improvement": -2.3057950890618676e-05,
+        "stable_blocks": 2,
+        "top_hits": 0.3318777292576419,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      },
+      {
+        "model": "loading",
+        "label": "固定装球结构",
+        "ridge": 0.0001,
+        "shrink": 0.25,
+        "validation_brier": 0.13889343156501657,
+        "test_brier": 0.13889343922278763,
+        "relative_improvement": -3.2762404071020705e-05,
+        "stable_blocks": 1,
+        "top_hits": 0.31877729257641924,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      },
+      {
+        "model": "maintenance_proxy",
+        "label": "清洗与换球代理周期",
+        "ridge": 0.0001,
+        "shrink": 0.25,
+        "validation_brier": 0.1388955919812962,
+        "test_brier": 0.13889687239515502,
+        "relative_improvement": -5.748124511612408e-05,
+        "stable_blocks": 1,
+        "top_hits": 0.3682678311499272,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      },
+      {
+        "model": "hybrid",
+        "label": "历史+PDF外生因素",
+        "ridge": 0.0001,
+        "shrink": 0.25,
+        "validation_brier": 0.13885052625377728,
+        "test_brier": 0.13890026510227288,
+        "relative_improvement": -8.190873636494085e-05,
+        "stable_blocks": 1,
+        "top_hits": 0.34497816593886466,
+        "test_periods": 687,
+        "corrected_p": 1.0
+      },
+      {
+        "model": "history",
+        "label": "历史量价式信号",
+        "ridge": 0.0001,
+        "shrink": 1.0,
+        "validation_brier": 0.13876375268372773,
+        "test_brier": 0.13901544695602808,
+        "relative_improvement": -0.0009112180834021895,
+        "stable_blocks": 0,
+        "top_hits": 0.3304221251819505,
+        "test_periods": 687,
+        "corrected_p": 1.0,
+        "gate_passed": false
+      }
+    ],
+    "next_probabilities": {
+      "1": 0.16666666666666666,
+      "2": 0.16666666666666666,
+      "3": 0.16666666666666666,
+      "4": 0.16666666666666666,
+      "5": 0.16666666666666666,
+      "6": 0.16666666666666666,
+      "7": 0.16666666666666666,
+      "8": 0.16666666666666666,
+      "9": 0.16666666666666666,
+      "10": 0.16666666666666666,
+      "11": 0.16666666666666666,
+      "12": 0.16666666666666666
+    }
+  },
+  "tickets": [
+    [
+      [
+        1,
+        6,
+        8,
+        11,
+        15
+      ],
+      [
+        3,
+        8
+      ]
+    ],
+    [
+      [
+        7,
+        12,
+        20,
+        27,
+        35
+      ],
+      [
+        4,
+        10
+      ]
+    ],
+    [
+      [
+        13,
+        18,
+        24,
+        28,
+        32
+      ],
+      [
+        7,
+        11
+      ]
+    ],
+    [
+      [
+        2,
+        3,
+        4,
+        5,
+        21
+      ],
+      [
+        5,
+        12
+      ]
+    ],
+    [
+      [
+        23,
+        25,
+        29,
+        33,
+        34
+      ],
+      [
+        2,
+        6
+      ]
+    ]
+  ],
+  "pdf_factors": {
+    "direct": [
+      "前区35球固定分筒与筒内摆放顺序（1-15每筒5个、16-35每筒4个）",
+      "后区12球固定分筒与筒内摆放顺序（1-8每筒2个、9-12每筒1个）",
+      "2017-04 公证机构变更分段",
+      "2019 年大乐透规则调整分段（奖级/玩法变更）"
+    ],
+    "proxy": [
+      "每20次清洗的全局周期代理",
+      "4套球随机轮用下的80期预期清洗周期代理",
+      "约2年换球对应的312期代理周期"
+    ],
+    "excluded": [
+      "设备型号、材质等全时期常量（无法区分各期）",
+      "当期实际球组、真实清洗/换球日期（逐期数据未公开）",
+      "公证、封存、观摩等公平保障（不是号码方向信号）"
+    ]
+  },
+  "current_algorithm": {
+    "name": "quant-gated-coverage-v3",
+    "red_model": "uniform",
+    "red_gate_passed": false,
+    "blue_model": "uniform",
+    "blue_gate_passed": false,
+    "tickets": [
+      [
+        [
+          13,
+          17,
+          25,
+          29,
+          31
+        ],
+        [
+          4,
+          12
+        ]
+      ],
+      [
+        [
+          11,
+          19,
+          23,
+          32,
+          35
+        ],
+        [
+          1,
+          7
+        ]
+      ],
+      [
+        [
+          15,
+          16,
+          24,
+          30,
+          33
+        ],
+        [
+          6,
+          10
+        ]
+      ],
+      [
+        [
+          6,
+          18,
+          21,
+          22,
+          26
+        ],
+        [
+          3,
+          11
+        ]
+      ],
+      [
+        [
+          3,
+          8,
+          9,
+          14,
+          27
+        ],
+        [
+          2,
+          8
+        ]
+      ]
+    ]
+  },
+  "trained_at": "2026-07-12T22:07:38"
+}

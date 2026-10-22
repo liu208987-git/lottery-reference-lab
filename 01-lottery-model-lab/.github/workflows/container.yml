@@ -1,0 +1,295 @@
+name: Container
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: container-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Tests and public-bundle audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+            requirements-runtime.txt
+            requirements-dev.txt
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --disable-pip-version-check \
+            --requirement requirements-runtime.txt \
+            --requirement requirements-dev.txt
+
+      - name: Validate source and deployment syntax
+        run: |
+          python -m py_compile src/*.py web/server.py run_experiments.py
+          node --check web/static/app.js
+          node --check web/static/share.js
+          sh -n deploy/entrypoint.sh
+          sh -n deploy/install.sh
+          docker compose --env-file .env.example --file compose.yaml config --quiet
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Reject private data, local paths, and secrets
+        run: python scripts/check_public_bundle.py
+
+      - name: Run ShellCheck
+        run: |
+          if ! command -v shellcheck >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install --yes shellcheck
+          fi
+          shellcheck --shell=sh deploy/entrypoint.sh deploy/install.sh
+
+  smoke:
+    name: Single-architecture guest smoke test
+    if: github.event_name == 'pull_request'
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+
+      - name: Prepare immutable build metadata
+        id: build
+        shell: bash
+        run: |
+          {
+            echo "compose_sha256=$(sha256sum compose.yaml | cut -d ' ' -f 1)"
+            echo "build_date=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build amd64 smoke image
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64
+          load: true
+          push: false
+          tags: lottery-model-lab:smoke
+          build-args: |
+            BUILD_DATE=${{ steps.build.outputs.build_date }}
+            VCS_REF=${{ github.sha }}
+            VERSION=pr-${{ github.event.pull_request.number }}
+            COMPOSE_SHA256=${{ steps.build.outputs.compose_sha256 }}
+            SOURCE_REPOSITORY=https://github.com/${{ github.repository }}
+          cache-from: type=gha,scope=smoke
+          cache-to: type=gha,mode=max,scope=smoke
+
+      - name: Verify read-only guest behavior and prediction
+        shell: bash
+        run: |
+          set -euo pipefail
+          container=lottery-model-lab-smoke
+          cleanup() {
+            docker logs "$container" 2>/dev/null || true
+            docker rm --force "$container" >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
+
+          test "$(docker image inspect --format '{{.Config.User}}' lottery-model-lab:smoke)" = "10001:10001"
+          docker run --rm --interactive --entrypoint python lottery-model-lab:smoke - <<'PY'
+          from pathlib import Path
+
+          forbidden = {"manual_entries.csv", "synced_entries.csv"}
+          leaked = [str(path) for path in Path("/app").rglob("*.csv") if path.name in forbidden]
+          assert not leaked, leaked
+          PY
+
+          docker run --detach \
+            --name "$container" \
+            --publish 127.0.0.1:18765:8765 \
+            --read-only \
+            --tmpfs /tmp:rw,noexec,nosuid,nodev,size=67108864,mode=1777 \
+            --cap-drop ALL \
+            --security-opt no-new-privileges:true \
+            --pids-limit 128 \
+            lottery-model-lab:smoke
+
+          for _ in $(seq 1 45); do
+            state=$(docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{else}}{{.State.Status}}{{end}}' "$container")
+            case "$state" in
+              healthy) break ;;
+              unhealthy|exited|dead) exit 1 ;;
+            esac
+            sleep 2
+          done
+          test "$(docker inspect --format '{{.State.Health.Status}}' "$container")" = healthy
+
+          curl --fail --silent --show-error http://127.0.0.1:18765/readyz > /tmp/ready.json
+          curl --fail --silent --show-error http://127.0.0.1:18765/api/status > /tmp/status.json
+          python - <<'PY'
+          import json
+
+          status = json.load(open("/tmp/status.json", encoding="utf-8"))
+          assert status["app_mode"] == "public"
+          assert status["calendar_source"].startswith("Cached Chinese lunar calendar")
+          assert status["capabilities"] == {
+              "can_predict": True,
+              "can_train": False,
+              "can_sync": False,
+              "can_write_draws": False,
+          }
+          game = status["games"]["ssq"]
+          json.dump(
+              {
+                  "lottery_code": "ssq",
+                  "issue": game["suggested_next_issue"],
+                  "draw_date": game["suggested_next_date"],
+                  "async": True,
+              },
+              open("/tmp/predict.json", "w", encoding="utf-8"),
+          )
+          PY
+
+          for endpoint in draws sync train; do
+            code=$(curl --silent --output /dev/null --write-out '%{http_code}' \
+              --header 'Content-Type: application/json' \
+              --data '{}' \
+              "http://127.0.0.1:18765/api/$endpoint")
+            test "$code" = 403
+          done
+
+          code=$(curl --silent --show-error --output /tmp/predict-response.json --write-out '%{http_code}' \
+            --header 'Content-Type: application/json' \
+            --data @/tmp/predict.json \
+            http://127.0.0.1:18765/api/predict)
+          test "$code" = 202
+          job_id=$(python -c 'import json; print(json.load(open("/tmp/predict-response.json"))["job"]["job_id"])')
+
+          completed=false
+          for _ in $(seq 1 90); do
+            curl --fail --silent --show-error \
+              "http://127.0.0.1:18765/api/predict-status?job_id=$job_id" \
+              > /tmp/predict-status.json
+            job_status=$(python -c 'import json; print(json.load(open("/tmp/predict-status.json"))["status"])')
+            case "$job_status" in
+              completed) completed=true; break ;;
+              failed) cat /tmp/predict-status.json; exit 1 ;;
+            esac
+            sleep 1
+          done
+          test "$completed" = true
+          python - <<'PY'
+          import json
+
+          job = json.load(open("/tmp/predict-status.json", encoding="utf-8"))
+          assert job["progress"] == 100
+          for zone in job["result"]["zones"].values():
+              assert len(zone["models"]) == 12
+          PY
+
+  publish:
+    name: Publish multi-architecture GHCR image
+    if: github.event_name == 'push'
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      attestations: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Resolve lowercase image name and build metadata
+        id: build
+        shell: bash
+        run: |
+          {
+            echo "image=ghcr.io/${GITHUB_REPOSITORY,,}"
+            echo "compose_sha256=$(sha256sum compose.yaml | cut -d ' ' -f 1)"
+            echo "build_date=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate image tags and OCI labels
+        id: meta
+        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5
+        with:
+          images: ${{ steps.build.outputs.image }}
+          tags: |
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=sha,prefix=sha-,format=long
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+
+      - name: Build and push signed release candidate
+        id: push
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            BUILD_DATE=${{ steps.build.outputs.build_date }}
+            VCS_REF=${{ github.sha }}
+            VERSION=${{ steps.meta.outputs.version }}
+            COMPOSE_SHA256=${{ steps.build.outputs.compose_sha256 }}
+            SOURCE_REPOSITORY=https://github.com/${{ github.repository }}
+          cache-from: type=gha,scope=release
+          cache-to: type=gha,mode=max,scope=release
+          provenance: mode=max
+          sbom: true
+
+      - name: Attest image provenance
+        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+        with:
+          subject-name: ${{ steps.build.outputs.image }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac # v3
+
+      - name: Sign image digest with GitHub OIDC
+        env:
+          IMAGE: ${{ steps.build.outputs.image }}
+          DIGEST: ${{ steps.push.outputs.digest }}
+        run: cosign sign --yes "$IMAGE@$DIGEST"

@@ -1,0 +1,59 @@
+{
+  "generated_at": "2026-07-20T00:20:46",
+  "method": "game_specific_walk_forward_fixed_5_tickets",
+  "results": {
+    "ssq": {
+      "game": "ssq",
+      "algorithm": "ssq-v15-stability-gated",
+      "history_total": 3479,
+      "history_range": [
+        "2003001",
+        "2026082"
+      ],
+      "validation_range": [
+        "2004012",
+        "2026082"
+      ],
+      "initial_history_periods": 100,
+      "total": 3379,
+      "ge4": 82,
+      "ge3": 954,
+      "blue_hits": 1068,
+      "prizes": 1127,
+      "prize_breakdown": {
+        "六等奖": 989,
+        "五等奖": 129,
+        "四等奖": 9
+      },
+      "elapsed": 258.6052439212799
+    },
+    "dlt": {
+      "game": "dlt",
+      "algorithm": "dlt-v7-transfer-coverage",
+      "history_total": 2898,
+      "history_range": [
+        "2007001",
+        "2026080"
+      ],
+      "validation_range": [
+        "2008008",
+        "2026080"
+      ],
+      "initial_history_periods": 100,
+      "total": 2798,
+      "ge4": 4,
+      "ge3": 192,
+      "blue_hits": 2759,
+      "prizes": 401,
+      "prize_breakdown": {
+        "八等奖": 73,
+        "七等奖": 22,
+        "六等奖": 8,
+        "五等奖": 2,
+        "九等奖": 295,
+        "四等奖": 1
+      },
+      "elapsed": 246.78480434417725
+    }
+  }
+}

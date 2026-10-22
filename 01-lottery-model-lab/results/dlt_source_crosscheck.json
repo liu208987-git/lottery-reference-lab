@@ -1,0 +1,137 @@
+{
+  "generated_at_utc": "2026-07-21T04:43:22.195664+00:00",
+  "official_api": "https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry",
+  "local_rows": 2899,
+  "official_rows": 2899,
+  "numbers_matched_rows": 2899,
+  "date_matched_rows": 2897,
+  "matched_rows": 2897,
+  "mismatch_count": 2,
+  "mismatch_issues": [
+    "08151",
+    "09107"
+  ],
+  "number_mismatch_count": 0,
+  "number_mismatch_issues": [],
+  "date_conflict_count": 2,
+  "date_conflict_issues": [
+    "08151",
+    "09107"
+  ],
+  "date_conflicts": [
+    {
+      "issue": "08151",
+      "official_draw_date": "2008-12-24",
+      "local_draw_date": "2008-12-26"
+    },
+    {
+      "issue": "09107",
+      "official_draw_date": "2009-09-14",
+      "local_draw_date": "2009-09-15"
+    }
+  ],
+  "equipment_field_note": "lotteryEquipmentCount aligns with the official PDF's numbered draw-ball set wording for current draws; zero is unavailable metadata",
+  "equipment_set_distribution": {
+    "0": 565,
+    "1": 782,
+    "2": 744,
+    "3": 808
+  },
+  "equipment_set_by_year": {
+    "2007": {
+      "0": 93
+    },
+    "2008": {
+      "0": 154
+    },
+    "2009": {
+      "0": 153
+    },
+    "2010": {
+      "0": 153
+    },
+    "2011": {
+      "0": 10,
+      "1": 45,
+      "2": 54,
+      "3": 45
+    },
+    "2012": {
+      "0": 1,
+      "1": 55,
+      "2": 39,
+      "3": 59
+    },
+    "2013": {
+      "1": 53,
+      "2": 39,
+      "3": 61
+    },
+    "2014": {
+      "1": 47,
+      "2": 59,
+      "3": 48
+    },
+    "2015": {
+      "1": 49,
+      "2": 51,
+      "3": 53
+    },
+    "2016": {
+      "0": 1,
+      "1": 42,
+      "2": 45,
+      "3": 66
+    },
+    "2017": {
+      "1": 55,
+      "2": 51,
+      "3": 47
+    },
+    "2018": {
+      "1": 51,
+      "2": 44,
+      "3": 59
+    },
+    "2019": {
+      "1": 56,
+      "2": 47,
+      "3": 47
+    },
+    "2020": {
+      "1": 43,
+      "2": 42,
+      "3": 49
+    },
+    "2021": {
+      "1": 50,
+      "2": 49,
+      "3": 51
+    },
+    "2022": {
+      "1": 51,
+      "2": 56,
+      "3": 43
+    },
+    "2023": {
+      "1": 50,
+      "2": 42,
+      "3": 58
+    },
+    "2024": {
+      "1": 50,
+      "2": 46,
+      "3": 56
+    },
+    "2025": {
+      "1": 55,
+      "2": 49,
+      "3": 46
+    },
+    "2026": {
+      "1": 30,
+      "2": 31,
+      "3": 20
+    }
+  }
+}

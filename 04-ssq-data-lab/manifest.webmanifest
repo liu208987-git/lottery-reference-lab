@@ -1,0 +1,21 @@
+{
+  "name": "双色球 / 大乐透数据实验室 · Lottery Data Lab",
+  "short_name": "Lottery Lab",
+  "description": "用真实双色球与大乐透开奖数据做可视化、分布分析、卡方检验与高级随机采样。不预测、不承诺中奖、不引导购彩。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#06070b",
+  "background_color": "#06070b",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><defs><radialGradient id='r' cx='32%25' cy='28%25' r='80%25'><stop offset='0' stop-color='%23ffb0b6'/><stop offset='1' stop-color='%23ff3b3b'/></radialGradient><radialGradient id='b' cx='32%25' cy='28%25' r='80%25'><stop offset='0' stop-color='%2390cdff'/><stop offset='1' stop-color='%233aa3ff'/></radialGradient></defs><rect width='192' height='192' rx='32' fill='%23060708'/><circle cx='66' cy='72' r='42' fill='url(%23r)'/><circle cx='130' cy='124' r='38' fill='url(%23b)'/></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["utilities", "education"]
+}

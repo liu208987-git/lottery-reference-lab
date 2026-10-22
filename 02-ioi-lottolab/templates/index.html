@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050b18">
+    <title>IOI AI 彩票量化预测系统</title>
+    <link rel="icon" type="image/png" href="/static/ioi-logo.png">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/chart.min.js"></script>
+</head>
+<body>
+<div class="ambient ambient-one"></div>
+<div class="ambient ambient-two"></div>
+<div class="grid-overlay"></div>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="brand-logo"><img src="/static/ioi-logo.png" alt="IOI Studio"></div>
+        <div class="brand-copy">
+            <div class="eyebrow">IOI STUDIO · QUANT INTELLIGENCE</div>
+            <h1>IOI AI 彩票量化预测系统</h1>
+            <p>www.ioi.studio</p>
+        </div>
+        <div class="system-status">
+            <span class="status-dot"></span>
+            <div><small>SYSTEM STATUS</small><strong>ONLINE</strong></div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero-strip">
+        <div>
+            <span class="section-kicker">PRODUCTION MATRIX</span>
+            <h2>双引擎生产矩阵</h2>
+            <p>双色球 v15 多窗口实证自学习 / 大乐透 v7 双色球策略迁移</p>
+        </div>
+        <div class="hero-badges">
+            <span><i class="pulse"></i> 数据库已连接</span>
+            <span>趋势窗口 30 期</span>
+            <span>固定 5 注组合</span>
+        </div>
+    </section>
+
+    <section class="overview-grid">
+        <article class="game-overview ssq-overview">
+            <div class="overview-head">
+                <div>
+                    <span class="game-code">SSQ / 01</span>
+                    <h3>双色球</h3>
+                </div>
+                <span class="algo-badge cyan">v15 · 多窗口闸门＋实证命中</span>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="label">历史期数</div><div class="value blue" id="ssq-total">—</div><div class="sub" id="ssq-range">—</div></div>
+                <div class="stat-card"><div class="label">v15 走期样本</div><div class="value" id="ssq-settled">—</div><div class="sub" id="ssq-settled-sub">前100期仅训练</div></div>
+                <div class="stat-card"><div class="label">≥4 红命中</div><div class="value yellow" id="ssq-ge4">—</div><div class="sub" id="ssq-ge4-sub">高阶命中</div></div>
+                <div class="stat-card"><div class="label">≥3 红命中</div><div class="value green" id="ssq-ge3">—</div><div class="sub" id="ssq-ge3-sub">有效命中</div></div>
+                <div class="stat-card"><div class="label">蓝球覆盖</div><div class="value blue" id="ssq-blue">—</div><div class="sub" id="ssq-blue-sub">覆盖命中</div></div>
+                <div class="stat-card"><div class="label">中奖期数</div><div class="value red" id="ssq-prize">—</div><div class="sub" id="ssq-prize-sub">任意奖级</div></div>
+            </div>
+            <div class="prize-breakdown" id="ssq-prize-breakdown"></div>
+        </article>
+
+        <article class="game-overview dlt-overview">
+            <div class="overview-head">
+                <div>
+                    <span class="game-code">DLT / 02</span>
+                    <h3>大乐透</h3>
+                </div>
+                <span class="algo-badge violet">v7 · 双色球策略迁移＋走期验证</span>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="label">历史期数</div><div class="value blue" id="dlt-total">—</div><div class="sub" id="dlt-range">—</div></div>
+                <div class="stat-card"><div class="label">v7 走期样本</div><div class="value" id="dlt-settled">—</div><div class="sub" id="dlt-settled-sub">前100期仅训练</div></div>
+                <div class="stat-card"><div class="label">≥4 前区</div><div class="value yellow" id="dlt-ge4">—</div><div class="sub" id="dlt-ge4-sub">高阶命中</div></div>
+                <div class="stat-card"><div class="label">≥3 前区</div><div class="value green" id="dlt-ge3">—</div><div class="sub" id="dlt-ge3-sub">有效命中</div></div>
+                <div class="stat-card"><div class="label">后区覆盖</div><div class="value blue" id="dlt-blue">—</div><div class="sub" id="dlt-blue-sub">至少命中 1 个</div></div>
+                <div class="stat-card"><div class="label">中奖期数</div><div class="value red" id="dlt-prize">—</div><div class="sub" id="dlt-prize-sub">任意奖级</div></div>
+            </div>
+            <div class="prize-breakdown" id="dlt-prize-breakdown"></div>
+        </article>
+    </section>
+
+    <section class="command-deck">
+        <div class="tabs" role="tablist">
+            <button class="tab active" id="tab-ssq" onclick="switchGame('ssq')"><span>01</span> 双色球</button>
+            <button class="tab" id="tab-dlt" onclick="switchGame('dlt')"><span>02</span> 大乐透</button>
+        </div>
+        <div class="command-actions">
+            <div class="pipeline-state" id="pipeline-stage"><i></i><span>流水线待命</span></div>
+            <button class="btn btn-secondary" id="btn-sync" onclick="syncData()">仅同步数据</button>
+            <button class="btn btn-primary" id="btn-optimize" onclick="startOptimize()">同步 · 自学习 · 生成预测</button>
+        </div>
+    </section>
+
+    <section class="primary-grid">
+        <article class="card prediction-card">
+            <div class="card-title-row">
+                <div><span class="section-kicker">LIVE FORECAST</span><h3>当前预测 · <span id="current-game-name">双色球</span></h3></div>
+                <span class="live-chip">PRODUCTION</span>
+            </div>
+            <div id="single-ticket-content"><div class="loading"><div class="spinner"></div><p>正在读取单注决策层...</p></div></div>
+            <div id="prediction-content"><div class="loading"><div class="spinner"></div><p>正在读取预测矩阵...</p></div></div>
+        </article>
+
+        <article class="card recent-card">
+            <div class="card-title-row">
+                <div><span class="section-kicker">LATEST DRAWS · 50 PERIODS</span><h3>最近 50 期开奖</h3></div>
+            </div>
+            <div class="table-wrap compact-table recent-draws-table">
+                <table><thead><tr><th>期号</th><th>开奖号码</th></tr></thead>
+                    <tbody id="recent-draws-body"><tr><td colspan="2" class="loading"><div class="spinner"></div></td></tr></tbody>
+                </table>
+            </div>
+        </article>
+    </section>
+
+    <section class="card analytics-card">
+        <div class="card-title-row">
+            <div><span class="section-kicker">30-PERIOD SIGNAL WINDOW</span><h3>最近 30 期命中趋势</h3></div>
+            <span class="window-badge">LIVE · 30</span>
+        </div>
+        <div class="diagnostic-panel">
+            <div class="chart-caption"><strong>最近30期未中奖原因审计</strong><span>严格走期重训；每期只读取此前开奖</span></div>
+            <div id="failure-diagnostics"></div>
+        </div>
+        <div class="chart-panel chart-wide">
+            <div class="chart-caption"><strong>红蓝预测与实际命中堆叠</strong><span>淡红/淡蓝=预测未中 · 实红/实蓝=实际命中 · 柱顶=中奖结果</span></div>
+            <div class="chart-container"><canvas id="chart-trend"></canvas></div>
+        </div>
+        <div class="chart-row">
+            <div class="chart-panel"><div class="chart-caption"><strong>奖级分布</strong><span>最近 30 期占比</span></div><div class="chart-container"><canvas id="chart-dist"></canvas></div></div>
+            <div class="chart-panel"><div class="chart-caption"><strong>中奖奖级轨迹</strong><span>奖级随期次变化</span></div><div class="chart-container"><canvas id="chart-cumulative"></canvas></div></div>
+        </div>
+    </section>
+
+    <section class="secondary-grid">
+        <article class="card history-card">
+            <div class="card-title-row"><div><span class="section-kicker">SETTLEMENT LEDGER</span><h3>命中历史台账</h3></div></div>
+            <div class="table-wrap">
+                <table><thead><tr><th>期号</th><th>算法</th><th>实际开奖</th><th>最高前区</th><th>后区命中数</th><th>中奖注</th><th>最佳奖级</th></tr></thead>
+                    <tbody id="history-table-body"><tr><td colspan="7" class="loading"><div class="spinner"></div></td></tr></tbody>
+                </table>
+            </div>
+        </article>
+
+        <aside class="optimize-panel">
+            <div class="card-title-row"><div><span class="section-kicker">AUTO LEARNING CORE</span><h3>自学习运行状态</h3></div></div>
+            <p class="panel-copy" id="learning-description">双色球 v15 用最近50期发现变化、200期阻止短期误切换；大乐透 v7 复用同一套走期候选晋升流程。两种彩票都只按历史实测结果选生产策略，完成后自动锁定下一期预测。</p>
+            <div id="optimize-result"><div class="empty-state"><span>◈</span><p>等待运行生产流水线</p></div></div>
+        </aside>
+    </section>
+</main>
+
+<footer><span>IOI STUDIO / AI LOTTERY QUANT SYSTEM</span><span>www.ioi.studio · 五注高奖模式 · 逐期锁定 · 实盘复盘</span></footer>
+<script src="/static/app.js"></script>
+</body>
+</html>

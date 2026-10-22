@@ -1,0 +1,135 @@
+{
+  "method": {
+    "walk_forward": true,
+    "no_future_data": true,
+    "first_history_issue": "2003001",
+    "first_predicted_issue": "2003002",
+    "last_predicted_issue": "2026079",
+    "periods": 3475,
+    "tickets_per_period": 5,
+    "v11_rule": "generate100, historical secondary rank, buy top5"
+  },
+  "v8": {
+    "periods": 3475,
+    "best_prize_period_counts": {
+      "五等奖": 130,
+      "六等奖": 1016,
+      "四等奖": 10
+    },
+    "winning_ticket_prize_counts": {
+      "五等奖": 130,
+      "六等奖": 1036,
+      "四等奖": 10
+    },
+    "winning_periods": 1156,
+    "winning_period_rate": 0.33266187050359713,
+    "blue_covered": 1104,
+    "blue_coverage_rate": 0.3176978417266187,
+    "red_ge4": 79,
+    "red_ge4_rate": 0.02273381294964029,
+    "red_ge3": 971,
+    "red_ge3_rate": 0.2794244604316547,
+    "average_max_red": 2.264460431654676,
+    "cost": 34750,
+    "fixed_return": 8480,
+    "fixed_roi": 0.24402877697841727,
+    "fixed_net": -26270
+  },
+  "v11_top5": {
+    "periods": 3475,
+    "best_prize_period_counts": {
+      "六等奖": 1012,
+      "五等奖": 129,
+      "四等奖": 6
+    },
+    "winning_ticket_prize_counts": {
+      "六等奖": 1026,
+      "五等奖": 134,
+      "四等奖": 6
+    },
+    "winning_periods": 1147,
+    "winning_period_rate": 0.33007194244604315,
+    "blue_covered": 1093,
+    "blue_coverage_rate": 0.31453237410071944,
+    "red_ge4": 76,
+    "red_ge4_rate": 0.021870503597122302,
+    "red_ge3": 900,
+    "red_ge3_rate": 0.2589928057553957,
+    "average_max_red": 2.115107913669065,
+    "cost": 34750,
+    "fixed_return": 7670,
+    "fixed_roi": 0.22071942446043166,
+    "fixed_net": -27080
+  },
+  "paired_winning_test": {
+    "v11_only": 779,
+    "v8_only": 788,
+    "two_sided_p": 0.8398505521970875
+  },
+  "time_blocks": [
+    {
+      "issue_from": "2003002",
+      "issue_to": "2005137",
+      "v8_winning_rate": 0.3285302593659942,
+      "v11_winning_rate": 0.34293948126801155
+    },
+    {
+      "issue_from": "2005138",
+      "issue_to": "2008025",
+      "v8_winning_rate": 0.2959770114942529,
+      "v11_winning_rate": 0.27873563218390807
+    },
+    {
+      "issue_from": "2008026",
+      "issue_to": "2010064",
+      "v8_winning_rate": 0.3515850144092219,
+      "v11_winning_rate": 0.33429394812680113
+    },
+    {
+      "issue_from": "2010065",
+      "issue_to": "2012106",
+      "v8_winning_rate": 0.32471264367816094,
+      "v11_winning_rate": 0.34195402298850575
+    },
+    {
+      "issue_from": "2012107",
+      "issue_to": "2014145",
+      "v8_winning_rate": 0.3314121037463977,
+      "v11_winning_rate": 0.3631123919308357
+    },
+    {
+      "issue_from": "2014146",
+      "issue_to": "2017034",
+      "v8_winning_rate": 0.32471264367816094,
+      "v11_winning_rate": 0.3333333333333333
+    },
+    {
+      "issue_from": "2017035",
+      "issue_to": "2019074",
+      "v8_winning_rate": 0.3573487031700288,
+      "v11_winning_rate": 0.3400576368876081
+    },
+    {
+      "issue_from": "2019075",
+      "issue_to": "2021137",
+      "v8_winning_rate": 0.3333333333333333,
+      "v11_winning_rate": 0.34195402298850575
+    },
+    {
+      "issue_from": "2021138",
+      "issue_to": "2024033",
+      "v8_winning_rate": 0.34293948126801155,
+      "v11_winning_rate": 0.3256484149855908
+    },
+    {
+      "issue_from": "2024034",
+      "issue_to": "2026079",
+      "v8_winning_rate": 0.33620689655172414,
+      "v11_winning_rate": 0.2988505747126437
+    }
+  ],
+  "theory": {
+    "both_third_or_above_probability": 5.0222649986276236e-05,
+    "both_third_or_above_odds_one_in": 19911.334831460674
+  }
+}

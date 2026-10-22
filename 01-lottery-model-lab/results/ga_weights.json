@@ -1,0 +1,122 @@
+{
+  "_meta": {
+    "model_start_dates": {
+      "ssq": null,
+      "dlt": "2014-01-01"
+    },
+    "history_policy": "pre-cutoff draws remain available for audit but are excluded from model-state calculations",
+    "p1_parameter_policy": "Bayesian prior/window/half-life selected by nested rolling Brier loss inside the first 60% formation region"
+  },
+  "ssq_front": {
+    "validation_fitness": 1.199178724535432,
+    "model_parameters": {
+      "bayesian_all": {
+        "prior_strength": 96.0
+      },
+      "bayesian_recent_120": {
+        "prior_strength": 48.0,
+        "window": 240
+      },
+      "exp_decay_60": {
+        "prior_strength": 48.0,
+        "half_life": 120.0
+      }
+    },
+    "weights": {
+      "bayesian_all": 0.33092846780619556,
+      "bayesian_recent_120": 0.03901632687982715,
+      "exp_decay_60": 0.2449151144439351,
+      "hot_cold": 0.012799251705383426,
+      "overdue_gap": 0.03817087678017594,
+      "markov_transition": 0.13611708216075347,
+      "cooccurrence_network": 0.06885189053137569,
+      "chaos_logistic": 0.03952882904605509,
+      "meihua_yishu": 0.028346832681041614,
+      "xiaoliu_ren": 0.06132532796525694
+    }
+  },
+  "ssq_back": {
+    "validation_fitness": 0.08895877038060275,
+    "model_parameters": {
+      "bayesian_all": {
+        "prior_strength": 96.0
+      },
+      "bayesian_recent_120": {
+        "prior_strength": 48.0,
+        "window": 240
+      },
+      "exp_decay_60": {
+        "prior_strength": 48.0,
+        "half_life": 120.0
+      }
+    },
+    "weights": {
+      "bayesian_all": 0.0974972627660074,
+      "bayesian_recent_120": 0.27830840209637253,
+      "exp_decay_60": 0.4401194914712211,
+      "hot_cold": 0.04714947667142855,
+      "overdue_gap": 0.011216020099119277,
+      "markov_transition": 0.00944728505843989,
+      "cooccurrence_network": 0.010940421265073339,
+      "chaos_logistic": 0.0012724678766015776,
+      "meihua_yishu": 0.019083477566094884,
+      "xiaoliu_ren": 0.08496569512964157
+    }
+  },
+  "dlt_front": {
+    "validation_fitness": 0.8020364819132955,
+    "model_parameters": {
+      "bayesian_all": {
+        "prior_strength": 96.0
+      },
+      "bayesian_recent_120": {
+        "prior_strength": 48.0,
+        "window": 60
+      },
+      "exp_decay_60": {
+        "prior_strength": 48.0,
+        "half_life": 120.0
+      }
+    },
+    "weights": {
+      "bayesian_all": 0.013352143281682834,
+      "bayesian_recent_120": 0.2488892654873291,
+      "exp_decay_60": 0.5074282664242383,
+      "hot_cold": 0.0740389290552113,
+      "overdue_gap": 0.0070954629616522685,
+      "markov_transition": 0.012992184650060955,
+      "cooccurrence_network": 0.008704266785490047,
+      "chaos_logistic": 0.007018639747806287,
+      "meihua_yishu": 0.06878880696108214,
+      "xiaoliu_ren": 0.05169203464544676
+    }
+  },
+  "dlt_back": {
+    "validation_fitness": 0.4156644900504983,
+    "model_parameters": {
+      "bayesian_all": {
+        "prior_strength": 96.0
+      },
+      "bayesian_recent_120": {
+        "prior_strength": 48.0,
+        "window": 120
+      },
+      "exp_decay_60": {
+        "prior_strength": 48.0,
+        "half_life": 120.0
+      }
+    },
+    "weights": {
+      "bayesian_all": 0.27670109268202814,
+      "bayesian_recent_120": 0.013146086513747199,
+      "exp_decay_60": 0.0521491456017129,
+      "hot_cold": 0.16809205272091893,
+      "overdue_gap": 0.10364757693180504,
+      "markov_transition": 0.00018318014431035508,
+      "cooccurrence_network": 0.24589865214497963,
+      "chaos_logistic": 0.013670485834582722,
+      "meihua_yishu": 0.08813487714368756,
+      "xiaoliu_ren": 0.03837685028222738
+    }
+  }
+}

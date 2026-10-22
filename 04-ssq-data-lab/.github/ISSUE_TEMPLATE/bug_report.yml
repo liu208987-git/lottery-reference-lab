@@ -1,0 +1,31 @@
+name: Bug report
+description: 报告一个 bug
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤
+      description: 尽量详细，让我们能在本地重现
+      placeholder: |
+        1. 打开 /
+        2. 点击「号码生成器」tab
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为 / 实际行为
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: 环境
+      placeholder: "Chrome 124 / Windows 11"
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息 / 截图

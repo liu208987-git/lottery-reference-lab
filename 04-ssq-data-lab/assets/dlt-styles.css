@@ -1,0 +1,578 @@
+/* =========================================================
+   DLT Data Lab · Atelier Stat (DLT skin)
+   叠在 styles.css 之上，仅声明大乐透专属 token / 球 / 装饰。
+   v3 · 2026-05 · 与主皮肤同源（laboratory editorial）
+   ========================================================= */
+
+/* ─────────────────────────────────────────────
+ * §A — DLT Token: Jade × Plum
+ * ───────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --dlt-front: #5dd9b8;          /* 翡翠绿（前区） */
+  --dlt-front-2: #8ce8d0;
+  --dlt-front-deep: #1f8868;
+  --dlt-back: #d6a8ff;            /* 紫罗兰（后区） */
+  --dlt-back-2: #ebcaff;
+  --dlt-back-deep: #7c3fc4;
+  --dlt-aurora-1: rgba(93, 217, 184, 0.13);
+  --dlt-aurora-2: rgba(214, 168, 255, 0.10);
+  --dlt-aurora-3: rgba(255, 206, 106, 0.07);
+}
+
+[data-theme="light"] {
+  --dlt-front: #1f8868;
+  --dlt-front-2: #2fa982;
+  --dlt-front-deep: #105f47;
+  --dlt-back: #6e3aa8;
+  --dlt-back-2: #8c5dc4;
+  --dlt-back-deep: #4a2480;
+  --dlt-aurora-1: rgba(31, 136, 104, 0.10);
+  --dlt-aurora-2: rgba(110, 58, 168, 0.10);
+  --dlt-aurora-3: rgba(184, 134, 42, 0.06);
+}
+
+/* —— DLT 整体背景换成绿/紫/金 —— */
+body[data-lottery="dlt"] {
+  background-image:
+    radial-gradient(900px 520px at 16% 4%, var(--dlt-aurora-1), transparent 65%),
+    radial-gradient(820px 600px at 88% 14%, var(--dlt-aurora-2), transparent 60%),
+    radial-gradient(780px 600px at 72% 92%, var(--dlt-aurora-3), transparent 60%),
+    linear-gradient(180deg, var(--bg-0), var(--bg-1) 55%, var(--bg-0));
+}
+
+/* ─────────────────────────────────────────────
+ * §B — DLT Ball: front (jade) / back (plum)
+ * ───────────────────────────────────────────── */
+.ball.front {
+  background:
+    radial-gradient(11px 11px at 32% 26%, rgba(255, 255, 255, 0.65), transparent 65%),
+    linear-gradient(160deg,
+      var(--dlt-front-2) 0%,
+      var(--dlt-front) 55%,
+      var(--dlt-front-deep) 100%);
+}
+.ball.back {
+  background:
+    radial-gradient(11px 11px at 32% 26%, rgba(255, 255, 255, 0.65), transparent 65%),
+    linear-gradient(160deg,
+      var(--dlt-back-2) 0%,
+      var(--dlt-back) 55%,
+      var(--dlt-back-deep) 100%);
+}
+
+/* —— 表格内紧凑号码胶囊 —— */
+.front-num {
+  display: inline-block;
+  min-width: 24px;
+  text-align: center;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: color-mix(in oklab, var(--dlt-front) 18%, transparent);
+  border: 1px solid color-mix(in oklab, var(--dlt-front) 32%, transparent);
+  color: var(--dlt-front);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.back-num {
+  display: inline-block;
+  min-width: 24px;
+  text-align: center;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: color-mix(in oklab, var(--dlt-back) 18%, transparent);
+  border: 1px solid color-mix(in oklab, var(--dlt-back) 32%, transparent);
+  color: var(--dlt-back);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─────────────────────────────────────────────
+ * §C — DLT brand mark · 替换为绿/紫
+ * ───────────────────────────────────────────── */
+body[data-lottery="dlt"] .mark .dot.red {
+  background:
+    radial-gradient(6px 6px at 30% 28%, rgba(255, 255, 255, 0.65), transparent 60%),
+    linear-gradient(180deg, var(--dlt-front-2), var(--dlt-front));
+}
+body[data-lottery="dlt"] .mark .dot.blue {
+  background:
+    radial-gradient(6px 6px at 30% 28%, rgba(255, 255, 255, 0.65), transparent 60%),
+    linear-gradient(180deg, var(--dlt-back-2), var(--dlt-back));
+}
+
+/* ─────────────────────────────────────────────
+ * §D — Lottery switcher (双色球 ↔ 大乐透)
+ * ───────────────────────────────────────────── */
+.lottery-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  margin-right: var(--space-3);
+}
+.lottery-switcher a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all var(--t-fast) var(--ease-out);
+}
+.lottery-switcher a:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+.lottery-switcher a.is-active {
+  color: #0a0c10;
+  background: linear-gradient(180deg, var(--acid-2), var(--acid));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+[data-theme="light"] .lottery-switcher a.is-active { color: #fff; }
+
+/* DLT 页：active tab / switcher / primary 全部染翡翠绿 */
+body[data-lottery="dlt"] .tab.is-active {
+  background: linear-gradient(180deg, var(--dlt-front-2), var(--dlt-front));
+  color: #0a0c10;
+  box-shadow:
+    0 4px 14px color-mix(in oklab, var(--dlt-front) 30%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+[data-theme="light"] body[data-lottery="dlt"] .tab.is-active { color: #fff; }
+
+body[data-lottery="dlt"] .lottery-switcher a.is-active {
+  background: linear-gradient(180deg, var(--dlt-front-2), var(--dlt-front));
+}
+[data-theme="light"] body[data-lottery="dlt"] .lottery-switcher a.is-active { color: #fff; }
+
+body[data-lottery="dlt"] .btn.primary {
+  background: linear-gradient(180deg, var(--dlt-front-2), var(--dlt-front));
+  border-color: color-mix(in oklab, var(--dlt-front) 50%, transparent);
+  box-shadow:
+    0 4px 14px color-mix(in oklab, var(--dlt-front) 28%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+body[data-lottery="dlt"] .btn.primary:hover {
+  filter: brightness(1.06);
+  box-shadow:
+    0 6px 18px color-mix(in oklab, var(--dlt-front) 36%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* —— DLT 卡片标题 dot 染翡翠 —— */
+body[data-lottery="dlt"] .card-title::before {
+  background: var(--dlt-front);
+  box-shadow: 0 0 12px color-mix(in oklab, var(--dlt-front) 60%, transparent);
+}
+body[data-lottery="dlt"] .hero-eyebrow .pulse {
+  background: var(--dlt-front);
+}
+body[data-lottery="dlt"] .metric::before {
+  background: var(--dlt-back);  /* 紫色对比，避免和 acid 冲突 */
+}
+
+/* DLT 走势 chart 颜色 */
+body[data-lottery="dlt"] .chart-blue {
+  /* 实际颜色由 renderDltBars 内部决定 */
+}
+
+/* DLT ratio bar 染翡翠 */
+body[data-lottery="dlt"] .ratio-bar i {
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--dlt-front) 90%, transparent),
+    color-mix(in oklab, var(--dlt-back) 75%, transparent));
+}
+
+/* DLT ticket 侧条染翡翠/紫 */
+body[data-lottery="dlt"] .ticket::before {
+  background: linear-gradient(180deg, var(--dlt-front), var(--dlt-back));
+}
+
+/* DLT panel-header 右下 dot */
+body[data-lottery="dlt"] .panel-header::after {
+  background: var(--dlt-back);
+}
+
+/* DLT hint 起始小线段 */
+body[data-lottery="dlt"] .hint::before {
+  background: var(--dlt-back);
+}
+
+/* DLT countdown */
+body[data-lottery="dlt"] .countdown {
+  border-color: color-mix(in oklab, var(--dlt-front) 22%, var(--stroke));
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--dlt-front) 6%, var(--surface-2)),
+    color-mix(in oklab, var(--dlt-back) 4%, var(--surface)));
+}
+body[data-lottery="dlt"] .countdown .card-title {
+  color: color-mix(in oklab, var(--dlt-front) 80%, var(--text));
+}
+body[data-lottery="dlt"] .countdown .card-title::before {
+  background: var(--dlt-front);
+  box-shadow: 0 0 12px color-mix(in oklab, var(--dlt-front) 80%, transparent);
+}
+body[data-lottery="dlt"] .cd-cell::after {
+  background: var(--dlt-back);
+}
+
+/* DLT callout 染翡翠 */
+body[data-lottery="dlt"] .callout {
+  border-color: color-mix(in oklab, var(--dlt-front) 32%, var(--stroke));
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--dlt-front) 12%, transparent),
+    color-mix(in oklab, var(--dlt-front) 4%, transparent));
+}
+body[data-lottery="dlt"] .callout::before {
+  background: var(--dlt-front);
+}
+body[data-lottery="dlt"] .callout-title {
+  color: color-mix(in oklab, var(--dlt-front) 90%, var(--text));
+}
+body[data-lottery="dlt"] .callout-title::before {
+  background: var(--dlt-front);
+}
+
+/* DLT ::selection */
+body[data-lottery="dlt"] ::selection {
+  background: var(--dlt-front);
+  color: #0a0c10;
+}
+
+/* DLT 票面分隔："+"号染紫 */
+body[data-lottery="dlt"] .ball.plus::before {
+  color: var(--muted-2);
+}
+
+/* —— 号码体检：前区/后区分组标签 —— */
+.dlt-zone-group {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+.dlt-zone-group .zone-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  margin-right: 6px;
+  align-self: center;
+}
+
+/* ─────────────────────────────────────────────
+ * §E — Backtest workbench
+ * ───────────────────────────────────────────── */
+.backtest-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.bt-kpi {
+  min-height: 78px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--surface-2) 72%, transparent);
+  border: 1px solid color-mix(in oklab, var(--dlt-front) 18%, var(--stroke));
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color var(--t-fast) var(--ease-out);
+}
+.bt-kpi:hover {
+  border-color: color-mix(in oklab, var(--dlt-front) 32%, var(--stroke));
+}
+.bt-kpi span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-family: var(--mono);
+  text-transform: uppercase;
+}
+.bt-kpi strong {
+  color: var(--text);
+  font-size: 18px;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.bt-matrix {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 6px;
+}
+.bt-matrix th {
+  color: var(--muted-2);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.bt-matrix td {
+  min-width: 54px;
+  padding: 10px 8px;
+  border-radius: 8px;
+  text-align: center;
+  background: color-mix(in oklab, var(--surface-2) 78%, transparent);
+  border: 1px solid var(--stroke);
+}
+.bt-matrix td.is-hot {
+  border-color: color-mix(in oklab, var(--dlt-front) 44%, var(--stroke));
+  background: color-mix(in oklab, var(--dlt-front) 14%, var(--surface-2));
+}
+.bt-matrix td strong,
+.bt-matrix td span {
+  display: block;
+}
+.bt-matrix td strong {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.bt-matrix td span {
+  margin-top: 4px;
+  color: var(--muted-2);
+  font-size: 10px;
+}
+
+.bt-best-list {
+  display: grid;
+  gap: 8px;
+}
+.bt-best-row {
+  display: grid;
+  grid-template-columns: 62px 54px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  background: color-mix(in oklab, var(--surface-2) 72%, transparent);
+  border: 1px solid var(--stroke);
+}
+.bt-best-row .ticket {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  .backtest-kpis {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .bt-kpi {
+    padding: 10px;
+    min-height: 64px;
+  }
+  .bt-kpi span {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+  .bt-kpi strong {
+    font-size: 15px;
+  }
+  .bt-matrix { border-spacing: 4px; }
+  .bt-matrix td {
+    min-width: 0;
+    padding: 8px 4px;
+  }
+  .bt-best-row {
+    grid-template-columns: 56px 48px minmax(0, 1fr);
+  }
+}
+@media (max-width: 460px) {
+  .backtest-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .bt-kpi {
+    padding: 8px;
+    min-height: 56px;
+  }
+  .bt-kpi strong { font-size: 13.5px; }
+  .bt-matrix { font-size: 11px; }
+  .bt-matrix td {
+    padding: 6px 4px;
+    min-width: 44px;
+  }
+  .bt-matrix td span { font-size: 9px; }
+  .bt-best-row {
+    grid-template-columns: 56px 44px minmax(0, 1fr);
+    padding: 8px;
+    gap: 6px;
+  }
+  .bt-best-row .ticket { font-size: 10.5px; }
+}
+
+/* ─────────────────────────────────────────────
+ * §F — Health checkup (号码深度体检)
+ * ───────────────────────────────────────────── */
+.health-summary {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 12px;
+  background: color-mix(in oklab, var(--surface-2) 60%, transparent);
+  border: 1px solid var(--stroke);
+}
+.health-score-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.health-score-num {
+  font-family: var(--mono);
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.health-score-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.health-score-label em {
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 400;
+  font-family: var(--mono);
+  letter-spacing: 0.08em;
+}
+.health-advice {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  white-space: pre-wrap;
+}
+.health-advice strong { color: var(--text); }
+
+.dim-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.dim-card {
+  padding: 12px;
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--surface-2) 70%, transparent);
+  border: 1px solid var(--stroke);
+}
+.dim-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.dim-icon { font-size: 16px; }
+.dim-name {
+  font-size: 12px;
+  color: var(--muted);
+  flex: 1;
+}
+.dim-score {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--mono);
+}
+.dim-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+.dim-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s var(--ease-out);
+}
+.dim-reasons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+  color: var(--muted-2);
+  line-height: 1.5;
+}
+.dim-reasons li {
+  display: list-item;
+  padding-left: 0;
+}
+
+@media (max-width: 760px) {
+  .health-summary {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .health-score-wrap {
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+  }
+  .health-score-num { font-size: 44px; }
+  .dim-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 460px) {
+  .health-summary { padding: 12px; }
+  .health-score-num { font-size: 36px; }
+  .health-score-label {
+    font-size: 12px;
+    gap: 2px;
+  }
+  .dim-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .dim-card { padding: 10px; }
+  .dim-icon { font-size: 14px; }
+  .dim-name { font-size: 11.5px; }
+  .dim-score { font-size: 14px; }
+  .dim-reasons { font-size: 10.5px; }
+}
+
+/* ─────────────────────────────────────────────
+ * §G — DLT-specific responsive tweaks
+ * ───────────────────────────────────────────── */
+/* DLT 12 个 tab，1280 以下需要换行/横滚 */
+@media (max-width: 1280px) {
+  body[data-lottery="dlt"] .tabs {
+    grid-column: 1 / -1;
+    order: 3;
+    margin-top: 4px;
+  }
+  body[data-lottery="dlt"] .topbar {
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "generated_at": "2026-07-14T06:47:19",
+  "method": {
+    "walk_forward": true,
+    "no_future_data": true,
+    "periods": 3176,
+    "issue_from": "2005090",
+    "issue_to": "2026079",
+    "seed_replicates": 8
+  },
+  "theory": {
+    "single_ticket_third_plus_probability": 1.0044529997255248e-05,
+    "five_ticket_upper_probability": 5.0222649986276236e-05,
+    "five_ticket_odds_one_in": 19911.334831460674,
+    "ten_ticket_upper_probability": 0.00010044529997255247,
+    "ten_ticket_odds_one_in": 9955.667415730337,
+    "ten_ticket_one_year_probability_104_draws": 0.010392457210219752,
+    "ten_ticket_expected_wait_draws": 9955.667415730337,
+    "ten_ticket_expected_wait_years_at_104_draws": 95.72757130509939,
+    "five_to_ten_lift": 2.0,
+    "fixed_prize_expectation": {
+      "per_ticket_return": 0.4863104342126172,
+      "roi": 0.2431552171063086
+    }
+  },
+  "primary_results": {
+    "v8_5": {
+      "periods": 3176,
+      "third_plus": 0.0,
+      "fourth_plus": 0.0031486146095717885,
+      "any_prize": 0.3318639798488665,
+      "blue_covered": 0.3170654911838791,
+      "red_ge4": 0.02204030226700252,
+      "red_ge3": 0.2739294710327456,
+      "counts": {
+        "third_plus": 0,
+        "fourth_plus": 10,
+        "any_prize": 1054,
+        "blue_covered": 1007,
+        "red_ge4": 70,
+        "red_ge3": 870
+      },
+      "average_max_red": 2.258501259445844,
+      "average_winning_tickets": 0.33690176322418136,
+      "prize_counts": {
+        "六等奖": 946,
+        "五等奖": 114,
+        "四等奖": 10
+      },
+      "cost": 31760,
+      "fixed_return": 7870,
+      "fixed_roi": 0.24779596977329973,
+      "net": -23890
+    },
+    "uniform_10": {
+      "periods": 3176,
+      "third_plus": 0.0,
+      "fourth_plus": 0.005667506297229219,
+      "any_prize": 0.5018891687657431,
+      "blue_covered": 0.47732997481108314,
+      "red_ge4": 0.05195214105793451,
+      "red_ge3": 0.4493073047858942,
+      "counts": {
+        "third_plus": 0,
+        "fourth_plus": 18,
+        "any_prize": 1594,
+        "blue_covered": 1516,
+        "red_ge4": 165,
+        "red_ge3": 1427
+      },
+      "average_max_red": 2.475125944584383,
+      "average_winning_tickets": 0.6741183879093199,
+      "prize_counts": {
+        "六等奖": 1869,
+        "五等奖": 254,
+        "四等奖": 18
+      },
+      "cost": 63520,
+      "fixed_return": 15485,
+      "fixed_roi": 0.2437814861460957,
+      "net": -48035
+    },
+    "v10_10": {
+      "periods": 3176,
+      "third_plus": 0.0,
+      "fourth_plus": 0.005037783375314861,
+      "any_prize": 0.6501889168765743,
+      "blue_covered": 0.6294080604534005,
+      "red_ge4": 0.05163727959697733,
+      "red_ge3": 0.4820528967254408,
+      "counts": {
+        "third_plus": 0,
+        "fourth_plus": 16,
+        "any_prize": 2065,
+        "blue_covered": 1999,
+        "red_ge4": 164,
+        "red_ge3": 1531
+      },
+      "average_max_red": 2.519521410579345,
+      "average_winning_tickets": 0.6769521410579346,
+      "prize_counts": {
+        "六等奖": 1872,
+        "五等奖": 262,
+        "四等奖": 16
+      },
+      "cost": 63520,
+      "fixed_return": 15180,
+      "fixed_roi": 0.23897984886649873,
+      "net": -48340
+    }
+  },
+  "seed_robustness": {
+    "replicates": [
+      {
+        "replicate": 0,
+        "third_plus_v10_minus_uniform": 0.0,
+        "any_prize_v10_minus_uniform": 0.13633501259445846,
+        "fixed_roi_v10_minus_uniform": -0.023772040302266984
+      },
+      {
+        "replicate": 1,
+        "third_plus_v10_minus_uniform": 0.0,
+        "any_prize_v10_minus_uniform": 0.12437027707808568,
+        "fixed_roi_v10_minus_uniform": -0.02503148614609571
+      },
+      {
+        "replicate": 2,
+        "third_plus_v10_minus_uniform": 0.0,
+        "any_prize_v10_minus_uniform": 0.12625944584382875,
+        "fixed_roi_v10_minus_uniform": -0.021174433249370267
+      },
+      {
+        "replicate": 3,
+        "third_plus_v10_minus_uniform": 0.0,
+        "any_prize_v10_minus_uniform": 0.15459697732997474,
+        "fixed_roi_v10_minus_uniform": 0.01731738035264485
+      },
+      {
+        "replicate": 4,
+        "third_plus_v10_minus_uniform": -0.00031486146095717883,
+        "any_prize_v10_minus_uniform": 0.14294710327455917,
+        "fixed_roi_v10_minus_uniform": -0.05187342569269521
+      },
+      {
+        "replicate": 5,
+        "third_plus_v10_minus_uniform": 0.00031486146095717883,
+        "any_prize_v10_minus_uniform": 0.16120906801007556,
+        "fixed_roi_v10_minus_uniform": 0.03817695214105793
+      },
+      {
+        "replicate": 6,
+        "third_plus_v10_minus_uniform": 0.00031486146095717883,
+        "any_prize_v10_minus_uniform": 0.12437027707808568,
+        "fixed_roi_v10_minus_uniform": 0.03077770780856423
+      },
+      {
+        "replicate": 7,
+        "third_plus_v10_minus_uniform": 0.0,
+        "any_prize_v10_minus_uniform": 0.15837531486146095,
+        "fixed_roi_v10_minus_uniform": 0.0033847607052896744
+      }
+    ],
+    "mean_any_prize_v10_minus_uniform": 0.14105793450881612,
+    "mean_fixed_roi_v10_minus_uniform": -0.004024323047858935
+  },
+  "current_v10": {
+    "target_issue": "2026080",
+    "tickets": [
+      [
+        [
+          2,
+          3,
+          22,
+          23,
+          25,
+          32
+        ],
+        [
+          8
+        ]
+      ],
+      [
+        [
+          2,
+          14,
+          16,
+          21,
+          25,
+          30
+        ],
+        [
+          16
+        ]
+      ],
+      [
+        [
+          2,
+          7,
+          10,
+          24,
+          25,
+          31
+        ],
+        [
+          4
+        ]
+      ],
+      [
+        [
+          7,
+          16,
+          20,
+          22,
+          26,
+          33
+        ],
+        [
+          1
+        ]
+      ],
+      [
+        [
+          8,
+          16,
+          23,
+          26,
+          28,
+          29
+        ],
+        [
+          6
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          19,
+          20,
+          30
+        ],
+        [
+          9
+        ]
+      ],
+      [
+        [
+          2,
+          4,
+          7,
+          9,
+          11,
+          21
+        ],
+        [
+          13
+        ]
+      ],
+      [
+        [
+          3,
+          5,
+          6,
+          9,
+          30,
+          31
+        ],
+        [
+          15
+        ]
+      ],
+      [
+        [
+          1,
+          6,
+          8,
+          12,
+          20,
+          31
+        ],
+        [
+          3
+        ]
+      ],
+      [
+        [
+          3,
+          13,
+          17,
+          18,
+          23,
+          26
+        ],
+        [
+          12
+        ]
+      ]
+    ],
+    "metadata": {
+      "strategy": "third_prize_union_max_v10",
+      "ticket_count": 10,
+      "candidate_portfolios": 256,
+      "accepted_portfolios": 256,
+      "red_coverage": 32,
+      "blue_coverage": 10,
+      "max_red_overlap": 2,
+      "favorable_outcomes": 1780,
+      "theoretical_upper_bound": 1780,
+      "upper_bound_achieved": true,
+      "third_or_above_probability": 0.00010044529997255247,
+      "third_or_above_odds_one_in": 9955.667415730337
+    }
+  },
+  "conclusion": "v10达到10注三等奖以上组合覆盖的数学上限，但10注概率仍只有约1/9956；历史样本不足以用三等奖次数区分算法，且增加注数不会改善单注期望回报率。"
+}

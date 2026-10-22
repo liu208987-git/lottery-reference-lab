@@ -1,0 +1,170 @@
+{
+  "game": "ssq",
+  "trained_at": "2026-07-12T21:44:02",
+  "trained_through": "2026079",
+  "sample_size": 2037,
+  "red": {
+    "selected_model": "uniform",
+    "gate_passed": false,
+    "reason": "没有候选信号通过多重检验和稳定性门槛，回退等概率",
+    "best_candidate": {
+      "model": "bayes_frequency",
+      "brier_improvement": -2.0485211968189753e-05,
+      "relative_improvement": -0.0001377061471194978,
+      "corrected_p": 1.0,
+      "stable_blocks": 3,
+      "validation_periods": 200
+    },
+    "candidates": [
+      {
+        "model": "bayes_frequency",
+        "brier_improvement": -2.0485211968189753e-05,
+        "relative_improvement": -0.0001377061471194978,
+        "corrected_p": 1.0,
+        "stable_blocks": 3,
+        "validation_periods": 200
+      },
+      {
+        "model": "ewma_hot_10",
+        "brier_improvement": -2.790438671925091e-05,
+        "relative_improvement": -0.00018757948850163113,
+        "corrected_p": 1.0,
+        "stable_blocks": 1,
+        "validation_periods": 200
+      },
+      {
+        "model": "markov_hit_state",
+        "brier_improvement": -9.716826889609718e-05,
+        "relative_improvement": -0.0006531866964682088,
+        "corrected_p": 1.0,
+        "stable_blocks": 2,
+        "validation_periods": 200
+      },
+      {
+        "model": "ewma_crossover_10_80",
+        "brier_improvement": -0.0001588301417830011,
+        "relative_improvement": -0.0010676915086523962,
+        "corrected_p": 1.0,
+        "stable_blocks": 0,
+        "validation_periods": 200
+      },
+      {
+        "model": "ewma_hot_25",
+        "brier_improvement": -0.00029804401487417906,
+        "relative_improvement": -0.002003518099987537,
+        "corrected_p": 1.0,
+        "stable_blocks": 1,
+        "validation_periods": 200
+      },
+      {
+        "model": "ewma_hot_50",
+        "brier_improvement": -0.0003270910267748198,
+        "relative_improvement": -0.002198778568875177,
+        "corrected_p": 1.0,
+        "stable_blocks": 1,
+        "validation_periods": 200
+      },
+      {
+        "model": "ewma_mean_reversion_25",
+        "brier_improvement": -0.00041966565967609435,
+        "relative_improvement": -0.00282108582337819,
+        "corrected_p": 1.0,
+        "stable_blocks": 0,
+        "validation_periods": 200
+      },
+      {
+        "model": "gap_reversion",
+        "brier_improvement": -0.0007858988649515536,
+        "relative_improvement": -0.0052829868143965545,
+        "corrected_p": 1.0,
+        "stable_blocks": 0,
+        "validation_periods": 200
+      }
+    ],
+    "validation_start": 1837,
+    "validation_periods": 200,
+    "training_window": 1000
+  },
+  "blue": {
+    "selected_model": "uniform",
+    "gate_passed": false,
+    "reason": "没有候选信号通过多重检验和稳定性门槛，回退等概率",
+    "best_candidate": {
+      "model": "bayes_frequency",
+      "brier_improvement": -2.256163194444393e-05,
+      "relative_improvement": -0.0003850518518518431,
+      "corrected_p": 1.0,
+      "stable_blocks": 2,
+      "validation_periods": 200
+    },
+    "candidates": [
+      {
+        "model": "bayes_frequency",
+        "brier_improvement": -2.256163194444393e-05,
+        "relative_improvement": -0.0003850518518518431,
+        "corrected_p": 1.0,
+        "stable_blocks": 2,
+        "validation_periods": 200
+      },
+      {
+        "model": "markov_hit_state",
+        "brier_improvement": -3.416627499610532e-05,
+        "relative_improvement": -0.0005831044266001974,
+        "corrected_p": 1.0,
+        "stable_blocks": 2,
+        "validation_periods": 200
+      },
+      {
+        "model": "gap_reversion",
+        "brier_improvement": -4.045841819357375e-05,
+        "relative_improvement": -0.0006904903371703253,
+        "corrected_p": 1.0,
+        "stable_blocks": 1,
+        "validation_periods": 200
+      },
+      {
+        "model": "ewma_mean_reversion_25",
+        "brier_improvement": -8.250609873859776e-05,
+        "relative_improvement": -0.0014081040851387351,
+        "corrected_p": 1.0,
+        "stable_blocks": 1,
+        "validation_periods": 200
+      },
+      {
+        "model": "ewma_hot_10",
+        "brier_improvement": -0.00011945228405862404,
+        "relative_improvement": -0.002038652314600517,
+        "corrected_p": 1.0,
+        "stable_blocks": 0,
+        "validation_periods": 200
+      },
+      {
+        "model": "ewma_crossover_10_80",
+        "brier_improvement": -0.00017248610979636716,
+        "relative_improvement": -0.0029437629405246663,
+        "corrected_p": 1.0,
+        "stable_blocks": 0,
+        "validation_periods": 200
+      },
+      {
+        "model": "ewma_hot_25",
+        "brier_improvement": -0.00018783015594604505,
+        "relative_improvement": -0.003205634661479169,
+        "corrected_p": 1.0,
+        "stable_blocks": 0,
+        "validation_periods": 200
+      },
+      {
+        "model": "ewma_hot_50",
+        "brier_improvement": -0.00021179757019170392,
+        "relative_improvement": -0.0036146785312717467,
+        "corrected_p": 1.0,
+        "stable_blocks": 0,
+        "validation_periods": 200
+      }
+    ],
+    "validation_start": 1837,
+    "validation_periods": 200,
+    "training_window": 1000
+  }
+}

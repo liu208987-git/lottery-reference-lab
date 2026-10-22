@@ -1,0 +1,1270 @@
+{
+  "method": {
+    "walk_forward": true,
+    "ticket_count": 5,
+    "periods_requested": 500,
+    "seed_replicates": 64,
+    "current_candidate_count": 1000,
+    "notes": [
+      "每一期只用此前数据",
+      "当前算法与 v8 使用同一期号派生的确定性种子",
+      "v8 额外报告多随机种子稳定性和公平开奖精确概率"
+    ]
+  },
+  "games": {
+    "ssq": {
+      "name": "双色球",
+      "periods": 500,
+      "range": [
+        "2023033",
+        "2026079"
+      ],
+      "data_total": 3476,
+      "current_config": {
+        "window": 200,
+        "alpha": 0.1,
+        "candidate_count": 1000,
+        "quant_scores": null
+      },
+      "algorithms": {
+        "current": {
+          "red_ge_target": 0.018,
+          "red_ge4": 0.018,
+          "red_ge3": 0.296,
+          "full_red": 0.0,
+          "blue_covered": 0.318,
+          "full_blue_covered": 0.318,
+          "any_prize": 0.328,
+          "high_prize": 0.002,
+          "max_red": 2.122,
+          "union_red": 3.768,
+          "winning_tickets": 0.334,
+          "red_coverage": 20.7,
+          "blue_coverage": 5.0,
+          "max_red_overlap": 2.688,
+          "max_blue_overlap": 0.0,
+          "periods": 500,
+          "rate_ci95": {
+            "red_ge_target": [
+              0.009498193296197237,
+              0.033851670908738724
+            ],
+            "red_ge4": [
+              0.009498193296197237,
+              0.033851670908738724
+            ],
+            "red_ge3": [
+              0.25766539523060294,
+              0.3374453356777103
+            ],
+            "full_red": [
+              0.0,
+              0.007624340461551825
+            ],
+            "blue_covered": [
+              0.2787002611764228,
+              0.36007499875158216
+            ],
+            "full_blue_covered": [
+              0.2787002611764228,
+              0.36007499875158216
+            ],
+            "any_prize": [
+              0.2882961898405908,
+              0.37032658327818313
+            ],
+            "high_prize": [
+              0.0003531363945592893,
+              0.01124070670514633
+            ]
+          }
+        },
+        "v8_balanced": {
+          "red_ge_target": 0.014,
+          "red_ge4": 0.014,
+          "red_ge3": 0.28,
+          "full_red": 0.0,
+          "blue_covered": 0.334,
+          "full_blue_covered": 0.334,
+          "any_prize": 0.342,
+          "high_prize": 0.0,
+          "max_red": 2.258,
+          "union_red": 5.446,
+          "winning_tickets": 0.348,
+          "red_coverage": 30.0,
+          "blue_coverage": 5.0,
+          "max_red_overlap": 0.0,
+          "max_blue_overlap": 0.0,
+          "periods": 500,
+          "rate_ci95": {
+            "red_ge_target": [
+              0.006797789790843618,
+              0.028613069137784754
+            ],
+            "red_ge4": [
+              0.006797789790843618,
+              0.028613069137784754
+            ],
+            "red_ge3": [
+              0.24243604304127647,
+              0.3209186667618064
+            ],
+            "full_red": [
+              0.0,
+              0.007624340461551825
+            ],
+            "blue_covered": [
+              0.2940638124558782,
+              0.37646746857735713
+            ],
+            "full_blue_covered": [
+              0.2940638124558782,
+              0.37646746857735713
+            ],
+            "any_prize": [
+              0.301765506665861,
+              0.3846437849199895
+            ],
+            "high_prize": [
+              0.0,
+              0.007624340461551825
+            ]
+          }
+        },
+        "uniform_independent": {
+          "red_ge_target": 0.024,
+          "red_ge4": 0.024,
+          "red_ge3": 0.276,
+          "full_red": 0.0,
+          "blue_covered": 0.284,
+          "full_blue_covered": 0.284,
+          "any_prize": 0.3,
+          "high_prize": 0.004,
+          "max_red": 2.1,
+          "union_red": 3.798,
+          "winning_tickets": 0.352,
+          "red_coverage": 21.004,
+          "blue_coverage": 4.434,
+          "max_red_overlap": 2.424,
+          "max_blue_overlap": 0.488,
+          "periods": 500,
+          "rate_ci95": {
+            "red_ge_target": [
+              0.013781314655497192,
+              0.04147705746390015
+            ],
+            "red_ge4": [
+              0.013781314655497192,
+              0.04147705746390015
+            ],
+            "red_ge3": [
+              0.23863813294339908,
+              0.31677757158337627
+            ],
+            "full_red": [
+              0.0,
+              0.007624340461551825
+            ],
+            "blue_covered": [
+              0.24623777195565957,
+              0.3250559431237309
+            ],
+            "full_blue_covered": [
+              0.24623777195565957,
+              0.3250559431237309
+            ],
+            "any_prize": [
+              0.26148193214069926,
+              0.3415678040439215
+            ],
+            "high_prize": [
+              0.0010976305226828263,
+              0.014465715215176587
+            ]
+          }
+        }
+      },
+      "v8_seed_replicates": 64,
+      "v8_seed_robustness": {
+        "red_ge_target": {
+          "min": 0.01,
+          "median": 0.024,
+          "max": 0.036,
+          "mean": 0.0235
+        },
+        "red_ge4": {
+          "min": 0.01,
+          "median": 0.024,
+          "max": 0.036,
+          "mean": 0.0235
+        },
+        "red_ge3": {
+          "min": 0.232,
+          "median": 0.282,
+          "max": 0.322,
+          "mean": 0.28296875
+        },
+        "full_red": {
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.002,
+          "mean": 3.125e-05
+        },
+        "blue_covered": {
+          "min": 0.256,
+          "median": 0.314,
+          "max": 0.356,
+          "mean": 0.312375
+        },
+        "full_blue_covered": {
+          "min": 0.256,
+          "median": 0.314,
+          "max": 0.356,
+          "mean": 0.312375
+        },
+        "any_prize": {
+          "min": 0.276,
+          "median": 0.328,
+          "max": 0.372,
+          "mean": 0.32890625
+        },
+        "high_prize": {
+          "min": 0.0,
+          "median": 0.002,
+          "max": 0.006,
+          "mean": 0.002
+        },
+        "max_red": {
+          "min": 2.214,
+          "median": 2.264,
+          "max": 2.306,
+          "mean": 2.2668749999999998
+        },
+        "union_red": {
+          "min": 5.37,
+          "median": 5.452999999999999,
+          "max": 5.512,
+          "mean": 5.4538125
+        },
+        "winning_tickets": {
+          "min": 0.276,
+          "median": 0.335,
+          "max": 0.378,
+          "mean": 0.33459375
+        },
+        "red_coverage": {
+          "min": 30.0,
+          "median": 30.0,
+          "max": 30.0,
+          "mean": 30.0
+        },
+        "blue_coverage": {
+          "min": 5.0,
+          "median": 5.0,
+          "max": 5.0,
+          "mean": 5.0
+        },
+        "max_red_overlap": {
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0,
+          "mean": 0.0
+        },
+        "max_blue_overlap": {
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0,
+          "mean": 0.0
+        }
+      },
+      "v8_exact": {
+        "red_ge_target": 0.02450413879779842,
+        "red_ge4": 0.02450413879779842,
+        "red_ge3": 0.2849847594007772,
+        "full_red": 4.514395504384381e-06,
+        "blue_covered": 0.3125,
+        "full_blue_covered": 0.3125,
+        "any_prize": 0.32934659542348643,
+        "high_prize": 0.0022213647378761395,
+        "max_red": 2.2696647068170983,
+        "union_red": 5.454545454545454,
+        "winning_tickets": 0.33547263012293604,
+        "red_coverage": 30.0,
+        "blue_coverage": 5.0,
+        "max_red_overlap": 0.0,
+        "max_blue_overlap": 0.0,
+        "periods": null,
+        "proof": {
+          "single_ticket_red_target_probability": 0.004900827759559684,
+          "five_ticket_red_target_upper_bound": 0.02450413879779842,
+          "five_ticket_full_red_probability": 4.514395504384381e-06,
+          "five_distinct_full_blue_probability": 0.3125
+        }
+      },
+      "current_fair_geometry_mc": {
+        "red_ge_target": 0.024121,
+        "red_ge4": 0.024121,
+        "red_ge3": 0.254704,
+        "full_red": 6e-06,
+        "blue_covered": 0.312188,
+        "full_blue_covered": 0.312188,
+        "any_prize": 0.328778,
+        "high_prize": 0.002281,
+        "max_red": 2.100187,
+        "union_red": 3.764161,
+        "winning_tickets": 0.335081,
+        "red_coverage": 20.7,
+        "blue_coverage": 5.0,
+        "max_red_overlap": 2.688,
+        "max_blue_overlap": 0.0,
+        "simulation_draws": 1000000,
+        "samples_per_portfolio": 2000
+      },
+      "signal_gate": {
+        "red": {
+          "selected_model": "uniform",
+          "gate_passed": false,
+          "reason": "没有候选信号通过多重检验和稳定性门槛，回退等概率",
+          "best_candidate": {
+            "model": "bayes_frequency",
+            "brier_improvement": -2.0485211968189753e-05,
+            "relative_improvement": -0.0001377061471194978,
+            "corrected_p": 1.0,
+            "stable_blocks": 3,
+            "validation_periods": 200
+          },
+          "candidates": [
+            {
+              "model": "bayes_frequency",
+              "brier_improvement": -2.0485211968189753e-05,
+              "relative_improvement": -0.0001377061471194978,
+              "corrected_p": 1.0,
+              "stable_blocks": 3,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_10",
+              "brier_improvement": -2.790438671925091e-05,
+              "relative_improvement": -0.00018757948850163113,
+              "corrected_p": 1.0,
+              "stable_blocks": 1,
+              "validation_periods": 200
+            },
+            {
+              "model": "markov_hit_state",
+              "brier_improvement": -9.716826889609718e-05,
+              "relative_improvement": -0.0006531866964682088,
+              "corrected_p": 1.0,
+              "stable_blocks": 2,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_crossover_10_80",
+              "brier_improvement": -0.0001588301417830011,
+              "relative_improvement": -0.0010676915086523962,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_25",
+              "brier_improvement": -0.00029804401487417906,
+              "relative_improvement": -0.002003518099987537,
+              "corrected_p": 1.0,
+              "stable_blocks": 1,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_50",
+              "brier_improvement": -0.0003270910267748198,
+              "relative_improvement": -0.002198778568875177,
+              "corrected_p": 1.0,
+              "stable_blocks": 1,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_mean_reversion_25",
+              "brier_improvement": -0.00041966565967609435,
+              "relative_improvement": -0.00282108582337819,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "gap_reversion",
+              "brier_improvement": -0.0007858988649515536,
+              "relative_improvement": -0.0052829868143965545,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            }
+          ],
+          "validation_start": 3276,
+          "validation_periods": 200,
+          "training_window": 1000
+        },
+        "blue": {
+          "selected_model": "uniform",
+          "gate_passed": false,
+          "reason": "没有候选信号通过多重检验和稳定性门槛，回退等概率",
+          "best_candidate": {
+            "model": "bayes_frequency",
+            "brier_improvement": -2.256163194444393e-05,
+            "relative_improvement": -0.0003850518518518431,
+            "corrected_p": 1.0,
+            "stable_blocks": 2,
+            "validation_periods": 200
+          },
+          "candidates": [
+            {
+              "model": "bayes_frequency",
+              "brier_improvement": -2.256163194444393e-05,
+              "relative_improvement": -0.0003850518518518431,
+              "corrected_p": 1.0,
+              "stable_blocks": 2,
+              "validation_periods": 200
+            },
+            {
+              "model": "markov_hit_state",
+              "brier_improvement": -3.416627499610532e-05,
+              "relative_improvement": -0.0005831044266001974,
+              "corrected_p": 1.0,
+              "stable_blocks": 2,
+              "validation_periods": 200
+            },
+            {
+              "model": "gap_reversion",
+              "brier_improvement": -4.045841819357375e-05,
+              "relative_improvement": -0.0006904903371703253,
+              "corrected_p": 1.0,
+              "stable_blocks": 1,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_mean_reversion_25",
+              "brier_improvement": -8.250609873859776e-05,
+              "relative_improvement": -0.0014081040851387351,
+              "corrected_p": 1.0,
+              "stable_blocks": 1,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_10",
+              "brier_improvement": -0.00011945228405862404,
+              "relative_improvement": -0.002038652314600517,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_crossover_10_80",
+              "brier_improvement": -0.00017248610979636716,
+              "relative_improvement": -0.0029437629405246663,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_25",
+              "brier_improvement": -0.00018783015594604505,
+              "relative_improvement": -0.003205634661479169,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_50",
+              "brier_improvement": -0.00021179757019170392,
+              "relative_improvement": -0.0036146785312717467,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            }
+          ],
+          "validation_start": 3276,
+          "validation_periods": 200,
+          "training_window": 1000
+        }
+      },
+      "paired_tests": {
+        "red_ge_target": {
+          "difference": -0.004,
+          "ci95": [
+            -0.016,
+            0.008
+          ],
+          "two_sided_p": 0.6093476630842289,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "red_ge4": {
+          "difference": -0.004,
+          "ci95": [
+            -0.016,
+            0.008
+          ],
+          "two_sided_p": 0.6518370407398151,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "red_ge3": {
+          "difference": -0.016,
+          "ci95": [
+            -0.074,
+            0.04
+          ],
+          "two_sided_p": 0.604348912771807,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "full_red": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "two_sided_p": 1.0,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "blue_covered": {
+          "difference": 0.016,
+          "ci95": [
+            -0.034,
+            0.066
+          ],
+          "two_sided_p": 0.5713571607098226,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "full_blue_covered": {
+          "difference": 0.016,
+          "ci95": [
+            -0.036,
+            0.066
+          ],
+          "two_sided_p": 0.5598600349912521,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "any_prize": {
+          "difference": 0.014,
+          "ci95": [
+            -0.036,
+            0.066
+          ],
+          "two_sided_p": 0.6203449137715571,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "high_prize": {
+          "difference": -0.002,
+          "ci95": [
+            -0.006,
+            0.0
+          ],
+          "two_sided_p": 0.7298175456135966,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "max_red": {
+          "difference": 0.136,
+          "ci95": [
+            0.064,
+            0.202
+          ],
+          "two_sided_p": 0.0004998750312421895,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "union_red": {
+          "difference": 1.678,
+          "ci95": [
+            1.582,
+            1.774
+          ],
+          "two_sided_p": 0.0004998750312421895,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "winning_tickets": {
+          "difference": 0.014,
+          "ci95": [
+            -0.038,
+            0.066
+          ],
+          "two_sided_p": 0.6483379155211197,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "red_coverage": {
+          "difference": 9.3,
+          "ci95": [
+            9.162,
+            9.442
+          ],
+          "two_sided_p": 0.0004998750312421895,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "blue_coverage": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "two_sided_p": 1.0,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "max_red_overlap": {
+          "difference": -2.688,
+          "ci95": [
+            -2.748,
+            -2.63
+          ],
+          "two_sided_p": 0.0004998750312421895,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "max_blue_overlap": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "two_sided_p": 1.0,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        }
+      }
+    },
+    "dlt": {
+      "name": "大乐透",
+      "periods": 500,
+      "range": [
+        "2023031",
+        "2026078"
+      ],
+      "data_total": 2896,
+      "current_config": {
+        "window": 100,
+        "alpha": 0.1,
+        "candidate_count": 1000,
+        "quant_scores": null
+      },
+      "algorithms": {
+        "current": {
+          "red_ge_target": 0.086,
+          "red_ge4": 0.0,
+          "red_ge3": 0.086,
+          "full_red": 0.0,
+          "blue_covered": 0.794,
+          "full_blue_covered": 0.082,
+          "any_prize": 0.324,
+          "high_prize": 0.0,
+          "max_red": 1.638,
+          "union_red": 2.756,
+          "winning_tickets": 0.386,
+          "red_coverage": 18.712,
+          "blue_coverage": 6.228,
+          "max_red_overlap": 1.842,
+          "max_blue_overlap": 1.318,
+          "periods": 500,
+          "rate_ci95": {
+            "red_ge_target": [
+              0.06447314240360823,
+              0.11383981149855667
+            ],
+            "red_ge4": [
+              0.0,
+              0.007624340461551825
+            ],
+            "red_ge3": [
+              0.06447314240360823,
+              0.11383981149855667
+            ],
+            "full_red": [
+              0.0,
+              0.007624340461551825
+            ],
+            "blue_covered": [
+              0.7563735290819757,
+              0.8271433587266319
+            ],
+            "full_blue_covered": [
+              0.06101908946846943,
+              0.10935485915738791
+            ],
+            "any_prize": [
+              0.2844552822318167,
+              0.3662284856106496
+            ],
+            "high_prize": [
+              0.0,
+              0.007624340461551825
+            ]
+          }
+        },
+        "v8_balanced": {
+          "red_ge_target": 0.062,
+          "red_ge4": 0.002,
+          "red_ge3": 0.062,
+          "full_red": 0.0,
+          "blue_covered": 0.984,
+          "full_blue_covered": 0.074,
+          "any_prize": 0.336,
+          "high_prize": 0.002,
+          "max_red": 1.658,
+          "union_red": 3.56,
+          "winning_tickets": 0.35,
+          "red_coverage": 25.0,
+          "blue_coverage": 10.0,
+          "max_red_overlap": 0.0,
+          "max_blue_overlap": 0.0,
+          "periods": 500,
+          "rate_ci95": {
+            "red_ge_target": [
+              0.04401920914268197,
+              0.08665971310163743
+            ],
+            "red_ge4": [
+              0.0003531363945592893,
+              0.01124070670514633
+            ],
+            "red_ge3": [
+              0.04401920914268197,
+              0.08665971310163743
+            ],
+            "full_red": [
+              0.0,
+              0.007624340461551825
+            ],
+            "blue_covered": [
+              0.9687488914666064,
+              0.9918707469666116
+            ],
+            "full_blue_covered": [
+              0.054161184751012434,
+              0.10033475332222973
+            ],
+            "any_prize": [
+              0.2959880078270502,
+              0.3785127758443389
+            ],
+            "high_prize": [
+              0.0003531363945592893,
+              0.01124070670514633
+            ]
+          }
+        },
+        "uniform_independent": {
+          "red_ge_target": 0.044,
+          "red_ge4": 0.0,
+          "red_ge3": 0.044,
+          "full_red": 0.0,
+          "blue_covered": 0.832,
+          "full_blue_covered": 0.078,
+          "any_prize": 0.3,
+          "high_prize": 0.0,
+          "max_red": 1.566,
+          "union_red": 2.72,
+          "winning_tickets": 0.336,
+          "red_coverage": 18.766,
+          "blue_coverage": 7.174,
+          "max_red_overlap": 1.93,
+          "max_blue_overlap": 1.142,
+          "periods": 500,
+          "rate_ci95": {
+            "red_ge_target": [
+              0.029233955628607516,
+              0.06571944287232775
+            ],
+            "red_ge4": [
+              0.0,
+              0.007624340461551825
+            ],
+            "red_ge3": [
+              0.029233955628607516,
+              0.06571944287232775
+            ],
+            "full_red": [
+              0.0,
+              0.007624340461551825
+            ],
+            "blue_covered": [
+              0.7967256709103745,
+              0.862211767023155
+            ],
+            "full_blue_covered": [
+              0.05758139347616206,
+              0.10485354987338769
+            ],
+            "any_prize": [
+              0.26148193214069926,
+              0.3415678040439215
+            ],
+            "high_prize": [
+              0.0,
+              0.007624340461551825
+            ]
+          }
+        }
+      },
+      "v8_seed_replicates": 64,
+      "v8_seed_robustness": {
+        "red_ge_target": {
+          "min": 0.048,
+          "median": 0.068,
+          "max": 0.09,
+          "mean": 0.06853125
+        },
+        "red_ge4": {
+          "min": 0.0,
+          "median": 0.002,
+          "max": 0.008,
+          "mean": 0.0027187500000000002
+        },
+        "red_ge3": {
+          "min": 0.048,
+          "median": 0.068,
+          "max": 0.09,
+          "mean": 0.06853125
+        },
+        "full_red": {
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.002,
+          "mean": 3.125e-05
+        },
+        "blue_covered": {
+          "min": 0.964,
+          "median": 0.986,
+          "max": 0.996,
+          "mean": 0.98434375
+        },
+        "full_blue_covered": {
+          "min": 0.044,
+          "median": 0.076,
+          "max": 0.096,
+          "mean": 0.074
+        },
+        "any_prize": {
+          "min": 0.28,
+          "median": 0.323,
+          "max": 0.374,
+          "mean": 0.32221875
+        },
+        "high_prize": {
+          "min": 0.0,
+          "median": 0.004,
+          "max": 0.012,
+          "mean": 0.0036875000000000002
+        },
+        "max_red": {
+          "min": 1.63,
+          "median": 1.685,
+          "max": 1.74,
+          "mean": 1.68434375
+        },
+        "union_red": {
+          "min": 3.494,
+          "median": 3.586,
+          "max": 3.684,
+          "mean": 3.5826875
+        },
+        "winning_tickets": {
+          "min": 0.292,
+          "median": 0.334,
+          "max": 0.386,
+          "mean": 0.3325625
+        },
+        "red_coverage": {
+          "min": 25.0,
+          "median": 25.0,
+          "max": 25.0,
+          "mean": 25.0
+        },
+        "blue_coverage": {
+          "min": 10.0,
+          "median": 10.0,
+          "max": 10.0,
+          "mean": 10.0
+        },
+        "max_red_overlap": {
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0,
+          "mean": 0.0
+        },
+        "max_blue_overlap": {
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0,
+          "mean": 0.0
+        }
+      },
+      "v8_exact": {
+        "red_ge_target": 0.06932465068138692,
+        "red_ge4": 0.0023257103427881416,
+        "red_ge3": 0.06932465068138692,
+        "full_red": 1.5402055250252594e-05,
+        "blue_covered": 0.9848484848484849,
+        "full_blue_covered": 0.07575757575757576,
+        "any_prize": 0.32278810617822173,
+        "high_prize": 0.0033408458024638808,
+        "max_red": 1.6823664949850907,
+        "union_red": 3.5714285714285716,
+        "winning_tickets": 0.33352380541659477,
+        "red_coverage": 25.0,
+        "blue_coverage": 10.0,
+        "max_red_overlap": 0.0,
+        "max_blue_overlap": 0.0,
+        "periods": null,
+        "proof": {
+          "single_ticket_red_target_probability": 0.013864930136277384,
+          "five_ticket_red_target_upper_bound": 0.06932465068138692,
+          "five_ticket_full_red_probability": 1.5402055250252594e-05,
+          "five_distinct_full_blue_probability": 0.07575757575757576
+        }
+      },
+      "current_fair_geometry_mc": {
+        "red_ge_target": 0.067615,
+        "red_ge4": 0.002336,
+        "red_ge3": 0.067615,
+        "full_red": 1.5e-05,
+        "blue_covered": 0.784494,
+        "full_blue_covered": 0.069959,
+        "any_prize": 0.280395,
+        "high_prize": 0.003341,
+        "max_red": 1.578558,
+        "union_red": 2.671627,
+        "winning_tickets": 0.333224,
+        "red_coverage": 18.712,
+        "blue_coverage": 6.228,
+        "max_red_overlap": 1.842,
+        "max_blue_overlap": 1.318,
+        "simulation_draws": 1000000,
+        "samples_per_portfolio": 2000
+      },
+      "signal_gate": {
+        "red": {
+          "selected_model": "uniform",
+          "gate_passed": false,
+          "reason": "没有候选信号通过多重检验和稳定性门槛，回退等概率",
+          "best_candidate": {
+            "model": "bayes_frequency",
+            "brier_improvement": -0.00013485734126981606,
+            "relative_improvement": -0.001101334953703498,
+            "corrected_p": 1.0,
+            "stable_blocks": 1,
+            "validation_periods": 200
+          },
+          "candidates": [
+            {
+              "model": "bayes_frequency",
+              "brier_improvement": -0.00013485734126981606,
+              "relative_improvement": -0.001101334953703498,
+              "corrected_p": 1.0,
+              "stable_blocks": 1,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_mean_reversion_25",
+              "brier_improvement": -0.00016617265875305113,
+              "relative_improvement": -0.0013570767131499176,
+              "corrected_p": 1.0,
+              "stable_blocks": 2,
+              "validation_periods": 200
+            },
+            {
+              "model": "markov_hit_state",
+              "brier_improvement": -0.00023990828585663754,
+              "relative_improvement": -0.00195925100116254,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_10",
+              "brier_improvement": -0.0002594645255995891,
+              "relative_improvement": -0.0021189602923966443,
+              "corrected_p": 1.0,
+              "stable_blocks": 1,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_50",
+              "brier_improvement": -0.00039827763363886923,
+              "relative_improvement": -0.003252600674717432,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_25",
+              "brier_improvement": -0.0004105993843120641,
+              "relative_improvement": -0.00335322830521519,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "gap_reversion",
+              "brier_improvement": -0.00041771292035667665,
+              "relative_improvement": -0.0034113221829128594,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_crossover_10_80",
+              "brier_improvement": -0.0004248148285394159,
+              "relative_improvement": -0.0034693210997385634,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            }
+          ],
+          "validation_start": 2696,
+          "validation_periods": 200,
+          "training_window": 1000
+        },
+        "blue": {
+          "selected_model": "uniform",
+          "gate_passed": false,
+          "reason": "没有候选信号通过多重检验和稳定性门槛，回退等概率",
+          "best_candidate": {
+            "model": "ewma_mean_reversion_25",
+            "brier_improvement": -0.00015942384156324846,
+            "relative_improvement": -0.0011478516592553889,
+            "corrected_p": 1.0,
+            "stable_blocks": 1,
+            "validation_periods": 200
+          },
+          "candidates": [
+            {
+              "model": "ewma_mean_reversion_25",
+              "brier_improvement": -0.00015942384156324846,
+              "relative_improvement": -0.0011478516592553889,
+              "corrected_p": 1.0,
+              "stable_blocks": 1,
+              "validation_periods": 200
+            },
+            {
+              "model": "bayes_frequency",
+              "brier_improvement": -0.00023746334876542777,
+              "relative_improvement": -0.0017097361111110799,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "gap_reversion",
+              "brier_improvement": -0.0003470138437834988,
+              "relative_improvement": -0.0024984996752411915,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "markov_hit_state",
+              "brier_improvement": -0.0003609866135847327,
+              "relative_improvement": -0.0025991036178100754,
+              "corrected_p": 1.0,
+              "stable_blocks": 1,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_10",
+              "brier_improvement": -0.0003665654602237124,
+              "relative_improvement": -0.0026392713136107293,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_50",
+              "brier_improvement": -0.0003716210245606551,
+              "relative_improvement": -0.0026756713768367165,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_hot_25",
+              "brier_improvement": -0.0004524174121413725,
+              "relative_improvement": -0.003257405367417882,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            },
+            {
+              "model": "ewma_crossover_10_80",
+              "brier_improvement": -0.000615624577107426,
+              "relative_improvement": -0.004432496955173467,
+              "corrected_p": 1.0,
+              "stable_blocks": 0,
+              "validation_periods": 200
+            }
+          ],
+          "validation_start": 2696,
+          "validation_periods": 200,
+          "training_window": 1000
+        }
+      },
+      "paired_tests": {
+        "red_ge_target": {
+          "difference": -0.024,
+          "ci95": [
+            -0.056,
+            0.006
+          ],
+          "two_sided_p": 0.14446388402899274,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "red_ge4": {
+          "difference": 0.002,
+          "ci95": [
+            0.0,
+            0.006
+          ],
+          "two_sided_p": 0.7183204198950263,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "red_ge3": {
+          "difference": -0.024,
+          "ci95": [
+            -0.056,
+            0.006
+          ],
+          "two_sided_p": 0.13546613346663333,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "full_red": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "two_sided_p": 1.0,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "blue_covered": {
+          "difference": 0.19,
+          "ci95": [
+            0.156,
+            0.226
+          ],
+          "two_sided_p": 0.0004998750312421895,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "full_blue_covered": {
+          "difference": -0.008,
+          "ci95": [
+            -0.044,
+            0.024
+          ],
+          "two_sided_p": 0.6938265433641589,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "any_prize": {
+          "difference": 0.012,
+          "ci95": [
+            -0.04,
+            0.064
+          ],
+          "two_sided_p": 0.6898275431142215,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "high_prize": {
+          "difference": 0.002,
+          "ci95": [
+            0.0,
+            0.006
+          ],
+          "two_sided_p": 0.751812046988253,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "max_red": {
+          "difference": 0.02,
+          "ci95": [
+            -0.044,
+            0.086
+          ],
+          "two_sided_p": 0.5433641589602599,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "union_red": {
+          "difference": 0.804,
+          "ci95": [
+            0.69,
+            0.92
+          ],
+          "two_sided_p": 0.0004998750312421895,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "winning_tickets": {
+          "difference": -0.036,
+          "ci95": [
+            -0.098,
+            0.022
+          ],
+          "two_sided_p": 0.24293926518370407,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "red_coverage": {
+          "difference": 6.288,
+          "ci95": [
+            6.15,
+            6.428
+          ],
+          "two_sided_p": 0.0004998750312421895,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "blue_coverage": {
+          "difference": 3.772,
+          "ci95": [
+            3.67,
+            3.874
+          ],
+          "two_sided_p": 0.0004998750312421895,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "max_red_overlap": {
+          "difference": -1.842,
+          "ci95": [
+            -1.872,
+            -1.81
+          ],
+          "two_sided_p": 0.0004998750312421895,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        },
+        "max_blue_overlap": {
+          "difference": -1.318,
+          "ci95": [
+            -1.362,
+            -1.274
+          ],
+          "two_sided_p": 0.0004998750312421895,
+          "block_length": 20,
+          "bootstrap_samples": 4000
+        }
+      }
+    }
+  }
+}

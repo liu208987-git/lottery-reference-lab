@@ -1,0 +1,531 @@
+{
+  "generated_at_utc": "2026-07-21T08:29:39.366782+00:00",
+  "calendar_source": "Cached Chinese lunar calendar (Asia/Shanghai)",
+  "traditional_model_hour_branch": 12,
+  "split_policy": {
+    "history_and_feature_formation": "0% to 60%",
+    "ga_validation_only": "60% to 80%",
+    "final_holdout": "80% to 100%",
+    "walk_forward_rule": "each prediction uses only draws strictly earlier than the target draw",
+    "model_start_dates": {
+      "ssq": null,
+      "dlt": "2014-01-01"
+    },
+    "pre_cutoff_policy": "retained for audit; excluded from model calculations"
+  },
+  "splits": {
+    "ssq": {
+      "raw_draw_count": 3479,
+      "model_draw_count": 3479,
+      "excluded_pre_model_count": 0,
+      "model_start_date": null,
+      "model_start_issue": "2003001",
+      "validation_start_index": 2087,
+      "validation_start_date": "2017-03-30",
+      "test_start_index": 2783,
+      "test_start_date": "2021-12-07",
+      "test_end_date": "2026-07-19",
+      "test_draw_count": 696
+    },
+    "dlt": {
+      "raw_draw_count": 2899,
+      "model_draw_count": 1885,
+      "excluded_pre_model_count": 1014,
+      "model_start_date": "2014-01-01",
+      "model_start_issue": "14001",
+      "validation_start_index": 1131,
+      "validation_start_date": "2021-07-14",
+      "test_start_index": 1508,
+      "test_start_date": "2024-01-15",
+      "test_end_date": "2026-07-20",
+      "test_draw_count": 377
+    }
+  },
+  "ga": {
+    "population": 48,
+    "generations": 50,
+    "constraints": "non-negative weights summing to one"
+  },
+  "p0_audit": {
+    "whole_draw_shuffle_permutations": 999,
+    "pair_max_t_simulations": 999,
+    "order_statistic_simulations": 999,
+    "change_point_permutations": 999,
+    "era_order_statistic_simulations": 199,
+    "pipeline_null_repetitions": 99,
+    "pipeline_null_backend": "process",
+    "pipeline_null_workers": 4,
+    "pipeline_scope": "all base candidates plus GA re-fitted in every fair history",
+    "pipeline_ga_seed_policy": "fixed pre-registered seed per lottery and zone",
+    "pipeline_familywise_policy": "Monte Carlo max-T across four lottery-zone results for Brier-skill statistics"
+  },
+  "p1": {
+    "conditional_probability_model": "fixed-size conditional Bernoulli / maximum-entropy set distribution",
+    "combination_nll_parameterization": "log odds of projected inclusion probabilities",
+    "hyperparameter_selection": "nested chronological rolling Brier selection wholly inside the first 60% formation region",
+    "parameter_grids": {
+      "bayesian_all": [
+        {
+          "prior_strength": 24.0
+        },
+        {
+          "prior_strength": 6.0
+        },
+        {
+          "prior_strength": 12.0
+        },
+        {
+          "prior_strength": 48.0
+        },
+        {
+          "prior_strength": 96.0
+        }
+      ],
+      "bayesian_recent_120": [
+        {
+          "prior_strength": 24.0,
+          "window": 120
+        },
+        {
+          "prior_strength": 12.0,
+          "window": 60
+        },
+        {
+          "prior_strength": 24.0,
+          "window": 60
+        },
+        {
+          "prior_strength": 48.0,
+          "window": 60
+        },
+        {
+          "prior_strength": 12.0,
+          "window": 120
+        },
+        {
+          "prior_strength": 48.0,
+          "window": 120
+        },
+        {
+          "prior_strength": 12.0,
+          "window": 240
+        },
+        {
+          "prior_strength": 24.0,
+          "window": 240
+        },
+        {
+          "prior_strength": 48.0,
+          "window": 240
+        }
+      ],
+      "exp_decay_60": [
+        {
+          "prior_strength": 24.0,
+          "half_life": 60.0
+        },
+        {
+          "prior_strength": 12.0,
+          "half_life": 30.0
+        },
+        {
+          "prior_strength": 24.0,
+          "half_life": 30.0
+        },
+        {
+          "prior_strength": 48.0,
+          "half_life": 30.0
+        },
+        {
+          "prior_strength": 12.0,
+          "half_life": 60.0
+        },
+        {
+          "prior_strength": 48.0,
+          "half_life": 60.0
+        },
+        {
+          "prior_strength": 12.0,
+          "half_life": 120.0
+        },
+        {
+          "prior_strength": 24.0,
+          "half_life": 120.0
+        },
+        {
+          "prior_strength": 48.0,
+          "half_life": 120.0
+        }
+      ]
+    },
+    "selections": {
+      "ssq_front": {
+        "formation_end_index": 2087,
+        "min_train_size": 626,
+        "validation_size": 209,
+        "max_inner_folds": 5,
+        "selection_metric": "mean number-level Brier across inner rolling folds",
+        "selected_parameters": {
+          "bayesian_all": {
+            "prior_strength": 96.0
+          },
+          "bayesian_recent_120": {
+            "prior_strength": 48.0,
+            "window": 240
+          },
+          "exp_decay_60": {
+            "prior_strength": 48.0,
+            "half_life": 120.0
+          }
+        }
+      },
+      "ssq_back": {
+        "formation_end_index": 2087,
+        "min_train_size": 626,
+        "validation_size": 209,
+        "max_inner_folds": 5,
+        "selection_metric": "mean number-level Brier across inner rolling folds",
+        "selected_parameters": {
+          "bayesian_all": {
+            "prior_strength": 96.0
+          },
+          "bayesian_recent_120": {
+            "prior_strength": 48.0,
+            "window": 240
+          },
+          "exp_decay_60": {
+            "prior_strength": 48.0,
+            "half_life": 120.0
+          }
+        }
+      },
+      "dlt_front": {
+        "formation_end_index": 1131,
+        "min_train_size": 339,
+        "validation_size": 113,
+        "max_inner_folds": 5,
+        "selection_metric": "mean number-level Brier across inner rolling folds",
+        "selected_parameters": {
+          "bayesian_all": {
+            "prior_strength": 96.0
+          },
+          "bayesian_recent_120": {
+            "prior_strength": 48.0,
+            "window": 60
+          },
+          "exp_decay_60": {
+            "prior_strength": 48.0,
+            "half_life": 120.0
+          }
+        }
+      },
+      "dlt_back": {
+        "formation_end_index": 1131,
+        "min_train_size": 339,
+        "validation_size": 113,
+        "max_inner_folds": 5,
+        "selection_metric": "mean number-level Brier across inner rolling folds",
+        "selected_parameters": {
+          "bayesian_all": {
+            "prior_strength": 96.0
+          },
+          "bayesian_recent_120": {
+            "prior_strength": 48.0,
+            "window": 120
+          },
+          "exp_decay_60": {
+            "prior_strength": 48.0,
+            "half_life": 120.0
+          }
+        }
+      }
+    },
+    "moving_block_bootstrap_repetitions": 1999,
+    "moving_block_length_policy": "round(test_draws ** (1/3))",
+    "calibration_bin_count": 10,
+    "pipeline_null_policy": "re-run P1 nested selection inside every complete fair-history replicate"
+  },
+  "models": {
+    "uniform_random": "等概率基线；用稳定哈希打破并列，概率始终为 k/N。",
+    "bayesian_all": "全历史 Beta-Bernoulli；先验强度只在历史形成区内滚动选择。",
+    "bayesian_recent_120": "滚动窗口 Beta-Bernoulli；窗口与先验只在历史形成区内选择。",
+    "exp_decay_60": "指数衰减 Beta-Bernoulli；半衰期与先验只在历史形成区内选择。",
+    "hot_cold": "最近 30 期与最近 200 期频率差。",
+    "overdue_gap": "按号码距上次出现的遗漏期数排序；用于检验常见遗漏值直觉。",
+    "markov_transition": "以前一期号码为条件的一阶跨期转移频率。",
+    "cooccurrence_network": "历史同期开奖共现网络，以前一期号码作为锚点评分。",
+    "chaos_logistic": "由开奖前已知日期和期号初始化 Logistic 映射的确定性基线。",
+    "meihua_yishu": "按常见年月日时起卦公式生成卦数，再映射为号码余数评分。",
+    "xiaoliu_ren": "按常见月日起时六宫轮转公式生成三宫，再映射为号码余数评分。",
+    "ga_ensemble": "只在验证集进化基础模型非负权重，冻结后用于最终留出集。"
+  },
+  "data_files": {
+    "ssq": {
+      "path": "model_data/ssq_history.csv",
+      "sha256": "daa487eeb63d0d353819e71bce7cd2e0646864bc8db131bae1573b9fcb108ee6"
+    },
+    "dlt": {
+      "path": "model_data/dlt_history.csv",
+      "sha256": "6f15f31a50b1c4cde0f6f5b004e8a6c9af567281601deb9762ad1fe241f59673"
+    }
+  },
+  "calendar_file": {
+    "path": "model_data/lunar_calendar.csv",
+    "sha256": "56bdfee4930843a75fd2c25d8097d6b135c73ec1664ee01790dd5f40dae27b42"
+  },
+  "code_files": {
+    "run_experiments.py": {
+      "path": "run_experiments.py",
+      "sha256": "fdd2c606da18deac5d7bd1df684aa080014dc0469e15a6d589d20ed5b7194dd0"
+    },
+    "src/lottery_lab.py": {
+      "path": "src/lottery_lab.py",
+      "sha256": "2ec3cad3dad6a01f9e2e47e4ca8a1e9bf5c47986205848d2c95623e44a06b398"
+    },
+    "src/model_selection.py": {
+      "path": "src/model_selection.py",
+      "sha256": "c5ddbe84dcd9357ae388283bc23d854605e6fdc446e1ca35ee1bf9bc56851af3"
+    },
+    "src/p1_analysis.py": {
+      "path": "src/p1_analysis.py",
+      "sha256": "99cabd5dbee9a8c616919501d032be1a20d31c39fcb2d9e4171fdbbad3e8cdd7"
+    },
+    "src/null_audit.py": {
+      "path": "src/null_audit.py",
+      "sha256": "55fea63add03c8b31c8728ca4c19428006ee55fb032e30fa66f4d0f89ab86fc9"
+    },
+    "src/p0_reporting.py": {
+      "path": "src/p0_reporting.py",
+      "sha256": "323ac1926def84739fe25e969c763765ee7c68c0bdc9481eff428dc1d72b1ea0"
+    },
+    "src/pipeline_adapter.py": {
+      "path": "src/pipeline_adapter.py",
+      "sha256": "d28f5404d3c32bcc0f268f369f0866d8d2e403fc396671220db89fddd68677ab"
+    },
+    "src/pipeline_null.py": {
+      "path": "src/pipeline_null.py",
+      "sha256": "23b470361342828095d41f35dc123fd1db58f113f2ee3417d6afdfb608a197fe"
+    },
+    "scripts/chinese_calendar.swift": {
+      "path": "scripts/chinese_calendar.swift",
+      "sha256": "68ffea56a436e9018745de1a81775ba36d4fadc640824e5535523bdc4d5bd5cb"
+    }
+  },
+  "manual_entries_file": null,
+  "synced_entries_file": null,
+  "dlt_source_crosscheck": {
+    "generated_at_utc": "2026-07-21T04:43:22.195664+00:00",
+    "official_api": "https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry",
+    "local_rows": 2899,
+    "official_rows": 2899,
+    "numbers_matched_rows": 2899,
+    "date_matched_rows": 2897,
+    "matched_rows": 2897,
+    "mismatch_count": 2,
+    "mismatch_issues": [
+      "08151",
+      "09107"
+    ],
+    "number_mismatch_count": 0,
+    "number_mismatch_issues": [],
+    "date_conflict_count": 2,
+    "date_conflict_issues": [
+      "08151",
+      "09107"
+    ],
+    "date_conflicts": [
+      {
+        "issue": "08151",
+        "official_draw_date": "2008-12-24",
+        "local_draw_date": "2008-12-26"
+      },
+      {
+        "issue": "09107",
+        "official_draw_date": "2009-09-14",
+        "local_draw_date": "2009-09-15"
+      }
+    ],
+    "equipment_field_note": "lotteryEquipmentCount aligns with the official PDF's numbered draw-ball set wording for current draws; zero is unavailable metadata",
+    "equipment_set_distribution": {
+      "0": 565,
+      "1": 782,
+      "2": 744,
+      "3": 808
+    },
+    "equipment_set_by_year": {
+      "2007": {
+        "0": 93
+      },
+      "2008": {
+        "0": 154
+      },
+      "2009": {
+        "0": 153
+      },
+      "2010": {
+        "0": 153
+      },
+      "2011": {
+        "0": 10,
+        "1": 45,
+        "2": 54,
+        "3": 45
+      },
+      "2012": {
+        "0": 1,
+        "1": 55,
+        "2": 39,
+        "3": 59
+      },
+      "2013": {
+        "1": 53,
+        "2": 39,
+        "3": 61
+      },
+      "2014": {
+        "1": 47,
+        "2": 59,
+        "3": 48
+      },
+      "2015": {
+        "1": 49,
+        "2": 51,
+        "3": 53
+      },
+      "2016": {
+        "0": 1,
+        "1": 42,
+        "2": 45,
+        "3": 66
+      },
+      "2017": {
+        "1": 55,
+        "2": 51,
+        "3": 47
+      },
+      "2018": {
+        "1": 51,
+        "2": 44,
+        "3": 59
+      },
+      "2019": {
+        "1": 56,
+        "2": 47,
+        "3": 47
+      },
+      "2020": {
+        "1": 43,
+        "2": 42,
+        "3": 49
+      },
+      "2021": {
+        "1": 50,
+        "2": 49,
+        "3": 51
+      },
+      "2022": {
+        "1": 51,
+        "2": 56,
+        "3": 43
+      },
+      "2023": {
+        "1": 50,
+        "2": 42,
+        "3": 58
+      },
+      "2024": {
+        "1": 50,
+        "2": 46,
+        "3": 56
+      },
+      "2025": {
+        "1": 55,
+        "2": 49,
+        "3": 46
+      },
+      "2026": {
+        "1": 30,
+        "2": 31,
+        "3": 20
+      }
+    }
+  },
+  "result_files": {
+    "model_metrics.csv": {
+      "bytes": 18721,
+      "sha256": "011b118b0b2d1b79cd84e1ae3384b74bfb154e2a0f53056337e83917d297c8a7"
+    },
+    "holdout_predictions.csv": {
+      "bytes": 1962757,
+      "sha256": "541c815f2c53441b0feedb38ce06946a474d8310cc461f186cff6f478f7cf81a"
+    },
+    "randomness_diagnostics.csv": {
+      "bytes": 10230,
+      "sha256": "55b3090ef93b402f529a4c8b0c4e436e40d5685d593229126ec5bdc045175f3a"
+    },
+    "p0_audit_summary.csv": {
+      "bytes": 10876,
+      "sha256": "98151ccdc2c7986cac7ecbad2c71c84bb5dfbf7fd9b7ac3de0c1812417e4fe67"
+    },
+    "pair_cooccurrence_audit.csv": {
+      "bytes": 444703,
+      "sha256": "cb07531ad742ba951f7a1b04830298a8e160a72941c1b9a205df2f4558007846"
+    },
+    "order_statistic_audit.csv": {
+      "bytes": 4207,
+      "sha256": "0de8648fa9a7a8f7f57495d9630b08a2bdb23977bca93c3d485e30b4084b611d"
+    },
+    "change_point_audit.csv": {
+      "bytes": 1415,
+      "sha256": "c9b31f2eeb95e95b6a6d3cb7bf9bd97d3527da204c10c5206205303e1e0d9f56"
+    },
+    "dlt_era_audit.csv": {
+      "bytes": 15693,
+      "sha256": "389fb59ae6aa01e3bf1e1eab8e5b7448616434276faacb9e6dff3427a2197f31"
+    },
+    "cutoff_comparison.csv": {
+      "bytes": 20941,
+      "sha256": "e4ed2d9eeedefc2878a8fa6bb4e094ba96456aea447305738f10d5c50ced2eea"
+    },
+    "p1_hyperparameter_selection.csv": {
+      "bytes": 15579,
+      "sha256": "f9606f228f21881c8ebe9a2283063360b11090d5612aebe1bfb496fc4eb35b85"
+    },
+    "moving_block_bootstrap.csv": {
+      "bytes": 8455,
+      "sha256": "a006ea83ba21121b7ea3253c379c43d0bbed16f6983a0291238c12492c725057"
+    },
+    "calibration_audit.csv": {
+      "bytes": 66543,
+      "sha256": "c52f0a90ffa25e2798de028f166fa27d27e9bee1c674ce540dfc2a8b7bb72128"
+    },
+    "brier_decomposition.csv": {
+      "bytes": 8374,
+      "sha256": "e219a392fb9548fc086a0a5a35061c5c89cf45163c8b52d8690952fce97600d5"
+    },
+    "ga_weights.json": {
+      "bytes": 3633,
+      "sha256": "2f35716ec71e05959da62df073684ff41d75199103f8946f8fd1799804effe04"
+    },
+    "pipeline_null_summary.csv": {
+      "bytes": 8708,
+      "sha256": "8dade43d2fd2d8b1425bba5a716e0717664eb5a60ac1902136d233ff5a952c16"
+    },
+    "pipeline_null_replicates.csv": {
+      "bytes": 189258,
+      "sha256": "7a58e8bc5ba04c11a7e2b369fc40a1f0b24f2d85336fa7ab0c3b4280e2cf6a3a"
+    },
+    "pipeline_null_report.json": {
+      "bytes": 91777,
+      "sha256": "696099a6954b9ba714090d34e53aae807ac8e849b1ab0609f132b4a9fa30a6ce"
+    },
+    "dlt_source_crosscheck.csv": {
+      "bytes": 517143,
+      "sha256": "6838d35fb6c8c6dc3528c3459748cb1ed70e7e0e4abebed2c308fdb4c2761b47"
+    },
+    "dlt_source_crosscheck.json": {
+      "bytes": 2281,
+      "sha256": "cf4ab98af2c11f99bf70c37fb54aa1de8b5319e4c39971f4e38d467f1b60617f"
+    }
+  }
+}

@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="双色球与大乐透历史数据、滚动回测、模型预测和数据录入系统"
+    />
+    <title>Lottery Lab · 彩票模型实验室</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#overview" aria-label="返回概览">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>
+          <strong>Lottery Lab</strong>
+          <small>彩票模型实验室</small>
+        </span>
+      </a>
+
+      <nav class="topnav" aria-label="主导航">
+        <button class="nav-item is-active" data-view="overview">概览</button>
+        <button class="nav-item" data-view="audit">统计审计</button>
+        <button class="nav-item" data-view="predict">预测实验</button>
+        <button class="nav-item" data-view="data-entry">录入数据</button>
+        <button class="nav-item" data-view="models">模型对比</button>
+      </nav>
+
+      <div class="top-actions">
+        <span class="freshness" id="freshnessBadge">读取数据中</span>
+        <button class="button button-primary" id="trainButton">重新训练</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="view is-visible" id="view-overview" aria-labelledby="overview-title">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">HISTORICAL BACKTESTING</p>
+            <h1 id="overview-title">用留出集检验每一种想法</h1>
+            <p class="lede">
+              现代概率模型、遗传算法与传统术数规则采用同一时间切分，结果只看从未参与调参的最终 20%。
+            </p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-label">系统原则</span>
+            <strong>先证伪，再组合。</strong>
+            <p>模型的历史命中不等于未来优势；所有提升必须越过随机基线与多重检验。</p>
+          </div>
+        </div>
+
+        <div class="stat-grid" id="statGrid">
+          <article class="stat-card skeleton"></article>
+          <article class="stat-card skeleton"></article>
+          <article class="stat-card skeleton"></article>
+          <article class="stat-card skeleton"></article>
+        </div>
+
+        <div class="content-grid">
+          <section class="panel panel-wide">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">HOLDOUT LEADERS</p>
+                <h2>留出集表现</h2>
+              </div>
+              <button class="text-button" data-jump="models">查看全部模型</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>彩种</th>
+                    <th>区域</th>
+                    <th>模型</th>
+                    <th>平均命中</th>
+                    <th>相对随机</th>
+                    <th>Brier 技能</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderTableBody">
+                  <tr><td colspan="6" class="empty-cell">等待首次训练结果</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <aside class="panel activity-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">TRAINING STATUS</p>
+                <h2>训练状态</h2>
+              </div>
+            </div>
+            <div class="training-state" id="trainingState">
+              <span class="status-dot"></span>
+              <div>
+                <strong>尚未连接</strong>
+                <p>启动本地服务后自动读取状态。</p>
+              </div>
+            </div>
+            <pre class="training-log" id="trainingLog" hidden></pre>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="view-audit" aria-labelledby="audit-title">
+        <div class="page-heading compact">
+          <div>
+            <p class="eyebrow">NULL MODEL AUDIT</p>
+            <h1 id="audit-title">先检查随机机制，再讨论预测</h1>
+            <p class="lede">
+              整期开奖置换、号码对 max-T / FDR、顺序统计量、变化点和完整模型选择管线使用同一套预注册零假设。
+            </p>
+          </div>
+        </div>
+
+        <div class="stat-grid audit-stat-grid" id="auditStatGrid">
+          <article class="stat-card skeleton"></article>
+          <article class="stat-card skeleton"></article>
+          <article class="stat-card skeleton"></article>
+          <article class="stat-card skeleton"></article>
+        </div>
+
+        <div class="content-grid audit-content-grid">
+          <section class="panel panel-wide">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">REGIME CHECK</p>
+                <h2>大乐透时期审计</h2>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>区域</th>
+                    <th>时期</th>
+                    <th>检验</th>
+                    <th>统计量</th>
+                    <th>校正后 p</th>
+                    <th>结论</th>
+                  </tr>
+                </thead>
+                <tbody id="auditSummaryBody">
+                  <tr><td colspan="6" class="empty-cell">等待 P0 审计结果</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <aside class="panel audit-finding-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">CURRENT POLICY</p>
+                <h2>当前建模口径</h2>
+              </div>
+            </div>
+            <div class="audit-finding" id="auditFinding">
+              <strong>读取审计结果中</strong>
+              <p>早期数据仍保留在历史库，只在证据支持时进入模型状态。</p>
+            </div>
+          </aside>
+        </div>
+
+        <section class="panel audit-table-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">PIPELINE-LEVEL NULL</p>
+              <h2>完整模型选择公平模拟</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>彩种</th>
+                  <th>区域</th>
+                  <th>观测最大技能</th>
+                  <th>四区 max-T 95%</th>
+                  <th>四区校正 p</th>
+                  <th>模拟次数</th>
+                </tr>
+              </thead>
+              <tbody id="pipelineNullBody">
+                <tr><td colspan="6" class="empty-cell">等待完整管线公平模拟</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel audit-table-panel p1-audit-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">P1 PROBABILITY AUDIT</p>
+              <h2>嵌套调参、组合 NLL 与区块 bootstrap</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>彩种</th>
+                  <th>区域</th>
+                  <th>模型</th>
+                  <th>冻结参数</th>
+                  <th>内层 Brier</th>
+                  <th>组合 NLL</th>
+                  <th>Brier 差</th>
+                  <th>bootstrap p</th>
+                  <th>ECE / MCE</th>
+                  <th>可靠性</th>
+                  <th>分辨率</th>
+                </tr>
+              </thead>
+              <tbody id="p1AuditBody">
+                <tr><td colspan="11" class="empty-cell">等待 P1 审计结果</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="view-predict" aria-labelledby="predict-title">
+        <div class="page-heading compact">
+          <div>
+            <p class="eyebrow">NEXT DRAW EXPERIMENT</p>
+            <h1 id="predict-title">生成下一期实验排序</h1>
+            <p class="lede">每个模型的前区与后区号码合并在同一张卡片中，便于整体观察和横向对比。</p>
+          </div>
+        </div>
+
+        <div class="workspace-grid">
+          <form class="panel form-panel" id="predictionForm">
+            <div class="field">
+              <label for="predictGame">彩种</label>
+              <select id="predictGame" name="lottery_code">
+                <option value="ssq">双色球</option>
+                <option value="dlt">大乐透</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="predictIssue">目标期号</label>
+                <input id="predictIssue" name="issue" inputmode="numeric" required />
+              </div>
+              <div class="field">
+                <label for="predictDate">开奖日期</label>
+                <input id="predictDate" name="draw_date" type="date" required />
+              </div>
+            </div>
+            <button class="button button-primary button-full" type="submit">
+              运行预测实验
+            </button>
+            <p class="form-note">日期、期号和固定开奖时辰是传统模型唯一可使用的未来信息。</p>
+          </form>
+
+          <section class="panel result-panel" id="predictionResult">
+            <div class="result-empty">
+              <span class="result-kicker">NO RESULT YET</span>
+              <h2>选择彩种并运行实验</h2>
+              <p>模型快照加载后即可运行实验。</p>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-data-entry" aria-labelledby="data-entry-title">
+        <div class="page-heading compact">
+          <div>
+            <p class="eyebrow">AUTOMATIC SYNC + MANUAL FALLBACK</p>
+            <h1 id="data-entry-title">录入最新开奖记录</h1>
+            <p class="lede">系统启动后先联网校时并扫描缺失开奖；自动与手工记录分层保存，都不会覆盖原始历史文件。</p>
+          </div>
+        </div>
+
+        <section class="panel sync-panel" aria-labelledby="sync-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">STARTUP DATA SCAN</p>
+              <h2 id="sync-title">自动校时与缺失开奖扫描</h2>
+            </div>
+            <button class="button" id="syncButton" type="button">立即扫描</button>
+          </div>
+          <div class="sync-summary" id="syncSummary">
+            <div class="sync-summary-item"><span>状态</span><strong>等待服务状态</strong></div>
+            <div class="sync-summary-item"><span>可信日期</span><strong>—</strong></div>
+            <div class="sync-summary-item"><span>本次补入</span><strong>0 期</strong></div>
+            <div class="sync-summary-item"><span>最后扫描</span><strong>—</strong></div>
+          </div>
+          <div class="sync-game-list" id="syncGameList"></div>
+          <p class="sync-message" id="syncMessage">服务启动后会自动执行一次。</p>
+        </section>
+
+        <div class="workspace-grid">
+          <form class="panel form-panel" id="dataEntryForm">
+            <div class="field">
+              <label for="entryGame">彩种</label>
+              <select id="entryGame" name="lottery_code">
+                <option value="ssq">双色球</option>
+                <option value="dlt">大乐透</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="entryIssue">期号</label>
+                <input id="entryIssue" name="issue" inputmode="numeric" required />
+              </div>
+              <div class="field">
+                <label for="entryDate">开奖日期</label>
+                <input id="entryDate" name="draw_date" type="date" required />
+              </div>
+            </div>
+            <fieldset class="number-fieldset">
+              <legend id="frontLegend">红球 · 6 个，1–33</legend>
+              <div class="number-inputs" id="frontInputs"></div>
+            </fieldset>
+            <fieldset class="number-fieldset">
+              <legend id="backLegend">蓝球 · 1 个，1–16</legend>
+              <div class="number-inputs" id="backInputs"></div>
+            </fieldset>
+            <button class="button button-primary button-full" type="submit">
+              保存开奖记录
+            </button>
+          </form>
+
+          <section class="panel recent-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">LATEST DRAWS</p>
+                <h2>最近开奖记录</h2>
+              </div>
+            </div>
+            <div class="recent-list" id="recentDraws"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-models" aria-labelledby="models-title">
+        <div class="page-heading compact">
+          <div>
+            <p class="eyebrow">MODEL BENCHMARK</p>
+            <h1 id="models-title">模型横向比较</h1>
+            <p class="lede">默认以正确概率评分 Brier Skill 排序；命中数只作为更直观的次指标。</p>
+          </div>
+          <div class="filter-group" role="group" aria-label="模型筛选">
+            <select id="metricsGameFilter" aria-label="选择彩种">
+              <option value="all">全部彩种</option>
+              <option value="ssq">双色球</option>
+              <option value="dlt">大乐透</option>
+            </select>
+            <select id="metricsZoneFilter" aria-label="选择区域">
+              <option value="all">全部区域</option>
+              <option value="front">前区 / 红球</option>
+              <option value="back">后区 / 蓝球</option>
+            </select>
+          </div>
+        </div>
+
+        <section class="panel metrics-panel">
+          <div class="metric-list" id="metricList">
+            <div class="result-empty compact-empty">
+              <h2>等待模型训练</h2>
+              <p>训练完成后会在这里显示所有模型的最终留出集结果。</p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="/share.js" defer></script>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

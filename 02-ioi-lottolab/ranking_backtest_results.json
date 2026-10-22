@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-07-14",
+  "method": "walk-forward-priority-v1",
+  "configuration": {
+    "history_window": 100,
+    "structural_weight": 1.0,
+    "number_frequency_weight": 0.1,
+    "parameter_selection": "first 70% of locked historical predictions",
+    "independent_evaluation": "final 30% of locked historical predictions"
+  },
+  "ssq": {
+    "production_algorithm": "ssq-v8",
+    "historical_records": 3176,
+    "training_records": 2223,
+    "holdout_records": 953,
+    "holdout_rank_win_rates": [0.0766, 0.0567, 0.0682, 0.0776, 0.0651],
+    "holdout_all_rank_average": 0.0688,
+    "rank1_observed_lift": 0.113,
+    "statistically_significant": false
+  },
+  "dlt": {
+    "production_algorithm": "dlt-sina-v4",
+    "historical_records": 2596,
+    "training_records": 1817,
+    "holdout_records": 779,
+    "holdout_rank_win_rates": [0.0719, 0.0629, 0.0591, 0.0655, 0.0475],
+    "holdout_all_rank_average": 0.0614,
+    "rank1_observed_lift": 0.172,
+    "statistically_significant": false
+  },
+  "interpretation": "Priority is a weak historical ordering signal, not a winning probability. Buying all five tickets leaves the portfolio odds unchanged."
+}
+

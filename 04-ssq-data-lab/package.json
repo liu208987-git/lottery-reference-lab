@@ -1,0 +1,20 @@
+{
+  "name": "ssq-data-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "双色球 / 大乐透历史数据可视化与高级随机号码生成器（纯静态站点）",
+  "type": "module",
+  "scripts": {
+    "serve": "node tools/serve.mjs 5173",
+    "test": "node --test tests/*.test.mjs",
+    "test:py": "node tools/run_python_tests.mjs",
+    "build:sw": "node tools/build_app_shell.mjs",
+    "check:e2e": "node tools/check_compare.mjs && node tools/check_compare_dlt.mjs",
+    "update-data": "python tools/update_ssq.py --count 30 && python tools/update_dlt.py --count 30",
+    "update:ssq": "python tools/update_ssq.py --count 30",
+    "update:dlt": "python tools/update_dlt.py --count 30"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

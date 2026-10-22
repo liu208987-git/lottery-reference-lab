@@ -1,0 +1,586 @@
+{
+  "method": {
+    "walk_forward": true,
+    "no_future_data": true,
+    "first_history_issue": "2003001",
+    "first_predicted_issue": "2003002",
+    "last_predicted_issue": "2026080",
+    "periods": 3476,
+    "dt50": "5胆+2拖+12蓝=24注，再加1注分散保险，共25注50元",
+    "full_repeat_filter": "每期排除当时已经开出过的完整红球+蓝球组合",
+    "empirical_filter": {
+      "minimum_history": 100,
+      "rare_rate": 0.015,
+      "tail_rate": 0.01,
+      "rules": [
+        "连续号>=4",
+        "极端奇偶",
+        "单区6球",
+        "与上期重号>=4",
+        "和值历史两端1%",
+        "跨度历史两端1%"
+      ]
+    },
+    "fuyun_period": "2026014-2026075，按3红0蓝且未中更高奖级计"
+  },
+  "actual_history": {
+    "draws": 3477,
+    "full_duplicate_groups": 0,
+    "full_duplicate_extra_draws": 0,
+    "red_duplicate_groups": 6,
+    "red_duplicate_extra_draws": 6
+  },
+  "summaries": {
+    "v8_5": {
+      "periods": 3476,
+      "best_prize_period_counts": {
+        "一等奖": 0,
+        "二等奖": 0,
+        "三等奖": 0,
+        "四等奖": 10,
+        "五等奖": 130,
+        "六等奖": 1017,
+        "福运奖": 12
+      },
+      "winning_ticket_prize_counts": {
+        "一等奖": 0,
+        "二等奖": 0,
+        "三等奖": 0,
+        "四等奖": 10,
+        "五等奖": 130,
+        "六等奖": 1037,
+        "福运奖": 18
+      },
+      "winning_periods": 1169,
+      "winning_period_rate": 0.33630609896432684,
+      "third_plus_periods": 0,
+      "third_plus_rate": 0.0,
+      "fourth_plus_periods": 10,
+      "fourth_plus_rate": 0.0028768699654775605,
+      "red_ge4_periods": 79,
+      "red_ge3_periods": 971,
+      "total_cost": 34760,
+      "fixed_return": 8575,
+      "fixed_roi": 0.2466915995397008,
+      "fixed_net": -26185,
+      "historical_duplicate_tickets_purchased": 0,
+      "filter_rejections": {}
+    },
+    "dt50_plain": {
+      "periods": 3476,
+      "best_prize_period_counts": {
+        "一等奖": 0,
+        "二等奖": 0,
+        "三等奖": 0,
+        "四等奖": 24,
+        "五等奖": 207,
+        "六等奖": 2619,
+        "福运奖": 0
+      },
+      "winning_ticket_prize_counts": {
+        "一等奖": 0,
+        "二等奖": 0,
+        "三等奖": 0,
+        "四等奖": 29,
+        "五等奖": 684,
+        "六等奖": 5179,
+        "福运奖": 92
+      },
+      "winning_periods": 2850,
+      "winning_period_rate": 0.8199079401611047,
+      "third_plus_periods": 0,
+      "third_plus_rate": 0.0,
+      "fourth_plus_periods": 24,
+      "fourth_plus_rate": 0.006904487917146145,
+      "red_ge4_periods": 41,
+      "red_ge3_periods": 469,
+      "total_cost": 173800,
+      "fixed_return": 38995,
+      "fixed_roi": 0.22436708860759494,
+      "fixed_net": -134805,
+      "historical_duplicate_tickets_purchased": 14,
+      "filter_rejections": {}
+    },
+    "dt50_no_full_repeat": {
+      "periods": 3476,
+      "best_prize_period_counts": {
+        "一等奖": 0,
+        "二等奖": 0,
+        "三等奖": 0,
+        "四等奖": 24,
+        "五等奖": 207,
+        "六等奖": 2621,
+        "福运奖": 0
+      },
+      "winning_ticket_prize_counts": {
+        "一等奖": 0,
+        "二等奖": 0,
+        "三等奖": 0,
+        "四等奖": 29,
+        "五等奖": 684,
+        "六等奖": 5182,
+        "福运奖": 92
+      },
+      "winning_periods": 2852,
+      "winning_period_rate": 0.8204833141542003,
+      "third_plus_periods": 0,
+      "third_plus_rate": 0.0,
+      "fourth_plus_periods": 24,
+      "fourth_plus_rate": 0.006904487917146145,
+      "red_ge4_periods": 41,
+      "red_ge3_periods": 469,
+      "total_cost": 173800,
+      "fixed_return": 39010,
+      "fixed_roi": 0.22445339470655926,
+      "fixed_net": -134790,
+      "historical_duplicate_tickets_purchased": 0,
+      "filter_rejections": {}
+    },
+    "dt50_empirical_filter": {
+      "periods": 3476,
+      "best_prize_period_counts": {
+        "一等奖": 0,
+        "二等奖": 0,
+        "三等奖": 0,
+        "四等奖": 25,
+        "五等奖": 210,
+        "六等奖": 2615,
+        "福运奖": 0
+      },
+      "winning_ticket_prize_counts": {
+        "一等奖": 0,
+        "二等奖": 0,
+        "三等奖": 0,
+        "四等奖": 30,
+        "五等奖": 698,
+        "六等奖": 5176,
+        "福运奖": 92
+      },
+      "winning_periods": 2850,
+      "winning_period_rate": 0.8199079401611047,
+      "third_plus_periods": 0,
+      "third_plus_rate": 0.0,
+      "fourth_plus_periods": 25,
+      "fourth_plus_rate": 0.007192174913693901,
+      "red_ge4_periods": 43,
+      "red_ge3_periods": 467,
+      "total_cost": 173800,
+      "fixed_return": 39320,
+      "fixed_roi": 0.22623705408515535,
+      "fixed_net": -134480,
+      "historical_duplicate_tickets_purchased": 0,
+      "filter_rejections": {
+        "极端跨度": 1,
+        "保险硬排:历史已开红球组合": 21,
+        "保险硬排:全同012路": 16,
+        "极端质合": 1,
+        "历史已开红球组合": 19,
+        "保险硬排:两组独立3连号": 7,
+        "保险硬排:AC值<=1或>=11": 11,
+        "4个以上同尾": 4,
+        "极端和值": 1,
+        "连续号>=4": 12,
+        "保险软降权:极端和值": 1,
+        "极端AC值": 4,
+        "保险硬排:和值<=28或>=173": 2,
+        "保险硬排:跨度<=6": 4,
+        "与上期重号>=4": 2,
+        "保险软降权:与上期重号>=4": 1,
+        "极端奇偶": 1
+      }
+    }
+  },
+  "current_example": {
+    "issue": "2026081",
+    "metadata": {
+      "base_rank": 1,
+      "base_reds": [
+        2,
+        5,
+        14,
+        15,
+        20,
+        32
+      ],
+      "alternative_reds": [
+        2,
+        5,
+        15,
+        20,
+        29,
+        32
+      ],
+      "omitted": 14,
+      "new_number": 29,
+      "alternative_score": -28.8156,
+      "selected_blues": [
+        5,
+        16,
+        2,
+        3,
+        13,
+        1,
+        4,
+        10,
+        8,
+        7,
+        15,
+        6
+      ],
+      "dans": [
+        2,
+        5,
+        15,
+        20,
+        32
+      ],
+      "tuos": [
+        14,
+        29
+      ],
+      "insurance": {
+        "rank": 2,
+        "reds": [
+          3,
+          4,
+          11,
+          24,
+          28,
+          31
+        ],
+        "blue": 9
+      },
+      "ticket_count": 25,
+      "cost": 50,
+      "historical_duplicates": 0,
+      "rejections": {}
+    },
+    "tickets": [
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          5
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          16
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          2
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          3
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          13
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          1
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          4
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          10
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          8
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          7
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          15
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          14,
+          15,
+          20,
+          32
+        ],
+        [
+          6
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          5
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          16
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          2
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          3
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          13
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          1
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          4
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          10
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          8
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          7
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          15
+        ]
+      ],
+      [
+        [
+          2,
+          5,
+          15,
+          20,
+          29,
+          32
+        ],
+        [
+          6
+        ]
+      ],
+      [
+        [
+          3,
+          4,
+          11,
+          24,
+          28,
+          31
+        ],
+        [
+          9
+        ]
+      ]
+    ]
+  }
+}

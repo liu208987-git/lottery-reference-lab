@@ -1,0 +1,14 @@
+.uploads/
+data/*.tmp
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+node_modules/
+.idea/
+.claude/
+.kiro/
+.vscode/
+.DS_Store
+tools/screenshots/
+.playwright-mcp/

@@ -1,0 +1,353 @@
+{
+  "game": "ssq",
+  "source_algorithm": "ssq-v15-stability-gated",
+  "history_range": [
+    "2003001",
+    "2026082"
+  ],
+  "draws": 3479,
+  "walk_forward_order": "predict -> score -> learn",
+  "first_draw_policy": "deterministic_v8_no_history",
+  "adaptive_warmup_draws": 100,
+  "source_modes": {
+    "v8_warmup": 100,
+    "locked_walk_forward": 3379
+  },
+  "config_frozen": {
+    "strategy": "stable_coverage_adaptive",
+    "portfolio_mode": "coverage",
+    "ticket_count": 5,
+    "candidate_replicates": 12,
+    "soft_penalty_weight": 0.5,
+    "rare_rate": 0.005,
+    "tail_rate": 0.005,
+    "ranking_window": 100,
+    "frequency_weight": 0.1,
+    "exclude_seen_red": true,
+    "exclude_seen_full": true,
+    "coverage_bonus": 0.0,
+    "red_coverage": 30,
+    "blue_coverage": 5,
+    "max_red_overlap": 0,
+    "max_blue_overlap": 0,
+    "seed_namespace": "v8-validation"
+  },
+  "aggregate": {
+    "draws": 3479,
+    "current_rule_wins": 243,
+    "current_rule_win_rate": 0.06984765737280828,
+    "era_rule_wins": 243,
+    "era_rule_win_rate": 0.06984765737280828,
+    "current_rule_prizes": {
+      "一等奖": 0,
+      "二等奖": 0,
+      "三等奖": 0,
+      "四等奖": 3,
+      "五等奖": 38,
+      "六等奖": 202
+    },
+    "era_rule_prizes": {
+      "一等奖": 0,
+      "二等奖": 0,
+      "三等奖": 0,
+      "四等奖": 3,
+      "五等奖": 38,
+      "六等奖": 202
+    },
+    "red_hit_distribution": {
+      "0": 917,
+      "1": 1468,
+      "2": 867,
+      "3": 210,
+      "4": 17,
+      "5": 0,
+      "6": 0
+    },
+    "blue_hit_distribution": {
+      "0": 3250,
+      "1": 229
+    },
+    "joint_hit_distribution": {
+      "0+0": 857,
+      "0+1": 60,
+      "1+0": 1374,
+      "1+1": 94,
+      "2+0": 819,
+      "2+1": 48,
+      "3+0": 186,
+      "3+1": 24,
+      "4+0": 14,
+      "4+1": 3
+    },
+    "average_red_hits": 1.1210117849956884,
+    "average_blue_hits": 0.06582351250359299
+  },
+  "baseline_first_ticket": {
+    "draws": 3479,
+    "current_rule_wins": 206,
+    "current_rule_win_rate": 0.05921241736131072,
+    "era_rule_wins": 206,
+    "era_rule_win_rate": 0.05921241736131072,
+    "current_rule_prizes": {
+      "一等奖": 0,
+      "二等奖": 0,
+      "三等奖": 0,
+      "四等奖": 2,
+      "五等奖": 24,
+      "六等奖": 180
+    },
+    "era_rule_prizes": {
+      "一等奖": 0,
+      "二等奖": 0,
+      "三等奖": 0,
+      "四等奖": 2,
+      "五等奖": 24,
+      "六等奖": 180
+    },
+    "red_hit_distribution": {
+      "0": 967,
+      "1": 1519,
+      "2": 809,
+      "3": 168,
+      "4": 15,
+      "5": 1,
+      "6": 0
+    },
+    "blue_hit_distribution": {
+      "0": 3288,
+      "1": 191
+    },
+    "joint_hit_distribution": {
+      "0+0": 915,
+      "0+1": 52,
+      "1+0": 1440,
+      "1+1": 79,
+      "2+0": 760,
+      "2+1": 49,
+      "3+0": 158,
+      "3+1": 10,
+      "4+0": 14,
+      "4+1": 1,
+      "5+0": 1
+    },
+    "average_red_hits": 1.0652486346651338,
+    "average_blue_hits": 0.054900833572865765
+  },
+  "best_of_five_context": {
+    "draws": 3479,
+    "current_rule_wins": 1160,
+    "current_rule_win_rate": 0.3334291463064099,
+    "era_rule_wins": 1160,
+    "era_rule_win_rate": 0.3334291463064099,
+    "current_rule_prizes": {
+      "一等奖": 0,
+      "二等奖": 0,
+      "三等奖": 0,
+      "四等奖": 9,
+      "五等奖": 133,
+      "六等奖": 1018
+    },
+    "era_rule_prizes": {
+      "一等奖": 0,
+      "二等奖": 0,
+      "三等奖": 0,
+      "四等奖": 9,
+      "五等奖": 133,
+      "六等奖": 1018
+    },
+    "red_hit_distribution": {
+      "0": 281,
+      "1": 574,
+      "2": 1853,
+      "3": 685,
+      "4": 83,
+      "5": 3,
+      "6": 0
+    },
+    "blue_hit_distribution": {
+      "0": 2399,
+      "1": 1080
+    },
+    "joint_hit_distribution": {
+      "0+1": 281,
+      "1+0": 94,
+      "1+1": 480,
+      "2+0": 1596,
+      "2+1": 257,
+      "3+0": 629,
+      "3+1": 56,
+      "4+0": 77,
+      "4+1": 6,
+      "5+0": 3
+    },
+    "average_red_hits": 1.9206668582926127,
+    "average_blue_hits": 0.31043403276803677
+  },
+  "coverage": {
+    "union_red_hit_distribution": {
+      "3": 11,
+      "4": 244,
+      "5": 1354,
+      "6": 1870
+    },
+    "union_blue_hit_distribution": {
+      "0": 2380,
+      "1": 1099
+    }
+  },
+  "comparison": {
+    "all_history_current_rules": {
+      "draws": 3479,
+      "aggregate_rate": 0.06984765737280828,
+      "baseline_rate": 0.05921241736131072,
+      "absolute_change": 0.010635240011497557,
+      "relative_change": 0.1796116504854368,
+      "paired_better": 239,
+      "paired_worse": 202,
+      "paired_same": 3038
+    },
+    "last_30_percent_current_rules": {
+      "draws": 1044,
+      "aggregate_rate": 0.06321839080459771,
+      "baseline_rate": 0.05651340996168582,
+      "absolute_change": 0.006704980842911885,
+      "relative_change": 0.1186440677966103,
+      "paired_better": 66,
+      "paired_worse": 59,
+      "paired_same": 919
+    },
+    "last_100_current_rules": {
+      "draws": 100,
+      "aggregate_rate": 0.03,
+      "baseline_rate": 0.05,
+      "absolute_change": -0.020000000000000004,
+      "relative_change": -0.4,
+      "paired_better": 3,
+      "paired_worse": 5,
+      "paired_same": 92
+    }
+  },
+  "online_model": {
+    "features": [
+      "bias",
+      "source_priority",
+      "source_frequency",
+      "recent_10",
+      "recent_30",
+      "recent_100",
+      "long_frequency",
+      "previous_repeat",
+      "gap"
+    ],
+    "red_weights": [
+      -1.47926351,
+      -0.06792598,
+      0.15157472,
+      0.05880073,
+      0.02676403,
+      0.03464365,
+      0.03515543,
+      -0.07720203,
+      0.01351967
+    ],
+    "blue_weights": [
+      -2.35653197,
+      -0.48503638,
+      -0.02167008,
+      0.17674608,
+      0.00667253,
+      -0.02429434,
+      -0.01754448,
+      -0.05658541,
+      0.21095431
+    ]
+  },
+  "current_prediction": {
+    "issue": "2026083",
+    "reds": [
+      1,
+      11,
+      12,
+      18,
+      24,
+      27
+    ],
+    "blues": [
+      4
+    ],
+    "source_tickets": [
+      {
+        "reds": [
+          2,
+          5,
+          15,
+          22,
+          26,
+          28
+        ],
+        "blues": [
+          8
+        ]
+      },
+      {
+        "reds": [
+          1,
+          3,
+          4,
+          17,
+          29,
+          32
+        ],
+        "blues": [
+          1
+        ]
+      },
+      {
+        "reds": [
+          6,
+          7,
+          11,
+          13,
+          27,
+          30
+        ],
+        "blues": [
+          7
+        ]
+      },
+      {
+        "reds": [
+          8,
+          9,
+          23,
+          24,
+          25,
+          31
+        ],
+        "blues": [
+          10
+        ]
+      },
+      {
+        "reds": [
+          10,
+          12,
+          14,
+          18,
+          20,
+          33
+        ],
+        "blues": [
+          4
+        ]
+      }
+    ],
+    "trained_through": "2026082"
+  },
+  "method_limitations": [
+    "Each target draw is excluded from its prediction and model update.",
+    "The current production source configuration is frozen across history; its hyperparameters were selected before this backtest and are not a pristine pre-registered historical experiment.",
+    "Best-of-five coverage is context only and costs five bets; it is not a fair one-bet baseline.",
+    "Historical frequencies do not establish a causal advantage for a future lottery draw."
+  ]
+}

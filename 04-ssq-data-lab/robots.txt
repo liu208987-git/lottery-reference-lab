@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ssq-data-lab.pages.dev/sitemap.xml

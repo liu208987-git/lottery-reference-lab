@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>双色球数据实验室 · SSQ Data Lab</title>
+    <meta name="description" content="用 3400+ 期真实开奖数据做可视化、分布分析与卡方检验。不预测、不承诺中奖、不引导购彩——用数据本身证明彩票无法预测。" />
+    <meta name="keywords" content="双色球,走势图,数据分析,卡方检验,冷热号,遗漏,开源" />
+    <meta name="author" content="wanghao137" />
+    <meta name="theme-color" content="#06070b" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="双色球数据实验室 · SSQ Data Lab" />
+    <meta property="og:description" content="用 3400+ 期真实开奖数据做可视化、分布分析与卡方检验。一个诚实的双色球数据实验室。" />
+    <meta property="og:url" content="https://ssq-data-lab.pages.dev/" />
+    <meta property="og:site_name" content="SSQ Data Lab" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="双色球数据实验室 · SSQ Data Lab" />
+    <meta name="twitter:description" content="3400+ 期真实开奖数据 · 卡方检验 · 开源零构建" />
+
+    <link rel="canonical" href="https://ssq-data-lab.pages.dev/" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="alternate" hreflang="zh-CN" href="https://ssq-data-lab.pages.dev/" />
+    <link rel="alternate" hreflang="en" href="https://wanghao137.github.io/ssq-data-lab/" />
+
+    <!-- Structured data: WebApplication + Dataset -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "双色球数据实验室 · SSQ Data Lab",
+      "alternateName": "SSQ Data Lab",
+      "description": "用 3400+ 期真实开奖数据做可视化、分布分析、卡方检验与娱乐性号码推荐。开源、零构建、不预测。",
+      "applicationCategory": "DataAnalysisApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "url": "https://ssq-data-lab.pages.dev/",
+      "inLanguage": "zh-CN",
+      "isAccessibleForFree": true
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "中国福利彩票双色球历史开奖数据",
+      "description": "2003 年至今的双色球开奖记录（红球 6 个 + 蓝球 1 个），按期号升序，每周 GitHub Actions 自动追加最新结果。",
+      "creator": { "@type": "Organization", "name": "SSQ Data Lab" },
+      "license": "https://opensource.org/licenses/MIT",
+      "isAccessibleForFree": true,
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://ssq-data-lab.pages.dev/data/draws.json"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Pre-paint theme to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("ssq-theme");
+          if (!t) {
+            t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;defs&gt;&lt;radialGradient id='r' cx='32%25' cy='28%25' r='80%25'&gt;&lt;stop offset='0' stop-color='%23ffb0b6'/&gt;&lt;stop offset='1' stop-color='%23ff3b3b'/&gt;&lt;/radialGradient&gt;&lt;radialGradient id='b' cx='32%25' cy='28%25' r='80%25'&gt;&lt;stop offset='0' stop-color='%2390cdff'/&gt;&lt;stop offset='1' stop-color='%233aa3ff'/&gt;&lt;/radialGradient&gt;&lt;/defs&gt;&lt;circle cx='11' cy='12' r='8' fill='url(%23r)'/&gt;&lt;circle cx='22' cy='21' r='7' fill='url(%23b)'/&gt;&lt;/svg&gt;" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="stylesheet" href="./assets/dlt-styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+
+    <header class="topbar" role="banner">
+      <a class="brand" href="./" aria-label="返回首页">
+        <div class="mark" aria-hidden="true">
+          <span class="dot red"></span>
+          <span class="dot red"></span>
+          <span class="dot red"></span>
+          <span class="dot blue"></span>
+        </div>
+        <div class="brand-text">
+          <div class="kicker">SSQ · Data Lab</div>
+          <div class="name">双色球数据实验室</div>
+        </div>
+      </a>
+
+      <nav class="tabs" role="tablist" aria-label="页面导航">
+        <button class="tab is-active" role="tab" aria-selected="true" tabindex="0" data-tab="overview">概览</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="trend">走势图</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="insight">冷热 · 遗漏</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="distribution">分布</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="lstm">LSTM 预测</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="rational">理性投注</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="generator">生成器</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="backtest">回测</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="prize">奖级 · EV</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="chase">追号风险</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="tools">胆拖工具</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="science">科学态度</button>
+        <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="data">数据</button>
+      </nav>
+
+      <div class="top-actions">
+        <nav class="lottery-switcher" aria-label="彩种切换">
+          <a class="is-active" href="./" aria-current="page">双色球</a>
+          <a href="./dlt.html">大乐透</a>
+        </nav>
+        <button id="btnTheme" class="icon-btn" type="button" aria-label="切换主题" title="切换主题">
+          <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+          <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+          </svg>
+        </button>
+        <a id="btnGithub" class="icon-btn" href="https://github.com/wanghao137/ssq-data-lab" target="_blank" rel="noopener" aria-label="GitHub 仓库" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.18c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.17.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.48 3.16-1.17 3.16-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.06.78 2.13v3.16c0 .31.21.67.8.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/>
+          </svg>
+        </a>
+        <button id="btnRefresh" class="icon-btn" type="button" aria-label="重新加载数据" title="重新加载数据">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 12a9 9 0 0 1 15.5-6.3L21 8"></path>
+            <path d="M21 3v5h-5"></path>
+            <path d="M21 12a9 9 0 0 1-15.5 6.3L3 16"></path>
+            <path d="M3 21v-5h5"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="shell" id="main">
+      <!-- ========== HERO ========== -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-left">
+          <span class="hero-eyebrow">
+            <span class="pulse" aria-hidden="true"></span>
+            <span>3400+ 期 · 实时计算 · 零构建</span>
+          </span>
+          <h1 id="hero-title">
+            用历史数据<br />
+            做一场<span class="ink">理性的</span><em>彩票幻想</em>
+          </h1>
+          <p class="sub">
+            本站展示统计结果与可视化，并提供「加权随机」的号码推荐。
+            <strong>不构成任何中奖承诺</strong>，仅供学习与娱乐。
+          </p>
+          <div class="hero-metrics" id="heroMetrics">
+            <div class="metric">
+              <div class="label">期数</div>
+              <div class="value" id="mCount">—</div>
+            </div>
+            <div class="metric">
+              <div class="label">数据范围</div>
+              <div class="value" id="mRange">—</div>
+            </div>
+            <div class="metric">
+              <div class="label">最近一期</div>
+              <div class="value" id="mLatest">—</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-right" aria-label="最新数据">
+          <div class="card countdown" id="countdownCard" aria-live="polite">
+            <div class="card-title">
+              下期开奖倒计时
+              <span class="card-num" id="countdownLabel">—</span>
+            </div>
+            <div class="countdown-grid" id="countdownGrid">
+              <div class="cd-cell"><div class="cd-num mono" id="cdDays">—</div><div class="cd-unit">天</div></div>
+              <div class="cd-cell"><div class="cd-num mono" id="cdHours">—</div><div class="cd-unit">时</div></div>
+              <div class="cd-cell"><div class="cd-num mono" id="cdMinutes">—</div><div class="cd-unit">分</div></div>
+              <div class="cd-cell"><div class="cd-num mono" id="cdSeconds">—</div><div class="cd-unit">秒</div></div>
+            </div>
+            <div class="cd-meta fine muted" id="countdownMeta">—</div>
+          </div>
+
+          <div class="card disclaimer">
+            <div class="card-title">免责声明 <span class="card-num">01</span></div>
+            <ul class="fine">
+              <li>彩票为随机事件，历史统计无法预测未来。</li>
+              <li>本工具仅输出「随机建议」，不提高中奖概率。</li>
+              <li>理性消费，量力而行；未成年人请勿参与。</li>
+            </ul>
+          </div>
+
+          <div class="card latest" id="latestCard" aria-live="polite">
+            <div class="card-title">最新开奖（数据内） <span class="card-num">02</span></div>
+            <div class="latest-row">
+              <div>
+                <div class="fine muted">期号</div>
+                <div class="mono" id="latestIssue">—</div>
+              </div>
+              <div>
+                <div class="fine muted">日期</div>
+                <div class="mono" id="latestDate">—</div>
+              </div>
+            </div>
+            <div class="balls" id="latestBalls"></div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ========== 概览 ========== -->
+      <section class="panel is-active" id="panel-overview" data-panel="overview" role="tabpanel" aria-labelledby="tab-overview">
+        <div class="panel-header">
+          <h2>概览 · Overview</h2>
+          <span class="meta">A · Frequency × Window</span>
+        </div>
+        <div class="panel-grid">
+          <div class="card">
+            <div class="card-title">红球出现次数（全量）<span class="card-num">01–33</span></div>
+            <div class="chart" id="chartRedAll"></div>
+            <div class="hint">柱高代表该号码累计出现次数，悬停查看精确值。</div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">蓝球出现次数（全量）<span class="card-num">01–16</span></div>
+            <div class="chart chart-blue" id="chartBlueAll"></div>
+            <div class="hint">蓝球范围更小，频次差异更直观。</div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">近期窗口 <span class="card-num">recent</span></div>
+            <div class="row">
+              <label class="field">
+                <span>近</span>
+                <input id="winSize" type="number" min="20" max="1000" step="10" value="200" />
+                <span>期</span>
+              </label>
+              <button id="btnApplyWin" class="btn">应用</button>
+              <span class="fine muted">窗口越小越偏向最新走势，但随机性同样更大。</span>
+            </div>
+            <div class="two-col">
+              <div>
+                <div class="card-title" style="margin-top:6px">近期红球 Top 8</div>
+                <ol class="rank" id="rankRedRecent"></ol>
+              </div>
+              <div>
+                <div class="card-title" style="margin-top:6px">近期蓝球 Top 6</div>
+                <ol class="rank" id="rankBlueRecent"></ol>
+              </div>
+            </div>
+            <div class="hint">近期统计同时用于「加权随机」生成器。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 走势图 ========== -->
+      <section class="panel" id="panel-trend" data-panel="trend" role="tabpanel">
+        <div class="panel-header">
+          <h2>走势图 · Trend</h2>
+          <span class="meta">B · Time × Number Lattice</span>
+        </div>
+        <div class="card">
+          <div class="card-title">红球走势 <span class="card-num">red lattice</span></div>
+          <div class="row">
+            <label class="field">
+              <span>窗口</span>
+              <select id="trendWindow">
+                <option value="30">近 30 期</option>
+                <option value="50" selected>近 50 期</option>
+                <option value="100">近 100 期</option>
+              </select>
+            </label>
+            <label class="check" style="padding:0">
+              <input id="trendShowStats" type="checkbox" checked />
+              <span>显示出现/平均遗漏/最大遗漏/当前遗漏</span>
+            </label>
+            <span class="fine muted">点阵代表该号码在该期是否出现：红 = 红球命中，蓝 = 蓝球。</span>
+          </div>
+          <div class="trend-wrap" id="trendRed"></div>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <div class="card-title">蓝球走势 <span class="card-num">blue lattice</span></div>
+          <div class="trend-wrap" id="trendBlue"></div>
+        </div>
+      </section>
+
+      <!-- ========== 冷热 / 遗漏 ========== -->
+      <section class="panel" id="panel-insight" data-panel="insight" role="tabpanel">
+        <div class="panel-header">
+          <h2>冷热 · 遗漏 · Insight</h2>
+          <span class="meta">C · Recency × Gap</span>
+        </div>
+        <div class="panel-grid">
+          <div class="card">
+            <div class="card-title">红球遗漏 <span class="card-num">gap (red)</span></div>
+            <div class="chart" id="chartRedMiss"></div>
+            <div class="hint">数值越大，说明越久未出现。并不代表更「该出」。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">蓝球遗漏 <span class="card-num">gap (blue)</span></div>
+            <div class="chart chart-blue" id="chartBlueMiss"></div>
+            <div class="hint">蓝球仅 1 个号码，遗漏波动更剧烈。</div>
+          </div>
+          <div class="card span-full">
+            <div class="card-title">快速解读 <span class="card-num">snapshot</span></div>
+            <div class="chips" id="insightChips"></div>
+            <div class="callout">
+              <div class="callout-title">提示</div>
+              <div class="callout-body">
+                你可以把「冷热／遗漏」当作一个取样权重的旋钮：让随机更偏向某类号码，
+                <strong>而不是</strong>「押注必出」。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 分布分析 ========== -->
+      <section class="panel" id="panel-distribution" data-panel="distribution" role="tabpanel">
+        <div class="panel-header">
+          <h2>分布分析 · Distribution</h2>
+          <span class="meta">D · Eight Lenses + Time + Pairs</span>
+        </div>
+        <div class="panel-grid panel-grid-3">
+          <div class="card">
+            <div class="card-title">奇偶比 <span class="card-num">odd : even</span></div>
+            <ol class="rank" id="distOddEven"></ol>
+            <div class="hint">6 个红球中奇偶个数比。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">大小比 <span class="card-num">&gt;16 : ≤16</span></div>
+            <ol class="rank" id="distBigSmall"></ol>
+            <div class="hint">分界点 16 是行业常用值。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">质合比 <span class="card-num">prime : comp</span></div>
+            <ol class="rank" id="distPrime"></ol>
+            <div class="hint">质数：2,3,5,7,11,13,17,19,23,29,31。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">012 路比 <span class="card-num">mod 3</span></div>
+            <ol class="rank" id="dist012"></ol>
+            <div class="hint">按 号码 mod 3 分三路。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">三区比 <span class="card-num">1-11 / 12-22 / 23-33</span></div>
+            <ol class="rank" id="distZone"></ol>
+            <div class="hint">三个区间的分布比例。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">AC 值分布 <span class="card-num">0–10</span></div>
+            <ol class="rank" id="distAC"></ol>
+            <div class="hint">离散度指标，越大越「散」。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">和值分布 <span class="card-num">21–183</span></div>
+            <div class="chart" id="chartSum"></div>
+            <div class="hint">6 个红球相加的总和。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">跨度分布 <span class="card-num">5–32</span></div>
+            <div class="chart chart-gold" id="chartSpan"></div>
+            <div class="hint">最大红球减最小红球。</div>
+          </div>
+        </div>
+
+        <div class="panel-grid" style="margin-top: var(--space-5)">
+          <div class="card span-full">
+            <div class="card-title">指标随时间演化 <span class="card-num">time series</span></div>
+            <div class="row">
+              <label class="field">
+                <span>指标</span>
+                <select id="tsKind">
+                  <option value="sum">和值</option>
+                  <option value="span">跨度</option>
+                  <option value="ac">AC 值</option>
+                  <option value="odd">奇数个数</option>
+                  <option value="blue">蓝球</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>窗口</span>
+                <select id="tsWindow">
+                  <option value="100">近 100 期</option>
+                  <option value="300" selected>近 300 期</option>
+                  <option value="500">近 500 期</option>
+                  <option value="all">全部</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>移动均线</span>
+                <input id="tsMA" type="number" min="1" max="200" value="30" />
+              </label>
+              <span class="fine muted">细线为单期值，粗线为移动均线，虚线为期望值。</span>
+            </div>
+            <div class="ts-wrap" id="tsChart"></div>
+            <div class="hint">在足够长的时间跨度上，所有指标都围绕期望值随机游走——这正是均匀随机的特征。</div>
+          </div>
+        </div>
+
+        <div class="panel-grid" style="margin-top: var(--space-5)">
+          <div class="card">
+            <div class="card-title">红球同伴号 <span class="card-num">partners</span></div>
+            <div class="row">
+              <label class="field">
+                <span>查号码</span>
+                <input id="partnerNum" type="number" min="1" max="33" value="6" />
+              </label>
+              <label class="field">
+                <span>取前</span>
+                <input id="partnerK" type="number" min="3" max="32" value="8" />
+              </label>
+              <button id="btnPartner" class="btn" type="button">查询</button>
+            </div>
+            <div id="partnerList" class="rank" style="margin-top: var(--space-3)"></div>
+            <div class="hint">显示与该号码同期出现频次最高的若干红球。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">最偏离独立的对 <span class="card-num">extreme pairs</span></div>
+            <div id="extremePairs" class="rank"></div>
+            <div class="hint">lift = P(同期) / [P(a)·P(b)]；理论独立基线约 0.86。偏离基线最多的若干对仅是样本噪声的极端值。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== LSTM 预测 ========== -->
+      <section class="panel" id="panel-lstm" data-panel="lstm" role="tabpanel">
+        <div class="panel-header">
+          <h2>神经网络预测 · LSTM</h2>
+          <span class="meta">E · Sequence Modeling</span>
+        </div>
+
+        <div class="panel-grid">
+          <div class="card span-full">
+            <div class="card-title">模型 <span class="card-num">architecture</span></div>
+            <div class="row">
+              <label class="field">
+                <span>序列长度 T</span>
+                <input id="lstmSeqLen" type="number" min="5" max="50" value="15" />
+              </label>
+              <label class="field">
+                <span>隐藏维度 H</span>
+                <input id="lstmHidden" type="number" min="16" max="256" value="64" />
+              </label>
+              <label class="field">
+                <span>层数 L</span>
+                <input id="lstmLayers" type="number" min="1" max="4" value="2" />
+              </label>
+              <label class="field">
+                <span>训练 / 验证</span>
+                <input id="lstmSplit" type="number" min="0.5" max="0.95" step="0.05" value="0.85" />
+              </label>
+              <label class="field">
+                <span>学习率</span>
+                <input id="lstmLr" type="number" min="0.0001" max="0.1" step="0.0001" value="0.003" />
+              </label>
+              <label class="field">
+                <span>Epochs</span>
+                <input id="lstmEpochs" type="number" min="1" max="100" value="20" />
+              </label>
+              <label class="field">
+                <span>Batch</span>
+                <input id="lstmBatch" type="number" min="4" max="128" value="32" />
+              </label>
+              <label class="field">
+                <span>Dropout 输入</span>
+                <input id="lstmDropIn" type="number" min="0" max="0.5" step="0.05" value="0.1" />
+              </label>
+              <label class="field">
+                <span>Dropout 隐藏</span>
+                <input id="lstmDropHidden" type="number" min="0" max="0.5" step="0.05" value="0.2" />
+              </label>
+              <label class="field">
+                <span>Dropout 输出</span>
+                <input id="lstmDropOut" type="number" min="0" max="0.5" step="0.05" value="0.2" />
+              </label>
+              <label class="field">
+                <span>Ensemble K</span>
+                <input id="lstmEnsembleK" type="number" min="1" max="8" value="1" />
+              </label>
+              <label class="field">
+                <span>Label smoothing ε</span>
+                <input id="lstmLabelSmooth" type="number" min="0" max="0.2" step="0.01" value="0.05" />
+              </label>
+              <label class="field">
+                <span>LCB λ（不确定性惩罚）</span>
+                <input id="lstmLcbLambda" type="number" min="0" max="3" step="0.1" value="0" />
+              </label>
+              <label class="field">
+                <span>种子</span>
+                <input id="lstmSeed" type="text" placeholder="留空=随机" />
+              </label>
+            </div>
+            <div class="row" style="margin-top:8px">
+              <button id="btnLstmTrain" class="btn primary" type="button">开始训练</button>
+              <button id="btnLstmStop" class="btn ghost" type="button" disabled>停止</button>
+              <button id="btnLstmPredict" class="btn" type="button" disabled>预测下一期</button>
+              <button id="btnLstmBacktest" class="btn ghost" type="button" disabled>Walk-forward 回测</button>
+              <button id="btnLstmSave" class="btn ghost" type="button" disabled>保存到本地（IndexedDB）</button>
+              <button id="btnLstmLoad" class="btn ghost" type="button">从本地加载</button>
+              <button id="btnLstmDownload" class="btn ghost" type="button" disabled>下载备份</button>
+              <label class="btn ghost" style="cursor:pointer">
+                上传备份
+                <input id="lstmUploadFile" type="file" accept=".json,.lottery.json" style="display:none" />
+              </label>
+              <button id="btnLstmLoadDemo" class="btn primary" type="button" style="margin-left:8px" title="无需训练，立即体验">⚡ 加载 Demo 模型</button>
+              <button id="btnLstmManager" class="btn ghost" type="button" title="管理本地保存的所有模型">📂 模型管理</button>
+            </div>
+            <div class="hint">完整 LSTM 在浏览器本地训练（纯手写，零依赖）。约 300 期数据 + H=64，单核约 30 秒一个 epoch。<br/>
+            <strong>存储升级</strong>：从 localStorage（5MB 限制）改为 IndexedDB（数百 MB）+ 文件备份。<strong>建议训练后立即下载备份</strong>，避免浏览器清缓存丢模型。</div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">训练进度 <span class="card-num">live</span></div>
+            <div id="lstmStatus" class="lstm-status">就绪：点击「开始训练」</div>
+            <div id="lstmProgressWrap" class="lstm-progress" aria-hidden="true">
+              <div id="lstmProgressBar" class="lstm-progress-bar"></div>
+            </div>
+            <div id="lstmCurves" class="lstm-curves"></div>
+            <div id="lstmMetrics" class="diag-grid" style="margin-top:12px"></div>
+          </div>
+
+          <div class="card span-full" id="lstmPredictionCard" style="display:none">
+            <div class="card-title">下一期预测 <span class="card-num">prediction</span></div>
+            <div id="lstmPredictionBody"></div>
+          </div>
+
+          <div class="card span-full" id="lstmBacktestCard" style="display:none">
+            <div class="card-title">Walk-forward 回测 <span class="card-num">backtest</span></div>
+            <div id="lstmBacktestBody"></div>
+          </div>
+
+          <div class="card span-full" id="lstmCompareCard" style="display:none">
+            <div class="card-title">A/B 模型对比 <span class="card-num">compare</span></div>
+            <div id="lstmCompareBody"></div>
+          </div>
+
+          <div class="card span-full" id="lstmConformalCard" style="display:none">
+            <div class="card-title">共形预测 · α 可调集合 <span class="card-num">conformal</span></div>
+            <div id="lstmConformalBody"></div>
+          </div>
+
+          <div class="card span-full" id="lstmTrackerCard">
+            <div class="card-title">📊 我的预测追踪 <span class="card-num">真实命中分布</span></div>
+            <div id="lstmTrackerBody"></div>
+          </div>
+
+          <div class="card span-full" id="lstmDriftCard">
+            <div class="card-title">📉 数据漂移监测 <span class="card-num">PSI · 早 vs 晚</span></div>
+            <div id="lstmDriftBody"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 理性投注工作台 ========== -->
+      <section class="panel" id="panel-rational" data-panel="rational" role="tabpanel">
+        <div class="panel-header">
+          <h2>理性投注工作台 · Rational Betting</h2>
+          <span class="meta">F · EV / Coverage / Kelly / Bankroll</span>
+        </div>
+        <div class="panel-grid">
+          <div class="card span-full">
+            <div id="rationalBettingBody"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 生成器 ========== -->
+      <section class="panel" id="panel-generator" data-panel="generator" role="tabpanel">
+        <div class="panel-header">
+          <h2>号码生成器 · Generator</h2>
+          <span class="meta">E · Weighted Sampler</span>
+        </div>
+        <div class="panel-grid">
+          <div class="card">
+            <div class="card-title">采样引擎 <span class="card-num">engine</span></div>
+            <div class="stack">
+              <label class="field">
+                <span>引擎</span>
+                <select id="engine">
+                  <option value="legacy">经典：加权随机（快）</option>
+                  <option value="bayes-dpp" selected>贝叶斯 + DPP（推荐）</option>
+                  <option value="thompson">Thompson 采样（贝叶斯）</option>
+                  <option value="mcmc">MCMC（多链 Metropolis-Hastings）</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>红球策略</span>
+                <select id="strategyRed">
+                  <option value="mix">混合（热+冷）</option>
+                  <option value="hot">偏热（近期高频）</option>
+                  <option value="cold">偏冷（近期低频）</option>
+                  <option value="uniform">均匀随机</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>蓝球策略</span>
+                <select id="strategyBlue">
+                  <option value="hot">偏热</option>
+                  <option value="cold">偏冷</option>
+                  <option value="uniform">均匀随机</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>优化模式</span>
+                <select id="optimizeMode">
+                  <option value="none" selected>关闭：按当前策略随机</option>
+                  <option value="diverse">低撞号 + 分散覆盖</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>权重强度</span>
+                <input id="alpha" type="range" min="0" max="200" value="90" />
+              </label>
+              <label class="field">
+                <span>种子</span>
+                <input id="seedInput" type="text" placeholder="留空=系统熵；填入可复现" />
+              </label>
+            </div>
+            <div class="hint">高级引擎下"红球策略/权重强度/优化模式"主要影响经典引擎；高级引擎自动用贝叶斯后验 + DPP 多样化。</div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">约束（可选）<span class="card-num">filters</span></div>
+            <div class="checks">
+              <label class="check">
+                <input id="cSum" type="checkbox" checked />
+                <span>红球和值 70–150</span>
+              </label>
+              <label class="check">
+                <input id="cOdd" type="checkbox" checked />
+                <span>奇数个数 2–4</span>
+              </label>
+              <label class="check">
+                <input id="cSpan" type="checkbox" />
+                <span>跨度 ≥ 18</span>
+              </label>
+              <label class="check">
+                <input id="cNo4SameZone" type="checkbox" />
+                <span>单区(1-11/12-22/23-33)不超过 4 个</span>
+              </label>
+              <label class="check">
+                <input id="cAC" type="checkbox" />
+                <span>AC 值 ≥ 7（离散度更高）</span>
+              </label>
+              <label class="check">
+                <input id="cNoConsec" type="checkbox" />
+                <span>最多 1 组连号</span>
+              </label>
+              <label class="check">
+                <input id="cAvoidLast" type="checkbox" />
+                <span>避开上一期红球</span>
+              </label>
+            </div>
+            <div class="hint">约束只是「审美过滤」，不是预测规则。约束越多，可生成的组合越少。</div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">胆码 / 排除（可选）<span class="card-num">pin / exclude</span></div>
+            <div class="row">
+              <label class="field grow">
+                <span>胆码</span>
+                <input id="includeRed" type="text" placeholder="必含红球，最多 6 个，例如：3, 11, 22" />
+              </label>
+              <label class="field grow">
+                <span>排除红</span>
+                <input id="excludeRed" type="text" placeholder="例如：1, 13, 27" />
+              </label>
+              <label class="field grow">
+                <span>排除蓝</span>
+                <input id="excludeBlue" type="text" placeholder="例如：1, 16" />
+              </label>
+            </div>
+            <div class="hint">支持逗号、空格、顿号分隔。胆码与排除冲突时以胆码优先。</div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">生成 <span class="card-num">generate</span></div>
+            <div class="row">
+              <label class="field">
+                <span>生成注数</span>
+                <input id="genN" type="number" min="1" max="20" value="5" />
+              </label>
+              <button id="btnGen" class="btn primary" type="button">生成推荐</button>
+              <button id="btnCopyAll" class="btn ghost" type="button" disabled>复制全部</button>
+              <span class="fine muted" id="genDiag"></span>
+            </div>
+            <div class="results" id="results"></div>
+            <div class="sampler-diag" id="samplerDiag" style="display:none"></div>
+            <div class="hint">号码会在你的浏览器本地生成，不会上传任何信息。<strong>所有引擎仅是更高级的随机采样器，不预测中奖号码。</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 回测 ========== -->
+      <section class="panel" id="panel-backtest" data-panel="backtest" role="tabpanel">
+        <div class="panel-header">
+          <h2>历史回测 · Backtest</h2>
+          <span class="meta">G · Walk-forward audit</span>
+        </div>
+        <div class="panel-grid">
+          <div class="card">
+            <div class="card-title">回测设置 <span class="card-num">audit</span></div>
+            <div class="stack">
+              <label class="field">
+                <span>采样器</span>
+                <select id="ssqBacktestMethod">
+                  <option value="bayes-dpp" selected>Bayes + DPP</option>
+                  <option value="thompson">Thompson 采样</option>
+                  <option value="legacy-mix">经典混合</option>
+                  <option value="legacy-hot">经典偏热</option>
+                  <option value="legacy-uniform">均匀基线</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>回测期数</span>
+                <input id="ssqBacktestRounds" type="number" min="10" max="300" step="10" value="80" />
+              </label>
+              <label class="field">
+                <span>训练窗口</span>
+                <input id="ssqBacktestLookback" type="number" min="50" max="1000" step="10" value="240" />
+              </label>
+              <label class="field">
+                <span>每期注数</span>
+                <input id="ssqBacktestTickets" type="number" min="1" max="20" value="5" />
+              </label>
+              <label class="field">
+                <span>回测种子</span>
+                <input id="ssqBacktestSeed" type="text" value="ssq-audit" />
+              </label>
+              <button id="btnSsqRunBacktest" class="btn primary" type="button">运行回测</button>
+            </div>
+            <div class="hint">每轮只使用目标期开奖前的历史窗口生成号码，然后与下一期开奖对照，避免偷看未来数据。</div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">回测总览 <span class="card-num">summary</span></div>
+            <div id="ssqBacktestSummary" class="backtest-summary">
+              <div class="fine muted">选择采样器后运行回测，查看命中型态、理论随机基线和最好轮次。</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">命中型态矩阵 <span class="card-num">hit class</span></div>
+            <div id="ssqBacktestMatrix" class="backtest-matrix"></div>
+            <div class="hint">行是红球命中个数，列是蓝球命中（0 或 1）；矩阵展示历史回测中的出现次数。</div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">最好轮次 <span class="card-num">best rounds</span></div>
+            <div id="ssqBacktestBest" class="backtest-best">
+              <div class="fine muted">尚未运行。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 奖级 · EV ========== -->
+      <section class="panel" id="panel-prize" data-panel="prize" role="tabpanel">
+        <div class="panel-header">
+          <h2>6 奖级 · 期望回报 EV</h2>
+          <span class="meta">G2 · Prize Structure & EV</span>
+        </div>
+        <div class="panel-grid">
+          <div class="card">
+            <div class="card-title">奖池估计 <span class="card-num">band</span></div>
+            <div class="stack">
+              <label class="field">
+                <span>浮动奖估计</span>
+                <select id="ssqPrizeBand">
+                  <option value="conservative">保守（500 万一等 / 5 万二等）</option>
+                  <option value="expected" selected>期望（800 万一等 / 15 万二等）</option>
+                  <option value="aggressive">激进（1500 万一等 / 50 万二等）</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>注数（用于总成本/EV）</span>
+                <input id="ssqPrizeTickets" type="number" min="1" max="10000" value="100" />
+              </label>
+            </div>
+            <div class="hint">一/二等奖是浮动奖，金额取决于当期奖池。这里给出三档参考估计，<strong>真实奖额请以中国福彩公示为准</strong>。<br/><strong>双色球没有"追加投注"</strong>（这是与大乐透的关键区别）。</div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">单注 EV 总览 <span class="card-num">payback</span></div>
+            <div id="ssqPrizeKpi" class="backtest-kpis"></div>
+            <div class="callout" style="margin-top:12px">
+              <div class="callout-title">如何理解 payback ratio</div>
+              <div class="callout-body">
+                <strong>payback ratio = EV / 成本</strong>，即"平均每花 1 元能拿回多少钱"。
+                双色球长期在 50% 左右，意味着每花 100 元期望拿回 50 元。
+                <strong>剩下 50 元是国家公益金 + 运营成本——这是国家发行彩票的本质</strong>。
+              </div>
+            </div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">6 奖级明细 <span class="card-num">6 levels</span></div>
+            <div class="bt-table-wrap">
+              <table class="table" id="ssqPrizeTable">
+                <thead>
+                  <tr>
+                    <th>等级</th>
+                    <th>命中型态</th>
+                    <th>概率</th>
+                    <th>1 / N</th>
+                    <th>奖金</th>
+                    <th>EV 贡献</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div class="hint">概率是精确组合数：分子 = C(6,r)·C(27,6-r)·C(1,b)·C(15,1-b)，分母 = C(33,6)·16 = 17,721,088。</div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">总成本 / 总 EV <span class="card-num">batch</span></div>
+            <div id="ssqPrizeBatchSummary"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 追号风险 ========== -->
+      <section class="panel" id="panel-chase" data-panel="chase" role="tabpanel">
+        <div class="panel-header">
+          <h2>追号策略 · 破产风险蒙特卡洛</h2>
+          <span class="meta">G3 · Bankruptcy Simulator</span>
+        </div>
+        <div class="panel-grid">
+          <div class="card">
+            <div class="card-title">模拟设置 <span class="card-num">setup</span></div>
+            <div class="stack">
+              <label class="field"><span>初始本金（元）</span><input id="ssqChaseBankroll" type="number" min="20" max="1000000" value="2000" /></label>
+              <label class="field"><span>追号期数</span><input id="ssqChaseDraws" type="number" min="5" max="200" value="50" /></label>
+              <label class="field"><span>每期注数</span><input id="ssqChaseTickets" type="number" min="1" max="20" value="2" /></label>
+              <label class="field">
+                <span>策略</span>
+                <select id="ssqChaseStrategy">
+                  <option value="flat" selected>等额（最常见）</option>
+                  <option value="martingale">倍投（赌徒策略）</option>
+                  <option value="kelly">保守（凯利模拟）</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>奖金估计</span>
+                <select id="ssqChasePrizeBand">
+                  <option value="conservative">保守</option>
+                  <option value="expected" selected>期望</option>
+                  <option value="aggressive">激进</option>
+                </select>
+              </label>
+              <label class="field"><span>模拟次数</span><input id="ssqChaseRuns" type="number" min="200" max="5000" step="100" value="2000" /></label>
+              <label class="field"><span>种子</span><input id="ssqChaseSeed" type="text" value="ssq-chase-2026" /></label>
+              <button id="btnSsqChaseRun" class="btn primary" type="button">运行 2000 次蒙特卡洛</button>
+            </div>
+            <div class="hint">模拟在完全 i.i.d. 假设下，连续追号 N 期的资金曲线、破产概率和命中大奖概率。</div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">关键指标 <span class="card-num">summary</span></div>
+            <div id="ssqChaseSummary" class="backtest-kpis"></div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">资金曲线（前 30 条样本路径） <span class="card-num">trajectories</span></div>
+            <div id="ssqChaseChart" class="lstm-curves"></div>
+            <div class="hint">绿色 = 跑完未破产；红色 = 中途破产。横轴期数，纵轴账户余额。</div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">最终资金分布 <span class="card-num">final bankroll</span></div>
+            <div id="ssqChaseFinalDist" class="lstm-curves"></div>
+            <div class="hint">最终账户余额的直方图。在 EV 永远 < 0 的彩票里，分布几乎一定向左偏（输得多赢得少）。</div>
+          </div>
+
+          <div class="card span-full">
+            <div class="card-title">理性思考 <span class="card-num">reflection</span></div>
+            <div id="ssqChaseVerdict" class="callout"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 胆拖工具 ========== -->
+      <section class="panel" id="panel-tools" data-panel="tools" role="tabpanel">
+        <div class="panel-header">
+          <h2>胆拖工具 · Calculator</h2>
+          <span class="meta">F · Combinatorics</span>
+        </div>
+        <div class="panel-grid">
+          <div class="card">
+            <div class="card-title">胆拖注数试算 <span class="card-num">dan / tuo</span></div>
+            <div class="stack">
+              <label class="field">
+                <span>胆码数</span>
+                <input id="danCount" type="number" min="0" max="5" value="2" />
+              </label>
+              <label class="field">
+                <span>拖码数</span>
+                <input id="tuoCount" type="number" min="4" max="33" value="10" />
+              </label>
+              <label class="field">
+                <span>蓝球数</span>
+                <input id="blueCount" type="number" min="1" max="16" value="1" />
+              </label>
+              <button id="btnCalcDanTuo" class="btn primary" type="button">计算</button>
+            </div>
+            <div class="result-big" id="danTuoResult">—</div>
+            <div class="hint">胆码：必选的红球；拖码：候选的红球。胆码 + 拖码 ≥ 6。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">复式注数试算 <span class="card-num">complex</span></div>
+            <div class="stack">
+              <label class="field">
+                <span>红球数</span>
+                <input id="complexRed" type="number" min="6" max="33" value="8" />
+              </label>
+              <label class="field">
+                <span>蓝球数</span>
+                <input id="complexBlue" type="number" min="1" max="16" value="1" />
+              </label>
+              <button id="btnCalcComplex" class="btn primary" type="button">计算</button>
+            </div>
+            <div class="result-big" id="complexResult">—</div>
+            <div class="hint">复式：选 &gt;6 个红球，所有 6 个组合都投。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">号码体检 <span class="card-num">checkup</span></div>
+            <div class="stack">
+              <label class="field">
+                <span>红球</span>
+                <input id="manualReds" type="text" placeholder="例如：03 11 18 22 27 31" />
+              </label>
+              <label class="field">
+                <span>蓝球</span>
+                <input id="manualBlue" type="text" placeholder="例如：08" />
+              </label>
+              <button id="btnAnalyseTicket" class="btn primary" type="button">分析号码</button>
+            </div>
+            <div class="analysis-box" id="ticketAnalysis">输入一注号码，查看分布指标、历史重号与最新期重复情况。</div>
+          </div>
+          <div class="card">
+            <div class="card-title">常用参考 <span class="card-num">cheatsheet</span></div>
+            <div class="table-wrap">
+              <table class="table mini">
+                <thead><tr><th>红球数</th><th>注数</th><th>金额</th></tr></thead>
+                <tbody id="refTable"></tbody>
+              </table>
+            </div>
+            <div class="hint">单蓝球；每注 2 元。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 科学态度 ========== -->
+      <section class="panel" id="panel-science" data-panel="science" role="tabpanel">
+        <div class="panel-header">
+          <h2>科学态度 · Chi-Square</h2>
+          <span class="meta">G · Goodness of Fit</span>
+        </div>
+        <div class="panel-grid">
+          <div class="card">
+            <div class="card-title">卡方拟合优度检验：红球 <span class="card-num">red</span></div>
+            <div class="metric-block">
+              <div class="metric-line"><span>卡方统计量 χ²</span><strong class="mono" id="chiRed">—</strong></div>
+              <div class="metric-line"><span>自由度 df</span><strong class="mono">32</strong></div>
+              <div class="metric-line"><span>p 值</span><strong class="mono" id="pRed">—</strong></div>
+              <div class="metric-line"><span>能否拒绝「均匀分布」假设（α=0.05）</span><strong id="rejectRed">—</strong></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">卡方拟合优度检验：蓝球 <span class="card-num">blue</span></div>
+            <div class="metric-block">
+              <div class="metric-line"><span>卡方统计量 χ²</span><strong class="mono" id="chiBlue">—</strong></div>
+              <div class="metric-line"><span>自由度 df</span><strong class="mono">15</strong></div>
+              <div class="metric-line"><span>p 值</span><strong class="mono" id="pBlue">—</strong></div>
+              <div class="metric-line"><span>能否拒绝「均匀分布」假设（α=0.05）</span><strong id="rejectBlue">—</strong></div>
+            </div>
+          </div>
+          <div class="card span-full">
+            <div class="card-title">怎么解读？<span class="card-num">interpretation</span></div>
+            <div class="callout">
+              <div class="callout-title">结论（科学姿态）</div>
+              <div class="callout-body" id="scienceVerdict">正在计算...</div>
+            </div>
+            <ul class="fine" style="margin-top:12px; padding-left: 18px; display:flex; flex-direction:column; gap:4px">
+              <li><strong>原假设 H₀</strong>：每个号码被摇出的概率相同（均匀分布）。</li>
+              <li><strong>p 值</strong>：若真的是均匀分布，观察到当前或更极端结果的概率。</li>
+              <li>p &gt; 0.05 → 没有足够证据拒绝 H₀ → 数据与「均匀随机」一致。</li>
+              <li>p &lt; 0.05 → 可以拒绝 H₀ → 有显著偏差（但不等于可预测，可能只是样本量或硬件偏差）。</li>
+              <li>换句话说：<strong>历史频率偏差不是「下一期会补回」的依据</strong>，它只可能是「摇奖设备的随机性缺陷」。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 数据 ========== -->
+      <section class="panel" id="panel-data" data-panel="data" role="tabpanel">
+        <div class="panel-header">
+          <h2>开奖数据 · Records</h2>
+          <span class="meta">H · Search & Export</span>
+        </div>
+        <div class="card">
+          <div class="card-title">开奖数据 <span class="card-num">records</span></div>
+          <div class="row">
+            <label class="field grow">
+              <span>搜索</span>
+              <input id="qIssue" placeholder="期号 / 日期 / 红球（如 03 11 18） / 蓝 08" />
+            </label>
+            <label class="field">
+              <span>展示</span>
+              <select id="dataLimit">
+                <option value="50" selected>最近 50 期</option>
+                <option value="100">最近 100 期</option>
+                <option value="200">最近 200 期</option>
+                <option value="all">全部</option>
+              </select>
+            </label>
+            <button id="btnSearch" class="btn" type="button">搜索</button>
+            <button id="btnClear" class="btn ghost" type="button">清除</button>
+            <button id="btnExportCsv" class="btn ghost" type="button">导出 CSV</button>
+          </div>
+          <div class="table-wrap">
+            <table class="table" id="table">
+              <thead>
+                <tr>
+                  <th>期号</th>
+                  <th>日期</th>
+                  <th>红球</th>
+                  <th>蓝球</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+          <div class="fine muted" id="dataFootnote" style="margin-top:10px"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div>
+        <span class="muted">DATA</span> ·
+        <span class="mono">/data/draws.json</span>
+      </div>
+      <div>
+        <a href="https://github.com/wanghao137/ssq-data-lab" target="_blank" rel="noopener">GitHub</a>
+        <span class="muted"> · </span>
+        <a href="./README.md" target="_blank" rel="noopener">README</a>
+        <span class="muted"> · </span>
+        <span class="muted">Made for analysis &amp; play. Not for promises.</span>
+      </div>
+    </footer>
+
+    <div class="toast-host" id="toastHost" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- 兼容 file:// 直接打开：提供内置数据 (window.__SSQ_DATA__) -->
+    <script src="./data/draws.js" defer></script>
+    <script type="module" src="./assets/js/main.js"></script>
+    <script>
+      // PWA: 仅在 https 或 localhost 注册（file:// 与受限源直接跳过）
+      if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
+        window.addEventListener("load", async () => {
+          try {
+            const reg = await navigator.serviceWorker.register("./sw.js");
+            // 检测新 SW 进入 waiting 状态 → 显示"有更新"提示
+            reg.addEventListener("updatefound", () => {
+              const sw = reg.installing;
+              if (!sw) return;
+              sw.addEventListener("statechange", () => {
+                if (sw.state === "installed" && navigator.serviceWorker.controller) {
+                  showUpdateBanner(() => sw.postMessage({ type: "SKIP_WAITING" }));
+                }
+              });
+            });
+            // 也检查启动时已经在 waiting 的（用户上次没刷新就关了）
+            if (reg.waiting && navigator.serviceWorker.controller) {
+              showUpdateBanner(() => reg.waiting.postMessage({ type: "SKIP_WAITING" }));
+            }
+          } catch (_) {}
+        });
+        let _swReloaded = false;
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+          if (_swReloaded) return;
+          _swReloaded = true;
+          location.reload();
+        });
+      }
+      // 显示"有更新"横幅。点击后调 cb，cb 会触发 skipWaiting → controllerchange → 自动 reload
+      function showUpdateBanner(onApply) {
+        if (document.querySelector(".pwa-update-banner")) return;
+        const el = document.createElement("div");
+        el.className = "pwa-update-banner";
+        el.innerHTML = `
+          <span>🎉 网站有新版本</span>
+          <button type="button" class="btn primary btn-sm" id="pwaApplyUpdate">立即更新</button>
+          <button type="button" class="btn ghost btn-sm" id="pwaDismissUpdate">稍后</button>
+        `;
+        document.body.appendChild(el);
+        el.querySelector("#pwaApplyUpdate").onclick = () => { onApply(); };
+        el.querySelector("#pwaDismissUpdate").onclick = () => el.remove();
+      }
+    </script>
+  </body>
+</html>

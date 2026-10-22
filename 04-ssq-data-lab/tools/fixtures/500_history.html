@@ -1,0 +1,65 @@
+
+<div id="container">
+
+<div class="warp">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<div class="wrap_datachart">
+					<div class="tubiao_box">
+						<div class="tubiao_box_t">
+							<table width="81%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="200"><span class="span_left">双色球：<span class="cfont2">开奖信息</span></span></td>
+									<td align="center" style="font-weight: normal">
+																		<a href="javascript:;" onclick="getChartdata(30,0)">最近30期</a>
+																		<a href="javascript:;" onclick="getChartdata(50,0)">最近50期</a>
+																		<a href="javascript:;" onclick="getChartdata(100,0)">最近100期</a>
+																			<input id="start" name="start" value="26046" size="10" />
+										期 至<input id="end" name="end" value="26060" size="10" />
+										期 <img src="/images/info/tubiao/cx01.gif" align="absmiddle" border="0" style="cursor:pointer;" onclick="getChartdata(0,0,1)" />
+									</td>
+								</tr>
+							</table>
+							<div style="width: 950px; height: 0px; clear: both; line-height: 0px; font-size: 0px;"></div>
+						</div>
+					</div>
+					<div class="chart">
+						<table width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#C0DCF8" id="tablelist">
+							<tr>
+								<td rowspan="2" class="td_title1" style="cursor:pointer;"width="80" align="center" onclick="getChartdata(0,1);"><strong>期号</strong><img src="/images/info/tubiao/dot_paixu2.gif" border="0" align="absmiddle" id="imgorder">&nbsp;<img src="/images/info/tubiao/paixu.gif" border="0" align="top"  /></td>
+								<td colspan="6" class="td_title1">红球号码</td>
+								<td rowspan="2" class="td_title1">蓝球</td>
+								<td rowspan="2" class="td_title1">快乐星期天</td>
+								<td rowspan="2" class="td_title1">奖池奖金(元)</td>
+								<td colspan="2" class="td_title1">一等奖</td>
+								<td colspan="2" class="td_title1">二等奖</td>
+								<td rowspan="2" class="td_title1">总投注额(元)</td>
+								<td rowspan="2" class="td_title1">开奖日期</td>
+							</tr>
+							<tr>
+								<td class="td_title2">1</td>
+								<td class="td_title2">2</td>
+								<td class="td_title2">3</td>
+								<td class="td_title2">4</td>
+								<td class="td_title2">5</td>
+								<td class="td_title2">6</td>
+								<td class="td_title2">注数</td>
+								<td class="td_title2">奖金(元)</td>
+								<td class="td_title2">注数</td>
+								<td class="td_title2">奖金(元)</td>
+							</tr>
+							<tbody id="tdata">
+							<tr class="t_tr1"><!--<td>2</td>--><td>26053</td><td class="t_cfont2">01</td><td class="t_cfont2">02</td><td class="t_cfont2">03</td><td class="t_cfont2">08</td><td class="t_cfont2">13</td><td class="t_cfont2">14</td><td class="t_cfont4">02</td><td class="t_cfont4">&nbsp;</td><td>1,276,883,761</td><td>6</td><td>7,002,350</td><td>136</td><td>353,355</td><td>395,029,142</td><td>2026-05-12</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26052</td><td class="t_cfont2">01</td><td class="t_cfont2">03</td><td class="t_cfont2">11</td><td class="t_cfont2">22</td><td class="t_cfont2">26</td><td class="t_cfont2">31</td><td class="t_cfont4">11</td><td class="t_cfont4">&nbsp;</td><td>1,306,883,761</td><td>24</td><td>4,166,666</td><td>257</td><td>103,058</td><td>417,267,288</td><td>2026-05-10</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26051</td><td class="t_cfont2">09</td><td class="t_cfont2">14</td><td class="t_cfont2">15</td><td class="t_cfont2">16</td><td class="t_cfont2">29</td><td class="t_cfont2">30</td><td class="t_cfont4">10</td><td class="t_cfont4">&nbsp;</td><td>1,400,262,206</td><td>14</td><td>5,728,242</td><td>189</td><td>215,775</td><td>386,809,756</td><td>2026-05-07</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26050</td><td class="t_cfont2">06</td><td class="t_cfont2">09</td><td class="t_cfont2">25</td><td class="t_cfont2">27</td><td class="t_cfont2">28</td><td class="t_cfont2">30</td><td class="t_cfont4">03</td><td class="t_cfont4">&nbsp;</td><td>1,470,262,206</td><td>4</td><td>7,220,345</td><td>87</td><td>408,339</td><td>368,215,788</td><td>2026-05-05</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26049</td><td class="t_cfont2">03</td><td class="t_cfont2">04</td><td class="t_cfont2">14</td><td class="t_cfont2">15</td><td class="t_cfont2">18</td><td class="t_cfont2">20</td><td class="t_cfont4">02</td><td class="t_cfont4">&nbsp;</td><td>1,490,262,206</td><td>6</td><td>6,941,614</td><td>112</td><td>416,060</td><td>378,548,054</td><td>2026-05-03</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26048</td><td class="t_cfont2">09</td><td class="t_cfont2">15</td><td class="t_cfont2">18</td><td class="t_cfont2">24</td><td class="t_cfont2">28</td><td class="t_cfont2">33</td><td class="t_cfont4">01</td><td class="t_cfont4">&nbsp;</td><td>1,520,262,206</td><td>0</td><td>0</td><td>128</td><td>473,459</td><td>381,163,108</td><td>2026-04-30</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26047</td><td class="t_cfont2">07</td><td class="t_cfont2">16</td><td class="t_cfont2">21</td><td class="t_cfont2">24</td><td class="t_cfont2">27</td><td class="t_cfont2">30</td><td class="t_cfont4">07</td><td class="t_cfont4">&nbsp;</td><td>1,505,111,504</td><td>6</td><td>6,564,632</td><td>269</td><td>139,595</td><td>383,992,530</td><td>2026-04-28</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26046</td><td class="t_cfont2">02</td><td class="t_cfont2">09</td><td class="t_cfont2">10</td><td class="t_cfont2">24</td><td class="t_cfont2">31</td><td class="t_cfont2">33</td><td class="t_cfont4">16</td><td class="t_cfont4">&nbsp;</td><td>1,535,111,504</td><td>5</td><td>8,506,512</td><td>114</td><td>614,035</td><td>425,615,512</td><td>2026-04-26</td></tr>							</tbody>
+						</table>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				
+			</td>
+		</tr>
+	</table>
+	</div></div>

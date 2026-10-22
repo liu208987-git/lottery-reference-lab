@@ -1,0 +1,11 @@
+beautifulsoup4>=4.12
+Flask>=3.0
+matplotlib>=3.8
+numpy>=1.26
+requests>=2.31
+scipy>=1.12
+sxtwl>=2.0.7
+Werkzeug>=3.0
+
+# Optional desktop shell. The Web dashboard does not require it.
+pywebview>=5.0; python_version < "3.14"
